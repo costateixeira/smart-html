@@ -3,15 +3,14 @@ import fs from "fs";
 import yaml from "js-yaml";
 import fetch from "node-fetch";
 
-const GITHUB_TOKEN = process.env.GH_TOKEN || process.env.GH_TOKEN;
-
-if (!GITHUB_TOKEN) {
-  console.error("❌ No GitHub token set. Use VITE_GITHUB_TOKEN locally or GITHUB_TOKEN in CI.");
+const token = process.env.GH_TOKEN;
+if (!token) {
+  console.error("❌ GH_TOKEN not set");
   process.exit(1);
 }
 
 const headers = {
-  Authorization: `Bearer ${GITHUB_TOKEN}`,
+  Authorization: `Bearer ${token}`,
   "Content-Type": "application/json",
 };
 
@@ -68,9 +67,7 @@ async function main() {
 
     const tags = (repoData.tags?.nodes || [])
       .filter((n) => !["current", "vcurrent"].includes(n.name.toLowerCase()))
-      .filter((n) => n.target?.committedDate) // only tags with commit date
-      .sort((a, b) => new Date(b.target.committedDate) - new Date(a.target.committedDate))
-      .map((n) => n.name); // now map to just names if needed
+      .map((n) => n.name);
 
     result.push({
       name: ig.name,
@@ -93,4 +90,3 @@ main().catch((e) => {
   console.error(e);
   process.exit(1);
 });
-
