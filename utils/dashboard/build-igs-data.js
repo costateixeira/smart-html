@@ -82,7 +82,7 @@ async function main() {
   }
 
   fs.mkdirSync("./public", { recursive: true });
-  fs.writeFileSync("./public/igs.json", JSON.stringify(result, null, 2));
+  fs.writeFileSync("./public/igs-data.json", JSON.stringify(result, null, 2));
   console.log("✅ JSON saved to public/igs.json");
 }
 
