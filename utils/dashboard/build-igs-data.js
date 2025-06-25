@@ -67,6 +67,8 @@ async function main() {
 
     const tags = (repoData.tags?.nodes || [])
       .filter((n) => !["current", "vcurrent"].includes(n.name.toLowerCase()))
+      .filter((n) => n.target?.committedDate) // only tags with commit date
+      .sort((a, b) => new Date(b.target.committedDate) - new Date(a.target.committedDate))      
       .map((n) => n.name);
 
     result.push({
