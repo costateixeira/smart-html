@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   base: '/ig-dashboard/',
+  publicDir: 'public', 
   plugins: [react()],
   server: {
     proxy: {
