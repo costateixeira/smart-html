@@ -1,4 +1,4 @@
-name: Deploy IG Dashboard
+name: Build and Commit IG Dashboard
 
 on:
   push:
@@ -6,52 +6,52 @@ on:
       - main
 
 permissions:
-  contents: write  # needed to push to gh-pages
+  contents: write  # needed to push changes to the same branch
 
 jobs:
-  build-and-deploy:
+  build-and-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main
+      # 1️⃣ Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         working-directory: utils/dashboard
         run: npm ci
 
+      # 4️⃣ Build IGs data
       - name: Build IGs data
         working-directory: utils/dashboard
         run: node build-igs-data.js
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # 5️⃣ Build Vite site
       - name: Build Vite site
         working-directory: utils/dashboard
         run: npm run build
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Copy built site to gh-pages/ig-dashboard
+      # 6️⃣ Copy dist to ig-dashboard/
+      - name: Copy build to ig-dashboard/
         run: |
-          rm -rf gh-pages/ig-dashboard
-          mkdir -p gh-pages/ig-dashboard
-          cp -r utils/dashboard/dist/* gh-pages/ig-dashboard/
+          rm -rf ig-dashboard
+          mkdir ig-dashboard
+          cp -r utils/dashboard/dist/* ig-dashboard/
 
-      - name: Commit and push
+      # 7️⃣ Commit changes to main branch
+      - name: Commit and push changes
         run: |
-          cd gh-pages
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add ig-dashboard
-          git commit -m "Update IG Dashboard" || echo "No changes to commit"
-          git push origin gh-pages
+          git diff --cached --quiet || git commit -m "Update IG Dashboard"
+          git push
