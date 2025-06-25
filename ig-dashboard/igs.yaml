@@ -1,0 +1,84 @@
+igs:
+  - name: HIV
+    repo: WorldHealthOrganization/smart-hiv
+    published: http://smart.who.int/hiv
+
+  - name: TRUST
+    repo: WorldHealthOrganization/smart-trust
+    published: http://smart.who.int/trust
+
+  - name: ICVP
+    repo: WorldHealthOrganization/smart-icvp
+    published: http://smart.who.int/icvp
+
+  - name: PCMT
+    repo: WorldHealthOrganization/smart-pcmt
+    published: http://smart.who.int/pcmt
+
+  - name: Base-Clinical
+    repo: WorldHealthOrganization/smart-base-clinical
+    published: http://smart.who.int/base-clinical
+
+  - name: Starter Kit
+    repo: WorldHealthOrganization/smart-ig-starter-kit
+    published: http://smart.who.int/ig-starter-kit
+
+  - name: Smart-pilgrimage
+    repo: WorldHealthOrganization/smart-ips-pilgrimage
+    published: http://smart.who.int/ips-pilgrimage
+
+  - name: DAK-IMMZ
+    repo: WorldHealthOrganization/smart-dak-immz
+    published: http://smart.who.int/dak-immz
+
+  - name: PH4H
+    repo: WorldHealthOrganization/smart-ph4h
+    published: http://smart.who.int/ph4h
+
+  - name: Base
+    repo: WorldHealthOrganization/smart-base
+    published: http://smart.who.int/base
+
+  - name: TS
+    repo: WorldHealthOrganization/smart-ts
+    published: http://smart.who.int/ts
+
+  - name: Immunizations-measles
+    repo: WorldHealthOrganization/smart-example-immz
+    published: http://smart.who.int/immunizations-measles
+
+  - name: ANC
+    repo: WorldHealthOrganization/smart-anc
+    published: http://fhir.org/guides/who/anc-cds/ImplementationGuide/who.fhir.anc-cds
+
+  - name: DAK-example-IMMZ
+    repo: WorldHealthOrganization/smart-dak-example-immz
+    published: http://smart.who.int/dak-example-immz
+
+  - name: DAK-TB
+    repo: WorldHealthOrganization/smart-dak-tb
+    published: http://smart.who.int/dak-tb
+
+  - name: DAK-CCC
+    repo: WorldHealthOrganization/smart-dak-ccc
+    published: http://smart.who.int/dak-ccc
+
+  - name: Immunizations
+    repo: WorldHealthOrganization/smart-immunizations
+    published: http://smart.who.int/ig/smart-immunizations
+
+  - name: Tuberculosis
+    repo: WorldHealthOrganization/smart-tuberculosis
+    published: http://worldhealthorganization.github.io/smart-tuberculosis
+
+  - name: OT
+    repo: WorldHealthOrganization/smart-ot
+    published: http://worldhealthorganization.github.io/smart-ot
+
+  - name: DDCC
+    repo: WorldHealthOrganization/ddcc
+    published: http://smart.who.int/ddcc
+
+  - name: Template
+    repo: WorldHealthOrganization/smart-ig-template
+    # No published URL provided for Template in your input

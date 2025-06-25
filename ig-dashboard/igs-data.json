@@ -1,0 +1,2050 @@
+[
+  {
+    "name": "HIV",
+    "repo": "WorldHealthOrganization/smart-hiv",
+    "published": "http://smart.who.int/hiv",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-hiv",
+    "default_branch": "main",
+    "last_commit": "2025-05-28T13:55:29Z",
+    "branches": [
+      {
+        "name": "itechuw",
+        "daysSince": 391,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 28,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "pmanko-patch-1",
+        "daysSince": 162,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "revert-9-develop",
+        "daysSince": 358,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "update-version",
+        "daysSince": 162,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.0.0-alpha",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.2.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.2.1",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.3.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.3.1",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.3.2",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.4.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.4.1",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.4.2",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.4.3-2",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.4.3",
+        "hasTag": true,
+        "publishedUrl": null
+      }
+    ],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-hiv/"
+  },
+  {
+    "name": "TRUST",
+    "repo": "WorldHealthOrganization/smart-trust",
+    "published": "http://smart.who.int/trust",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
+    "default_branch": "main",
+    "last_commit": "2025-05-07T08:57:58Z",
+    "branches": [
+      {
+        "name": "1.0.0",
+        "daysSince": 511,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "1.1.1",
+        "daysSince": 490,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "1.1.2",
+        "daysSince": 426,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "1.1.3",
+        "daysSince": 425,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "43/merge",
+        "daysSince": 246,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "49/merge",
+        "daysSince": 293,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "50/merge",
+        "daysSince": 288,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "51/merge",
+        "daysSince": 280,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "53/merge",
+        "daysSince": 254,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "Alhassan",
+        "daysSince": 427,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "DEV",
+        "daysSince": 659,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "Updated-Template-LOAs",
+        "daysSince": 413,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "VHLPayload",
+        "daysSince": 124,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "cms_pkg_api_trustedCertificate",
+        "daysSince": 104,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "concepts_onboarding_checklist",
+        "daysSince": 288,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "costateixeira-patch-1",
+        "daysSince": 439,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "did-context-extension-links-FHIR-spec",
+        "daysSince": 2,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "did-updates",
+        "daysSince": 118,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/InitialTemplateFullOnboarding",
+        "daysSince": 614,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/Initialtemplate",
+        "daysSince": 593,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/OnboardingProcess_Documents",
+        "daysSince": 670,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/adapted_onboarding_checklist_to_github_workflow",
+        "daysSince": 735,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/enhance-endpoint-page",
+        "daysSince": 0,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "docs/section_for_transitive_trust_in_onboarding_checklist",
+        "daysSince": 663,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/specification-did-trustlist",
+        "daysSince": 140,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "docs/tng_architecture_documentation",
+        "daysSince": 853,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fix/swagger-update",
+        "daysSince": 107,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-testdependencies",
+        "daysSince": 280,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "json-ld-trustlist",
+        "daysSince": 85,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "main",
+        "daysSince": 49,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "onboarding_checklist_enhancement",
+        "daysSince": 42,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "openapi",
+        "daysSince": 427,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "qa-updates",
+        "daysSince": 84,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "readme_new_enhancement",
+        "daysSince": 293,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "release-candidate",
+        "daysSince": 187,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "signerCertificate-to-trustedCertificate",
+        "daysSince": 49,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "smart_trust_enhancement",
+        "daysSince": 0,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "test",
+        "daysSince": 439,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "test991",
+        "daysSince": 49,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "testing-feature",
+        "daysSince": 140,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "transactions",
+        "daysSince": 428,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "uptate-release-wf",
+        "daysSince": 439,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "v1.2.0",
+        "daysSince": 84,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "who-116-registrust-vocab",
+        "daysSince": 427,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.1.1",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "1.1.2",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.1.2"
+      },
+      {
+        "version": "1.1.3",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.1.3"
+      },
+      {
+        "version": "1.1.4",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/1.1.4"
+      },
+      {
+        "version": "1.1.5",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.1.5"
+      },
+      {
+        "version": "1.2.0",
+        "hasTag": false,
+        "publishedUrl": "http://smart.who.int/trust/1.2.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.2.0",
+        "publishedUrl": "http://smart.who.int/trust/1.2.0"
+      },
+      {
+        "version": "1.1.5",
+        "publishedUrl": "http://smart.who.int/trust/v1.1.5"
+      },
+      {
+        "version": "1.1.4",
+        "publishedUrl": "http://smart.who.int/trust/1.1.4"
+      },
+      {
+        "version": "1.1.3",
+        "publishedUrl": "http://smart.who.int/trust/v1.1.3"
+      },
+      {
+        "version": "1.1.2",
+        "publishedUrl": "http://smart.who.int/trust/v1.1.2"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-trust/"
+  },
+  {
+    "name": "ICVP",
+    "repo": "WorldHealthOrganization/smart-icvp",
+    "published": "http://smart.who.int/icvp",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-icvp",
+    "default_branch": "main",
+    "last_commit": "2025-03-07T00:31:43Z",
+    "branches": [
+      {
+        "name": "5/merge",
+        "daysSince": 280,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "7/merge",
+        "daysSince": 144,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "2024-backup",
+        "daysSince": 196,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fixup-catalog-id-references",
+        "daysSince": 131,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-testdependencies",
+        "daysSince": 280,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 110,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "prequal-vaccines",
+        "daysSince": 136,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "selective-disclosure",
+        "daysSince": 130,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "v1.0.0-updates",
+        "daysSince": 129,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/icvp/0.1.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/icvp/0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-icvp/"
+  },
+  {
+    "name": "PCMT",
+    "repo": "WorldHealthOrganization/smart-pcmt",
+    "published": "http://smart.who.int/pcmt",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-pcmt",
+    "default_branch": "main",
+    "last_commit": "2025-06-25T12:49:21Z",
+    "branches": [
+      {
+        "name": "1/merge",
+        "daysSince": 194,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "2/merge",
+        "daysSince": 150,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "datasets",
+        "daysSince": 143,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "datasets-meta",
+        "daysSince": 137,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "draft-logical-model",
+        "daysSince": 144,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "release-candidate",
+        "daysSince": 0,
+        "isDefault": false,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": null
+      }
+    ],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-pcmt/"
+  },
+  {
+    "name": "Base-Clinical",
+    "repo": "WorldHealthOrganization/smart-base-clinical",
+    "published": "http://smart.who.int/base-clinical",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-base-clinical",
+    "default_branch": "main",
+    "last_commit": "2024-12-02T08:33:44Z",
+    "branches": [
+      {
+        "name": "br-commons-profiles",
+        "daysSince": 260,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "costateixeira-patch-1",
+        "daysSince": 205,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 205,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "use-current-IG-template",
+        "daysSince": 260,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-base-clinical/"
+  },
+  {
+    "name": "Starter Kit",
+    "repo": "WorldHealthOrganization/smart-ig-starter-kit",
+    "published": "http://smart.who.int/ig-starter-kit",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ig-starter-kit",
+    "default_branch": "main",
+    "last_commit": "2025-05-16T12:30:47Z",
+    "branches": [
+      {
+        "name": "L4-compliance.md",
+        "daysSince": 85,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "authoring-changes",
+        "daysSince": 377,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-changes-2024-04-14",
+        "daysSince": 436,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-process-updates",
+        "daysSince": 372,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-update-indicator-guidance",
+        "daysSince": 362,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "costateixeira-patch-1",
+        "daysSince": 142,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-updates",
+        "daysSince": 370,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "l2sop",
+        "daysSince": 208,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "l4",
+        "daysSince": 99,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 40,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "pcmt",
+        "daysSince": 44,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "publication-updates",
+        "daysSince": 207,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "release-candidate",
+        "daysSince": 207,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "release-prepv1.0.0",
+        "daysSince": 411,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "testing",
+        "daysSince": 382,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "translations",
+        "daysSince": 342,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "update-ig-setup",
+        "daysSince": 383,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "v1.0.0",
+        "daysSince": 370,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v1.0.0"
+      },
+      {
+        "version": "1.1.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "2.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v2.0.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "2.0.0",
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v2.0.0"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ig-starter-kit/"
+  },
+  {
+    "name": "Smart-pilgrimage",
+    "repo": "WorldHealthOrganization/smart-ips-pilgrimage",
+    "published": "http://smart.who.int/ips-pilgrimage",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ips-pilgrimage",
+    "default_branch": "main",
+    "last_commit": "2025-05-27T10:20:49Z",
+    "branches": [
+      {
+        "name": "2.0.0",
+        "daysSince": 140,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "2.0.2",
+        "daysSince": 128,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "2.0.3",
+        "daysSince": 29,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "VHLPayloadExample",
+        "daysSince": 152,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "consent-policies-jct",
+        "daysSince": 314,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fhir4.3",
+        "daysSince": 216,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-workflow-update",
+        "daysSince": 141,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 29,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "test2025",
+        "daysSince": 26,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "testing",
+        "daysSince": 128,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/1.0.0"
+      },
+      {
+        "version": "2.0.2",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.2"
+      },
+      {
+        "version": "2.0.3",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.3"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "2.0.3",
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.3"
+      },
+      {
+        "version": "2.0.2",
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.2"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ips-pilgrimage/"
+  },
+  {
+    "name": "DAK-IMMZ",
+    "repo": "WorldHealthOrganization/smart-dak-immz",
+    "published": "http://smart.who.int/dak-immz",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-immz",
+    "default_branch": "main",
+    "last_commit": "2025-04-23T09:08:18Z",
+    "branches": [
+      {
+        "name": "5/merge",
+        "daysSince": 111,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 63,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "v1.0.0_releaseCandidate",
+        "daysSince": 142,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "v1.1.0_releaseCandidate",
+        "daysSince": 111,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.9.9",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-immz/v0.9.9"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.0.0"
+      },
+      {
+        "version": "1.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.1.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.1.0",
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.1.0"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.0.0"
+      },
+      {
+        "version": "0.9.9",
+        "publishedUrl": "http://smart.who.int/dak-immz/v0.9.9"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-immz/"
+  },
+  {
+    "name": "PH4H",
+    "repo": "WorldHealthOrganization/smart-ph4h",
+    "published": "http://smart.who.int/ph4h",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ph4h",
+    "default_branch": "main",
+    "last_commit": "2024-10-07T20:10:03Z",
+    "branches": [
+      {
+        "name": "jct-testdependencies",
+        "daysSince": 280,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 260,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ph4h/"
+  },
+  {
+    "name": "Base",
+    "repo": "WorldHealthOrganization/smart-base",
+    "published": "http://smart.who.int/base",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-base",
+    "default_branch": "main",
+    "last_commit": "2025-05-26T10:05:11Z",
+    "branches": [
+      {
+        "name": "3/merge",
+        "daysSince": 559,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "10/merge",
+        "daysSince": 436,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "12/merge",
+        "daysSince": 282,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "13/merge",
+        "daysSince": 292,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "14/merge",
+        "daysSince": 279,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "16/merge",
+        "daysSince": 116,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "17/merge",
+        "daysSince": 112,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "18/merge",
+        "daysSince": 110,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "20/merge",
+        "daysSince": 100,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "R5",
+        "daysSince": 627,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "actors-and-transactions",
+        "daysSince": 116,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-base-profiles",
+        "daysSince": 478,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-changes-2024-04-14",
+        "daysSince": 436,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-update-dependencies",
+        "daysSince": 282,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 30,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "r5-enhancements",
+        "daysSince": 296,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "restore-r4",
+        "daysSince": 292,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "rr-updates",
+        "daysSince": 279,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "skip-large-files",
+        "daysSince": 62,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "updatescript",
+        "daysSince": 446,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": ".0.1.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.2.0",
+        "hasTag": false,
+        "publishedUrl": "http://smart.who.int/base/0.2.0"
+      },
+      {
+        "version": "0.1.0",
+        "hasTag": false,
+        "publishedUrl": "http://smart.who.int/base/0.1.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.2.0",
+        "publishedUrl": "http://smart.who.int/base/0.2.0"
+      },
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/base/0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-base/"
+  },
+  {
+    "name": "TS",
+    "repo": "WorldHealthOrganization/smart-ts",
+    "published": "http://smart.who.int/ts",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ts",
+    "default_branch": "main",
+    "last_commit": "2025-01-16T12:54:41Z",
+    "branches": [
+      {
+        "name": "1/merge",
+        "daysSince": 198,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "3/merge",
+        "daysSince": 258,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 160,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "regenstrief-ocl",
+        "daysSince": 198,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ts/0.1.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/ts/0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ts/"
+  },
+  {
+    "name": "Immunizations-measles",
+    "repo": "WorldHealthOrganization/smart-example-immz",
+    "published": "http://smart.who.int/immunizations-measles",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-example-immz",
+    "default_branch": "main",
+    "last_commit": "2024-09-21T14:56:49Z",
+    "branches": [
+      {
+        "name": "age-stratifiers-use-end",
+        "daysSince": 103,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-l2-source",
+        "daysSince": 362,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-status-active-2024-07-01",
+        "daysSince": 359,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-use-path-binary",
+        "daysSince": 609,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "cqf-sushi",
+        "daysSince": 610,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "derived-periods-fix",
+        "daysSince": 103,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fix-ind",
+        "daysSince": 608,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fixmaps",
+        "daysSince": 269,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 277,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "med-resources",
+        "daysSince": 615,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "merge-cleanup",
+        "daysSince": 514,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "merge-preview",
+        "daysSince": 383,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "previous-cleanup",
+        "daysSince": 609,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "release-candidate",
+        "daysSince": 522,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "test-icd11",
+        "daysSince": 609,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "testdependencies",
+        "daysSince": 281,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "testing",
+        "daysSince": 460,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "update-maps",
+        "daysSince": 612,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-example-immz/"
+  },
+  {
+    "name": "ANC",
+    "repo": "WorldHealthOrganization/smart-anc",
+    "published": "http://fhir.org/guides/who/anc-cds/ImplementationGuide/who.fhir.anc-cds",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-anc",
+    "default_branch": "master",
+    "last_commit": "2025-06-25T03:12:49Z",
+    "branches": [
+      {
+        "name": "master",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "testbuild",
+        "daysSince": 62,
+        "isDefault": false,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": null
+      },
+      {
+        "version": "0.2.0",
+        "hasTag": true,
+        "publishedUrl": null
+      }
+    ],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-anc/"
+  },
+  {
+    "name": "DAK-example-IMMZ",
+    "repo": "WorldHealthOrganization/smart-dak-example-immz",
+    "published": "http://smart.who.int/dak-example-immz",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-example-immz",
+    "default_branch": "main",
+    "last_commit": "2024-07-30T14:03:03Z",
+    "branches": [
+      {
+        "name": "1/merge",
+        "daysSince": 331,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "br-updates-2024-08",
+        "daysSince": 304,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 330,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-example-immz/"
+  },
+  {
+    "name": "DAK-TB",
+    "repo": "WorldHealthOrganization/smart-dak-tb",
+    "published": "http://smart.who.int/dak-tb",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-tb",
+    "default_branch": "main",
+    "last_commit": "2025-04-23T09:07:43Z",
+    "branches": [
+      {
+        "name": "2/merge",
+        "daysSince": 343,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 63,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "v.1.0.2",
+        "daysSince": 247,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.9.9",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-tb/v0.9.9"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.0"
+      },
+      {
+        "version": "1.0.1",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.1"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.1",
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.1"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.0"
+      },
+      {
+        "version": "0.9.9",
+        "publishedUrl": "http://smart.who.int/dak-tb/v0.9.9"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-tb/"
+  },
+  {
+    "name": "DAK-CCC",
+    "repo": "WorldHealthOrganization/smart-dak-ccc",
+    "published": "http://smart.who.int/dak-ccc",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-ccc",
+    "default_branch": "main",
+    "last_commit": "2025-04-19T23:24:10Z",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 66,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.9.9",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-ccc/v0.9.9"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-ccc/v1.0.0"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/dak-ccc/v1.0.0"
+      },
+      {
+        "version": "0.9.9",
+        "publishedUrl": "http://smart.who.int/dak-ccc/v0.9.9"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-ccc/"
+  },
+  {
+    "name": "Immunizations",
+    "repo": "WorldHealthOrganization/smart-immunizations",
+    "published": "http://smart.who.int/ig/smart-immunizations",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
+    "default_branch": "main",
+    "last_commit": "2025-03-05T14:46:26Z",
+    "branches": [
+      {
+        "name": "AcceleratorToAdaptation",
+        "daysSince": 1093,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "DefaultTemplate",
+        "daysSince": 1140,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "Valueset01",
+        "daysSince": 1152,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "ValusetSet-FSH",
+        "daysSince": 1153,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "WHO_Template",
+        "daysSince": 1160,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "WHOIMMZ-95",
+        "daysSince": 1154,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "WHOIMMZ-101",
+        "daysSince": 1182,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "WHOIMMZ-105-fixes",
+        "daysSince": 1154,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "WHOIMMZ-105",
+        "daysSince": 1154,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "WHOIMMZ-109",
+        "daysSince": 1154,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "cleanup",
+        "daysSince": 447,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "combined-logic",
+        "daysSince": 824,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "document3",
+        "daysSince": 1181,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt02-fixes",
+        "daysSince": 1153,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt03",
+        "daysSince": 1183,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt04",
+        "daysSince": 1157,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt09",
+        "daysSince": 1181,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt10",
+        "daysSince": 1157,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt11-je-fix",
+        "daysSince": 1153,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt13",
+        "daysSince": 1157,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt14",
+        "daysSince": 1157,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt15",
+        "daysSince": 1157,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dt-regen",
+        "daysSince": 1154,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "dtgenerator",
+        "daysSince": 1181,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fixfshwarnings",
+        "daysSince": 1141,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "hepbfixes",
+        "daysSince": 1157,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "ind-refactor",
+        "daysSince": 1153,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "indicators",
+        "daysSince": 1195,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 112,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "master",
+        "daysSince": 804,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "no-fsh",
+        "daysSince": 1146,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "pr/74",
+        "daysSince": 812,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "precleanup",
+        "daysSince": 715,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "reference-fix",
+        "daysSince": 1153,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "revert-45-WHOIMMZ-105-fixes",
+        "daysSince": 1154,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "sickle-cell-definition",
+        "daysSince": 1153,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "sop",
+        "daysSince": 0,
+        "isDefault": false,
+        "isStale": false
+      },
+      {
+        "name": "test-magick",
+        "daysSince": 1150,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-immunizations/"
+  },
+  {
+    "name": "Tuberculosis",
+    "repo": "WorldHealthOrganization/smart-tuberculosis",
+    "published": "http://worldhealthorganization.github.io/smart-tuberculosis",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-tuberculosis",
+    "default_branch": "main",
+    "last_commit": "2024-02-21T11:06:21Z",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 490,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-tuberculosis/"
+  },
+  {
+    "name": "OT",
+    "repo": "WorldHealthOrganization/smart-ot",
+    "published": "http://worldhealthorganization.github.io/smart-ot",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ot",
+    "default_branch": "main",
+    "last_commit": "2024-01-25T14:56:18Z",
+    "branches": [
+      {
+        "name": "action",
+        "daysSince": 612,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 517,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "test",
+        "daysSince": 609,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "test-jct",
+        "daysSince": 612,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "version1",
+        "daysSince": 671,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ot/"
+  },
+  {
+    "name": "DDCC",
+    "repo": "WorldHealthOrganization/ddcc",
+    "published": "http://smart.who.int/ddcc",
+    "html_url": "https://github.com/WorldHealthOrganization/ddcc",
+    "default_branch": "main",
+    "last_commit": "2025-06-24T09:05:38Z",
+    "branches": [
+      {
+        "name": "1.0.1",
+        "daysSince": 190,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "add-feedback-option",
+        "daysSince": 1552,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "audit-tx",
+        "daysSince": 1314,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "bulk",
+        "daysSince": 1430,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "ddcc-1.0",
+        "daysSince": 253,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "ddcc-tr",
+        "daysSince": 1247,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "divocmap",
+        "daysSince": 945,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "euvaccinemap",
+        "daysSince": 945,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "icaovaccinemap",
+        "daysSince": 945,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-fixes",
+        "daysSince": 334,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "main",
+        "daysSince": 1,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "main-before-ddcc",
+        "daysSince": 253,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "newpublisher",
+        "daysSince": 616,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "patient-intl",
+        "daysSince": 1496,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "qr-encoding",
+        "daysSince": 1548,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "rc1",
+        "daysSince": 1555,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "rc2-old",
+        "daysSince": 1559,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "rc2-umbrella",
+        "daysSince": 1490,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "rc2",
+        "daysSince": 1517,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "release-candidate_prev",
+        "daysSince": 257,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "release-candidate",
+        "daysSince": 251,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "rstanley_add_questresp",
+        "daysSince": 1380,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "test",
+        "daysSince": 1565,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "test-data-pre-processing",
+        "daysSince": 1296,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "update-gh-build",
+        "daysSince": 596,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.0"
+      },
+      {
+        "version": "1.0.1",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.1"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.1",
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.1"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/ddcc/"
+  },
+  {
+    "name": "Template",
+    "repo": "WorldHealthOrganization/smart-ig-template",
+    "published": null,
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ig-template",
+    "default_branch": "master",
+    "last_commit": "2025-06-13T11:17:36Z",
+    "branches": [
+      {
+        "name": "costateixeira-patch-1",
+        "daysSince": 761,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "costateixeira-patch-2",
+        "daysSince": 742,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "costateixeira-patch-3",
+        "daysSince": 645,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "costateixeira-patch-4",
+        "daysSince": 374,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "feedback-forms",
+        "daysSince": 104,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fix-font-awesome",
+        "daysSince": 376,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fix-form-renderer",
+        "daysSince": 145,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fix-js",
+        "daysSince": 498,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "fontawesome-icons",
+        "daysSince": 376,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-add-callout-boxes",
+        "daysSince": 406,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "jct-patch-form",
+        "daysSince": 348,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "master",
+        "daysSince": 12,
+        "isDefault": true,
+        "isStale": false
+      },
+      {
+        "name": "removecqf",
+        "daysSince": 828,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "support-for-submenus",
+        "daysSince": 623,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "test",
+        "daysSince": 353,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "update-artifacts-page",
+        "daysSince": 149,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "v002",
+        "daysSince": 1318,
+        "isDefault": false,
+        "isStale": true
+      },
+      {
+        "name": "watermark",
+        "daysSince": 520,
+        "isDefault": false,
+        "isStale": true
+      }
+    ],
+    "versions": [],
+    "publishedVersions": [],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ig-template/"
+  }
+]
