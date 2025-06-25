@@ -1,46 +1,30 @@
-import { writeFileSync, readFileSync } from "fs";
-import { parse } from "yaml";
-import fetch from "node-fetch"; // if using Node <18
+// generate-igs.mjs
+import fs from "fs";
+import yaml from "js-yaml";
+import fetch from "node-fetch";
 
-const token = process.env.GH_TOKEN;
-if (!token) {
-  console.error("❌ GH_TOKEN not set");
+const GITHUB_TOKEN = process.env.VITE_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+
+if (!GITHUB_TOKEN) {
+  console.error("❌ No GitHub token set. Use VITE_GITHUB_TOKEN locally or GITHUB_TOKEN in CI.");
   process.exit(1);
 }
 
 const headers = {
-  Authorization: `Bearer ${token}`,
+  Authorization: `Bearer ${GITHUB_TOKEN}`,
   "Content-Type": "application/json",
 };
 
-function getProxiedUrl(published) {
-  const parsed = new URL(published);
-  if (parsed.hostname.includes("smart.who.int")) {
-    return `https://smart.who.int${parsed.pathname}/package-list.json`;
-  }
-  if (parsed.hostname.includes("fhir.org")) {
-    return `https://hl7.org/fhir${parsed.pathname}/package-list.json`;
-  }
-  if (parsed.hostname.includes("github.io")) {
-    return `https://${parsed.hostname}${parsed.pathname}/package-list.json`;
-  }
-  return published;
-}
+async function main() {
+  const config = yaml.load(fs.readFileSync("./public/igs.yaml", "utf8"));
+  const result = [];
 
-const config = parse(readFileSync("public/igs.yaml", "utf8"));
-const igs = config.igs || [];
-
-(async () => {
-  const now = new Date();
-  const MAX_DAYS = 90;
-  const output = [];
-
-  for (const ig of igs) {
-    const [owner, repoName] = ig.repo.split("/");
+  for (const ig of config.igs) {
+    const [owner, repo] = ig.repo.split("/");
 
     const query = `
     {
-      repository(owner: "${owner}", name: "${repoName}") {
+      repository(owner: "${owner}", name: "${repo}") {
         defaultBranchRef {
           name
           target { ... on Commit { committedDate } }
@@ -65,65 +49,47 @@ const igs = config.igs || [];
     });
 
     const json = await res.json();
-    const repo = json.data.repository;
-    const defaultBranch = repo.defaultBranchRef?.name || "";
-    const defaultCommitDate = repo.defaultBranchRef?.target?.committedDate || "";
+    const repoData = json.data?.repository;
 
-    const branches = (repo.branches?.nodes || [])
-      .filter(n => n.name !== "gh-pages")
-      .map(n => {
-        const commitDate = new Date(n.target.committedDate);
-        const daysSince = Math.floor((now - commitDate) / (1000 * 60 * 60 * 24));
-        return {
-          name: n.name,
-          daysSince,
-          isDefault: n.name === defaultBranch,
-          isStale: daysSince > MAX_DAYS && n.name !== defaultBranch,
-        };
-      });
-
-    const tagVersions = (repo.tags?.nodes || [])
-      .map(n => n.name.replace(/^v/, ""))
-      .filter(v => !["current", "vcurrent"].includes(v.toLowerCase()));
-
-    let publishedEntries = [];
-    if (ig.published) {
-      try {
-        const pkgUrl = getProxiedUrl(ig.published);
-        const res2 = await fetch(pkgUrl);
-        const pkg = await res2.json();
-        publishedEntries = pkg.list
-          .filter(e => e.version && !["current", "vcurrent"].includes(e.version.toLowerCase()))
-          .map(e => ({
-            version: e.version.replace(/^v/, ""),
-            publishedUrl: e.path,
-          }));
-      } catch (err) {
-        console.warn(`[${ig.name}] failed to fetch package-list.json: ${err}`);
-      }
+    if (!repoData) {
+      console.warn(`⚠️  Skipping ${ig.repo}`);
+      continue;
     }
 
-    const allVersions = Array.from(new Set([...tagVersions, ...publishedEntries.map(e => e.version)]));
-    const versions = allVersions.map(v => ({
-      version: v,
-      hasTag: tagVersions.includes(v),
-      publishedUrl: publishedEntries.find(e => e.version === v)?.publishedUrl || null,
-    }));
+    const defaultBranch = repoData.defaultBranchRef?.name || "";
+    const defaultCommit = repoData.defaultBranchRef?.target?.committedDate || "";
 
-    output.push({
+    const branches = (repoData.branches?.nodes || [])
+      .filter((n) => n.name !== "gh-pages")
+      .map((node) => ({
+        name: node.name,
+        commit: node.target?.committedDate,
+      }));
+
+    const tags = (repoData.tags?.nodes || [])
+      .filter((n) => !["current", "vcurrent"].includes(n.name.toLowerCase()))
+      .filter((n) => n.target?.committedDate) // only tags with commit date
+      .sort((a, b) => new Date(b.target.committedDate) - new Date(a.target.committedDate))
+      .map((n) => n.name); // now map to just names if needed
+
+    result.push({
       name: ig.name,
       repo: ig.repo,
       published: ig.published || null,
-      html_url: repo.url,
+      html_url: repoData.url,
       default_branch: defaultBranch,
-      last_commit: defaultCommitDate,
+      last_commit: defaultCommit,
       branches,
-      versions,
-      publishedVersions: publishedEntries,
-      ciBuildUrl: `https://${owner}.github.io/${repoName}/`
+      tags,
     });
   }
 
-  writeFileSync("public/igs-data.json", JSON.stringify(output, null, 2));
-  console.log("✅ Done. Written to public/igs-data.json");
-})();
+  fs.mkdirSync("./public", { recursive: true });
+  fs.writeFileSync("./public/igs.json", JSON.stringify(result, null, 2));
+  console.log("✅ JSON saved to public/igs.json");
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
