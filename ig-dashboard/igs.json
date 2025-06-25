@@ -1,0 +1,1197 @@
+[
+  {
+    "name": "HIV",
+    "repo": "WorldHealthOrganization/smart-hiv",
+    "published": "http://smart.who.int/hiv",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-hiv",
+    "default_branch": "main",
+    "last_commit": "2025-05-28T13:55:29Z",
+    "branches": [
+      {
+        "name": "itechuw",
+        "commit": "2024-05-29T20:03:42Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-05-28T13:55:29Z"
+      },
+      {
+        "name": "pmanko-patch-1",
+        "commit": "2025-01-13T20:01:34Z"
+      },
+      {
+        "name": "revert-9-develop",
+        "commit": "2024-07-01T19:40:39Z"
+      },
+      {
+        "name": "update-version",
+        "commit": "2025-01-13T19:54:38Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "TRUST",
+    "repo": "WorldHealthOrganization/smart-trust",
+    "published": "http://smart.who.int/trust",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
+    "default_branch": "main",
+    "last_commit": "2025-05-07T08:57:58Z",
+    "branches": [
+      {
+        "name": "1.0.0",
+        "commit": "2024-01-31T06:57:37Z"
+      },
+      {
+        "name": "1.1.1",
+        "commit": "2024-02-21T11:41:48Z"
+      },
+      {
+        "name": "1.1.2",
+        "commit": "2024-04-25T15:55:08Z"
+      },
+      {
+        "name": "1.1.3",
+        "commit": "2024-04-25T23:25:18Z"
+      },
+      {
+        "name": "43/merge",
+        "commit": "2024-10-22T10:07:35Z"
+      },
+      {
+        "name": "49/merge",
+        "commit": "2024-09-05T04:29:47Z"
+      },
+      {
+        "name": "50/merge",
+        "commit": "2024-09-10T10:37:17Z"
+      },
+      {
+        "name": "51/merge",
+        "commit": "2024-09-18T08:56:38Z"
+      },
+      {
+        "name": "53/merge",
+        "commit": "2024-10-14T08:33:13Z"
+      },
+      {
+        "name": "Alhassan",
+        "commit": "2024-04-23T22:58:06Z"
+      },
+      {
+        "name": "DEV",
+        "commit": "2023-09-05T12:05:31Z"
+      },
+      {
+        "name": "Updated-Template-LOAs",
+        "commit": "2024-05-08T14:39:45Z"
+      },
+      {
+        "name": "VHLPayload",
+        "commit": "2025-02-21T10:08:17Z"
+      },
+      {
+        "name": "cms_pkg_api_trustedCertificate",
+        "commit": "2025-03-13T07:36:26Z"
+      },
+      {
+        "name": "concepts_onboarding_checklist",
+        "commit": "2024-09-10T10:36:51Z"
+      },
+      {
+        "name": "costateixeira-patch-1",
+        "commit": "2024-04-12T07:48:25Z"
+      },
+      {
+        "name": "did-context-extension-links-FHIR-spec",
+        "commit": "2025-06-23T05:48:34Z"
+      },
+      {
+        "name": "did-updates",
+        "commit": "2025-02-27T18:28:09Z"
+      },
+      {
+        "name": "docs/InitialTemplateFullOnboarding",
+        "commit": "2023-10-20T12:26:05Z"
+      },
+      {
+        "name": "docs/Initialtemplate",
+        "commit": "2023-11-10T13:39:20Z"
+      },
+      {
+        "name": "docs/OnboardingProcess_Documents",
+        "commit": "2023-08-25T11:00:53Z"
+      },
+      {
+        "name": "docs/adapted_onboarding_checklist_to_github_workflow",
+        "commit": "2023-06-21T16:40:17Z"
+      },
+      {
+        "name": "docs/enhance-endpoint-page",
+        "commit": "2025-06-25T10:43:23Z"
+      },
+      {
+        "name": "docs/section_for_transitive_trust_in_onboarding_checklist",
+        "commit": "2023-09-01T12:53:59Z"
+      },
+      {
+        "name": "docs/specification-did-trustlist",
+        "commit": "2025-02-05T08:58:40Z"
+      },
+      {
+        "name": "docs/tng_architecture_documentation",
+        "commit": "2023-02-22T19:42:08Z"
+      },
+      {
+        "name": "fix/swagger-update",
+        "commit": "2025-03-10T14:39:11Z"
+      },
+      {
+        "name": "jct-testdependencies",
+        "commit": "2024-09-18T08:55:56Z"
+      },
+      {
+        "name": "json-ld-trustlist",
+        "commit": "2025-03-31T22:57:37Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-05-07T08:57:58Z"
+      },
+      {
+        "name": "onboarding_checklist_enhancement",
+        "commit": "2025-05-14T10:01:56Z"
+      },
+      {
+        "name": "openapi",
+        "commit": "2024-04-24T01:33:06Z"
+      },
+      {
+        "name": "qa-updates",
+        "commit": "2025-04-01T19:18:56Z"
+      },
+      {
+        "name": "readme_new_enhancement",
+        "commit": "2024-09-05T07:00:08Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2024-12-20T05:53:13Z"
+      },
+      {
+        "name": "signerCertificate-to-trustedCertificate",
+        "commit": "2025-05-07T08:57:58Z"
+      },
+      {
+        "name": "smart_trust_enhancement",
+        "commit": "2025-06-25T08:57:39Z"
+      },
+      {
+        "name": "test",
+        "commit": "2024-04-12T06:31:29Z"
+      },
+      {
+        "name": "test991",
+        "commit": "2025-05-07T08:16:17Z"
+      },
+      {
+        "name": "testing-feature",
+        "commit": "2025-02-05T19:06:21Z"
+      },
+      {
+        "name": "transactions",
+        "commit": "2024-04-23T19:07:02Z"
+      },
+      {
+        "name": "uptate-release-wf",
+        "commit": "2024-04-12T06:58:03Z"
+      },
+      {
+        "name": "v1.2.0",
+        "commit": "2025-04-01T20:38:28Z"
+      },
+      {
+        "name": "who-116-registrust-vocab",
+        "commit": "2024-04-23T23:01:20Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "ICVP",
+    "repo": "WorldHealthOrganization/smart-icvp",
+    "published": "http://smart.who.int/icvp",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-icvp",
+    "default_branch": "main",
+    "last_commit": "2025-03-07T00:31:43Z",
+    "branches": [
+      {
+        "name": "5/merge",
+        "commit": "2024-09-18T08:58:51Z"
+      },
+      {
+        "name": "7/merge",
+        "commit": "2025-02-01T07:52:49Z"
+      },
+      {
+        "name": "2024-backup",
+        "commit": "2024-12-11T15:41:06Z"
+      },
+      {
+        "name": "fixup-catalog-id-references",
+        "commit": "2025-02-14T13:53:33Z"
+      },
+      {
+        "name": "jct-testdependencies",
+        "commit": "2024-09-18T08:58:12Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-03-07T00:31:43Z"
+      },
+      {
+        "name": "prequal-vaccines",
+        "commit": "2025-02-09T07:58:37Z"
+      },
+      {
+        "name": "selective-disclosure",
+        "commit": "2025-02-15T17:13:35Z"
+      },
+      {
+        "name": "v1.0.0-updates",
+        "commit": "2025-02-15T21:18:22Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "PCMT",
+    "repo": "WorldHealthOrganization/smart-pcmt",
+    "published": "http://smart.who.int/pcmt",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-pcmt",
+    "default_branch": "main",
+    "last_commit": "2025-06-25T12:49:21Z",
+    "branches": [
+      {
+        "name": "1/merge",
+        "commit": "2024-12-13T16:11:18Z"
+      },
+      {
+        "name": "2/merge",
+        "commit": "2025-01-26T12:07:15Z"
+      },
+      {
+        "name": "datasets",
+        "commit": "2025-02-01T22:44:37Z"
+      },
+      {
+        "name": "datasets-meta",
+        "commit": "2025-02-08T12:13:31Z"
+      },
+      {
+        "name": "draft-logical-model",
+        "commit": "2025-01-31T21:31:08Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-06-25T12:49:21Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2025-06-25T12:48:46Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Base-Clinical",
+    "repo": "WorldHealthOrganization/smart-base-clinical",
+    "published": "http://smart.who.int/base-clinical",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-base-clinical",
+    "default_branch": "main",
+    "last_commit": "2024-12-02T08:33:44Z",
+    "branches": [
+      {
+        "name": "br-commons-profiles",
+        "commit": "2024-10-08T14:53:34Z"
+      },
+      {
+        "name": "costateixeira-patch-1",
+        "commit": "2024-12-02T08:11:12Z"
+      },
+      {
+        "name": "main",
+        "commit": "2024-12-02T08:33:44Z"
+      },
+      {
+        "name": "use-current-IG-template",
+        "commit": "2024-10-08T13:49:28Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Starter Kit",
+    "repo": "WorldHealthOrganization/smart-ig-starter-kit",
+    "published": "http://smart.who.int/ig-starter-kit",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ig-starter-kit",
+    "default_branch": "main",
+    "last_commit": "2025-05-16T12:30:47Z",
+    "branches": [
+      {
+        "name": "L4-compliance.md",
+        "commit": "2025-04-01T13:14:42Z"
+      },
+      {
+        "name": "authoring-changes",
+        "commit": "2024-06-13T09:32:36Z"
+      },
+      {
+        "name": "br-changes-2024-04-14",
+        "commit": "2024-04-15T03:17:48Z"
+      },
+      {
+        "name": "br-process-updates",
+        "commit": "2024-06-17T20:56:16Z"
+      },
+      {
+        "name": "br-update-indicator-guidance",
+        "commit": "2024-06-28T14:27:14Z"
+      },
+      {
+        "name": "costateixeira-patch-1",
+        "commit": "2025-02-03T14:09:56Z"
+      },
+      {
+        "name": "jct-updates",
+        "commit": "2024-06-20T07:54:59Z"
+      },
+      {
+        "name": "l2sop",
+        "commit": "2024-11-29T15:04:54Z"
+      },
+      {
+        "name": "l4",
+        "commit": "2025-03-18T15:19:40Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-05-16T12:30:47Z"
+      },
+      {
+        "name": "pcmt",
+        "commit": "2025-05-12T11:13:53Z"
+      },
+      {
+        "name": "publication-updates",
+        "commit": "2024-11-30T05:45:51Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2024-11-30T06:35:57Z"
+      },
+      {
+        "name": "release-prepv1.0.0",
+        "commit": "2024-05-10T14:41:55Z"
+      },
+      {
+        "name": "testing",
+        "commit": "2024-06-08T16:39:51Z"
+      },
+      {
+        "name": "translations",
+        "commit": "2024-07-18T13:04:09Z"
+      },
+      {
+        "name": "update-ig-setup",
+        "commit": "2024-06-07T12:02:55Z"
+      },
+      {
+        "name": "v1.0.0",
+        "commit": "2024-06-20T09:32:56Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Smart-pilgrimage",
+    "repo": "WorldHealthOrganization/smart-ips-pilgrimage",
+    "published": "http://smart.who.int/ips-pilgrimage",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ips-pilgrimage",
+    "default_branch": "main",
+    "last_commit": "2025-05-27T10:20:49Z",
+    "branches": [
+      {
+        "name": "2.0.0",
+        "commit": "2025-02-05T08:08:44Z"
+      },
+      {
+        "name": "2.0.2",
+        "commit": "2025-02-17T12:41:50Z"
+      },
+      {
+        "name": "2.0.3",
+        "commit": "2025-05-27T10:16:28Z"
+      },
+      {
+        "name": "VHLPayloadExample",
+        "commit": "2025-01-24T11:52:53Z"
+      },
+      {
+        "name": "consent-policies-jct",
+        "commit": "2024-08-14T21:21:13Z"
+      },
+      {
+        "name": "fhir4.3",
+        "commit": "2024-11-21T11:22:26Z"
+      },
+      {
+        "name": "jct-workflow-update",
+        "commit": "2025-02-04T11:54:15Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-05-27T10:20:49Z"
+      },
+      {
+        "name": "test2025",
+        "commit": "2025-05-30T10:38:46Z"
+      },
+      {
+        "name": "testing",
+        "commit": "2025-02-17T14:33:36Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "DAK-IMMZ",
+    "repo": "WorldHealthOrganization/smart-dak-immz",
+    "published": "http://smart.who.int/dak-immz",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-immz",
+    "default_branch": "main",
+    "last_commit": "2025-04-23T09:08:18Z",
+    "branches": [
+      {
+        "name": "5/merge",
+        "commit": "2025-03-06T09:30:50Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-04-23T09:08:18Z"
+      },
+      {
+        "name": "v1.0.0_releaseCandidate",
+        "commit": "2025-02-03T11:06:43Z"
+      },
+      {
+        "name": "v1.1.0_releaseCandidate",
+        "commit": "2025-03-06T09:59:51Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "PH4H",
+    "repo": "WorldHealthOrganization/smart-ph4h",
+    "published": "http://smart.who.int/ph4h",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ph4h",
+    "default_branch": "main",
+    "last_commit": "2024-10-07T20:10:03Z",
+    "branches": [
+      {
+        "name": "jct-testdependencies",
+        "commit": "2024-09-18T08:57:17Z"
+      },
+      {
+        "name": "main",
+        "commit": "2024-10-07T20:10:03Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Base",
+    "repo": "WorldHealthOrganization/smart-base",
+    "published": "http://smart.who.int/base",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-base",
+    "default_branch": "main",
+    "last_commit": "2025-05-26T10:05:11Z",
+    "branches": [
+      {
+        "name": "3/merge",
+        "commit": "2023-12-14T17:47:44Z"
+      },
+      {
+        "name": "10/merge",
+        "commit": "2024-04-15T03:20:40Z"
+      },
+      {
+        "name": "12/merge",
+        "commit": "2024-09-16T04:33:04Z"
+      },
+      {
+        "name": "13/merge",
+        "commit": "2024-09-06T07:46:32Z"
+      },
+      {
+        "name": "14/merge",
+        "commit": "2024-09-19T12:07:28Z"
+      },
+      {
+        "name": "16/merge",
+        "commit": "2025-02-28T20:02:14Z"
+      },
+      {
+        "name": "17/merge",
+        "commit": "2025-03-05T17:18:58Z"
+      },
+      {
+        "name": "18/merge",
+        "commit": "2025-03-06T20:42:46Z"
+      },
+      {
+        "name": "20/merge",
+        "commit": "2025-03-17T16:52:05Z"
+      },
+      {
+        "name": "R5",
+        "commit": "2023-10-07T07:36:41Z"
+      },
+      {
+        "name": "actors-and-transactions",
+        "commit": "2025-02-28T20:14:40Z"
+      },
+      {
+        "name": "br-base-profiles",
+        "commit": "2024-03-04T12:31:10Z"
+      },
+      {
+        "name": "br-changes-2024-04-14",
+        "commit": "2024-04-15T03:20:06Z"
+      },
+      {
+        "name": "br-update-dependencies",
+        "commit": "2024-09-16T04:32:45Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-05-26T10:05:11Z"
+      },
+      {
+        "name": "r5-enhancements",
+        "commit": "2024-09-02T18:41:37Z"
+      },
+      {
+        "name": "restore-r4",
+        "commit": "2024-09-06T07:46:19Z"
+      },
+      {
+        "name": "rr-updates",
+        "commit": "2024-09-19T12:06:14Z"
+      },
+      {
+        "name": "skip-large-files",
+        "commit": "2025-04-24T10:59:33Z"
+      },
+      {
+        "name": "updatescript",
+        "commit": "2024-04-05T11:33:59Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "TS",
+    "repo": "WorldHealthOrganization/smart-ts",
+    "published": "http://smart.who.int/ts",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ts",
+    "default_branch": "main",
+    "last_commit": "2025-01-16T12:54:41Z",
+    "branches": [
+      {
+        "name": "1/merge",
+        "commit": "2024-12-09T18:23:29Z"
+      },
+      {
+        "name": "3/merge",
+        "commit": "2024-10-10T19:07:57Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-01-16T12:54:41Z"
+      },
+      {
+        "name": "regenstrief-ocl",
+        "commit": "2024-12-09T18:23:09Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Immunizations-measles",
+    "repo": "WorldHealthOrganization/smart-example-immz",
+    "published": "http://smart.who.int/immunizations-measles",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-example-immz",
+    "default_branch": "main",
+    "last_commit": "2024-09-21T14:56:49Z",
+    "branches": [
+      {
+        "name": "age-stratifiers-use-end",
+        "commit": "2025-03-13T21:23:55Z"
+      },
+      {
+        "name": "br-l2-source",
+        "commit": "2024-06-28T14:13:47Z"
+      },
+      {
+        "name": "br-status-active-2024-07-01",
+        "commit": "2024-07-01T13:17:31Z"
+      },
+      {
+        "name": "br-use-path-binary",
+        "commit": "2023-10-25T11:53:53Z"
+      },
+      {
+        "name": "cqf-sushi",
+        "commit": "2023-10-23T19:22:06Z"
+      },
+      {
+        "name": "derived-periods-fix",
+        "commit": "2025-03-13T21:21:25Z"
+      },
+      {
+        "name": "fix-ind",
+        "commit": "2023-10-26T05:17:14Z"
+      },
+      {
+        "name": "fixmaps",
+        "commit": "2024-09-29T17:52:46Z"
+      },
+      {
+        "name": "main",
+        "commit": "2024-09-21T14:56:49Z"
+      },
+      {
+        "name": "med-resources",
+        "commit": "2023-10-18T20:38:01Z"
+      },
+      {
+        "name": "merge-cleanup",
+        "commit": "2024-01-28T14:24:40Z"
+      },
+      {
+        "name": "merge-preview",
+        "commit": "2024-06-06T23:44:56Z"
+      },
+      {
+        "name": "previous-cleanup",
+        "commit": "2023-10-24T20:10:57Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2024-01-20T17:24:39Z"
+      },
+      {
+        "name": "test-icd11",
+        "commit": "2023-10-25T14:59:08Z"
+      },
+      {
+        "name": "testdependencies",
+        "commit": "2024-09-17T15:23:27Z"
+      },
+      {
+        "name": "testing",
+        "commit": "2024-03-22T16:31:55Z"
+      },
+      {
+        "name": "update-maps",
+        "commit": "2023-10-22T11:37:43Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "ANC",
+    "repo": "WorldHealthOrganization/smart-anc",
+    "published": "http://fhir.org/guides/who/anc-cds/ImplementationGuide/who.fhir.anc-cds",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-anc",
+    "default_branch": "master",
+    "last_commit": "2025-06-25T03:12:49Z",
+    "branches": [
+      {
+        "name": "master",
+        "commit": "2025-06-25T03:12:49Z"
+      },
+      {
+        "name": "testbuild",
+        "commit": "2025-04-24T11:42:19Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "DAK-example-IMMZ",
+    "repo": "WorldHealthOrganization/smart-dak-example-immz",
+    "published": "http://smart.who.int/dak-example-immz",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-example-immz",
+    "default_branch": "main",
+    "last_commit": "2024-07-30T14:03:03Z",
+    "branches": [
+      {
+        "name": "1/merge",
+        "commit": "2024-07-29T14:06:01Z"
+      },
+      {
+        "name": "br-updates-2024-08",
+        "commit": "2024-08-24T22:08:51Z"
+      },
+      {
+        "name": "main",
+        "commit": "2024-07-30T14:03:03Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "DAK-TB",
+    "repo": "WorldHealthOrganization/smart-dak-tb",
+    "published": "http://smart.who.int/dak-tb",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-tb",
+    "default_branch": "main",
+    "last_commit": "2025-04-23T09:07:43Z",
+    "branches": [
+      {
+        "name": "2/merge",
+        "commit": "2024-07-17T06:10:16Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-04-23T09:07:43Z"
+      },
+      {
+        "name": "v.1.0.2",
+        "commit": "2024-10-21T13:50:50Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "DAK-CCC",
+    "repo": "WorldHealthOrganization/smart-dak-ccc",
+    "published": "http://smart.who.int/dak-ccc",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-ccc",
+    "default_branch": "main",
+    "last_commit": "2025-04-19T23:24:10Z",
+    "branches": [
+      {
+        "name": "main",
+        "commit": "2025-04-19T23:24:10Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Immunizations",
+    "repo": "WorldHealthOrganization/smart-immunizations",
+    "published": "http://smart.who.int/ig/smart-immunizations",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
+    "default_branch": "main",
+    "last_commit": "2025-03-05T14:46:26Z",
+    "branches": [
+      {
+        "name": "AcceleratorToAdaptation",
+        "commit": "2022-06-27T19:16:56Z"
+      },
+      {
+        "name": "DefaultTemplate",
+        "commit": "2022-05-12T00:27:58Z"
+      },
+      {
+        "name": "Valueset01",
+        "commit": "2022-04-29T19:42:57Z"
+      },
+      {
+        "name": "ValusetSet-FSH",
+        "commit": "2022-04-29T13:04:45Z"
+      },
+      {
+        "name": "WHO_Template",
+        "commit": "2022-04-22T14:31:32Z"
+      },
+      {
+        "name": "WHOIMMZ-95",
+        "commit": "2022-04-28T15:48:46Z"
+      },
+      {
+        "name": "WHOIMMZ-101",
+        "commit": "2022-03-31T10:18:03Z"
+      },
+      {
+        "name": "WHOIMMZ-105-fixes",
+        "commit": "2022-04-28T15:01:57Z"
+      },
+      {
+        "name": "WHOIMMZ-105",
+        "commit": "2022-04-28T13:16:24Z"
+      },
+      {
+        "name": "WHOIMMZ-109",
+        "commit": "2022-04-28T13:09:54Z"
+      },
+      {
+        "name": "cleanup",
+        "commit": "2024-04-04T07:25:11Z"
+      },
+      {
+        "name": "combined-logic",
+        "commit": "2023-03-24T05:59:32Z"
+      },
+      {
+        "name": "document3",
+        "commit": "2022-04-01T15:25:36Z"
+      },
+      {
+        "name": "dt02-fixes",
+        "commit": "2022-04-29T17:49:39Z"
+      },
+      {
+        "name": "dt03",
+        "commit": "2022-03-30T17:44:09Z"
+      },
+      {
+        "name": "dt04",
+        "commit": "2022-04-25T14:20:53Z"
+      },
+      {
+        "name": "dt09",
+        "commit": "2022-04-01T14:43:48Z"
+      },
+      {
+        "name": "dt10",
+        "commit": "2022-04-25T14:40:06Z"
+      },
+      {
+        "name": "dt11-je-fix",
+        "commit": "2022-04-29T16:04:48Z"
+      },
+      {
+        "name": "dt13",
+        "commit": "2022-04-25T14:56:10Z"
+      },
+      {
+        "name": "dt14",
+        "commit": "2022-04-25T15:19:49Z"
+      },
+      {
+        "name": "dt15",
+        "commit": "2022-04-25T15:29:18Z"
+      },
+      {
+        "name": "dt-regen",
+        "commit": "2022-04-28T13:07:14Z"
+      },
+      {
+        "name": "dtgenerator",
+        "commit": "2022-04-01T14:47:55Z"
+      },
+      {
+        "name": "fixfshwarnings",
+        "commit": "2022-05-10T19:55:35Z"
+      },
+      {
+        "name": "hepbfixes",
+        "commit": "2022-04-25T14:11:43Z"
+      },
+      {
+        "name": "ind-refactor",
+        "commit": "2022-04-29T15:37:08Z"
+      },
+      {
+        "name": "indicators",
+        "commit": "2022-03-18T12:49:06Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-03-05T14:46:26Z"
+      },
+      {
+        "name": "master",
+        "commit": "2023-04-13T07:33:29Z"
+      },
+      {
+        "name": "no-fsh",
+        "commit": "2022-05-06T16:00:08Z"
+      },
+      {
+        "name": "pr/74",
+        "commit": "2023-04-05T04:42:22Z"
+      },
+      {
+        "name": "precleanup",
+        "commit": "2023-07-10T19:43:19Z"
+      },
+      {
+        "name": "reference-fix",
+        "commit": "2022-04-29T16:34:45Z"
+      },
+      {
+        "name": "revert-45-WHOIMMZ-105-fixes",
+        "commit": "2022-04-28T15:04:19Z"
+      },
+      {
+        "name": "sickle-cell-definition",
+        "commit": "2022-04-29T17:00:21Z"
+      },
+      {
+        "name": "sop",
+        "commit": "2025-06-24T22:03:11Z"
+      },
+      {
+        "name": "test-magick",
+        "commit": "2022-05-02T14:28:36Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Tuberculosis",
+    "repo": "WorldHealthOrganization/smart-tuberculosis",
+    "published": "http://worldhealthorganization.github.io/smart-tuberculosis",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-tuberculosis",
+    "default_branch": "main",
+    "last_commit": "2024-02-21T11:06:21Z",
+    "branches": [
+      {
+        "name": "main",
+        "commit": "2024-02-21T11:06:21Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "OT",
+    "repo": "WorldHealthOrganization/smart-ot",
+    "published": "http://worldhealthorganization.github.io/smart-ot",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ot",
+    "default_branch": "main",
+    "last_commit": "2024-01-25T14:56:18Z",
+    "branches": [
+      {
+        "name": "action",
+        "commit": "2023-10-22T15:24:05Z"
+      },
+      {
+        "name": "main",
+        "commit": "2024-01-25T14:56:18Z"
+      },
+      {
+        "name": "test",
+        "commit": "2023-10-25T07:23:16Z"
+      },
+      {
+        "name": "test-jct",
+        "commit": "2023-10-22T13:51:41Z"
+      },
+      {
+        "name": "version1",
+        "commit": "2023-08-24T12:20:40Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "DDCC",
+    "repo": "WorldHealthOrganization/ddcc",
+    "published": "http://smart.who.int/ddcc",
+    "html_url": "https://github.com/WorldHealthOrganization/ddcc",
+    "default_branch": "main",
+    "last_commit": "2025-06-24T09:05:38Z",
+    "branches": [
+      {
+        "name": "1.0.1",
+        "commit": "2024-12-17T16:29:11Z"
+      },
+      {
+        "name": "add-feedback-option",
+        "commit": "2021-03-26T11:01:49Z"
+      },
+      {
+        "name": "audit-tx",
+        "commit": "2021-11-18T20:42:37Z"
+      },
+      {
+        "name": "bulk",
+        "commit": "2021-07-26T14:50:11Z"
+      },
+      {
+        "name": "ddcc-1.0",
+        "commit": "2024-10-15T13:45:49Z"
+      },
+      {
+        "name": "ddcc-tr",
+        "commit": "2022-01-25T14:28:07Z"
+      },
+      {
+        "name": "divocmap",
+        "commit": "2022-11-23T11:37:16Z"
+      },
+      {
+        "name": "euvaccinemap",
+        "commit": "2022-11-23T11:16:29Z"
+      },
+      {
+        "name": "icaovaccinemap",
+        "commit": "2022-11-23T03:17:30Z"
+      },
+      {
+        "name": "jct-fixes",
+        "commit": "2024-07-26T06:13:41Z"
+      },
+      {
+        "name": "main",
+        "commit": "2025-06-24T09:05:38Z"
+      },
+      {
+        "name": "main-before-ddcc",
+        "commit": "2024-10-15T18:02:33Z"
+      },
+      {
+        "name": "newpublisher",
+        "commit": "2023-10-18T17:38:04Z"
+      },
+      {
+        "name": "patient-intl",
+        "commit": "2021-05-21T03:14:25Z"
+      },
+      {
+        "name": "qr-encoding",
+        "commit": "2021-03-30T12:45:02Z"
+      },
+      {
+        "name": "rc1",
+        "commit": "2021-03-23T18:34:14Z"
+      },
+      {
+        "name": "rc2-old",
+        "commit": "2021-03-18T19:57:09Z"
+      },
+      {
+        "name": "rc2-umbrella",
+        "commit": "2021-05-27T11:59:18Z"
+      },
+      {
+        "name": "rc2",
+        "commit": "2021-04-30T13:06:33Z"
+      },
+      {
+        "name": "release-candidate_prev",
+        "commit": "2024-10-11T09:07:56Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2024-10-17T04:28:39Z"
+      },
+      {
+        "name": "rstanley_add_questresp",
+        "commit": "2021-09-14T10:48:20Z"
+      },
+      {
+        "name": "test",
+        "commit": "2021-03-13T13:38:16Z"
+      },
+      {
+        "name": "test-data-pre-processing",
+        "commit": "2021-12-06T20:13:50Z"
+      },
+      {
+        "name": "update-gh-build",
+        "commit": "2023-11-07T05:58:44Z"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "name": "Template",
+    "repo": "WorldHealthOrganization/smart-ig-template",
+    "published": null,
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ig-template",
+    "default_branch": "master",
+    "last_commit": "2025-06-13T11:17:36Z",
+    "branches": [
+      {
+        "name": "costateixeira-patch-1",
+        "commit": "2023-05-26T17:25:59Z"
+      },
+      {
+        "name": "costateixeira-patch-2",
+        "commit": "2023-06-14T13:59:39Z"
+      },
+      {
+        "name": "costateixeira-patch-3",
+        "commit": "2023-09-19T17:36:37Z"
+      },
+      {
+        "name": "costateixeira-patch-4",
+        "commit": "2024-06-16T05:05:04Z"
+      },
+      {
+        "name": "feedback-forms",
+        "commit": "2025-03-13T15:53:45Z"
+      },
+      {
+        "name": "fix-font-awesome",
+        "commit": "2024-06-14T12:51:43Z"
+      },
+      {
+        "name": "fix-form-renderer",
+        "commit": "2025-01-31T16:07:10Z"
+      },
+      {
+        "name": "fix-js",
+        "commit": "2024-02-13T14:41:29Z"
+      },
+      {
+        "name": "fontawesome-icons",
+        "commit": "2024-06-14T11:43:27Z"
+      },
+      {
+        "name": "jct-add-callout-boxes",
+        "commit": "2024-05-14T20:35:28Z"
+      },
+      {
+        "name": "jct-patch-form",
+        "commit": "2024-07-12T14:33:19Z"
+      },
+      {
+        "name": "master",
+        "commit": "2025-06-13T11:17:36Z"
+      },
+      {
+        "name": "removecqf",
+        "commit": "2023-03-20T10:04:14Z"
+      },
+      {
+        "name": "support-for-submenus",
+        "commit": "2023-10-11T04:59:56Z"
+      },
+      {
+        "name": "test",
+        "commit": "2024-07-07T07:36:03Z"
+      },
+      {
+        "name": "update-artifacts-page",
+        "commit": "2025-01-27T17:41:05Z"
+      },
+      {
+        "name": "v002",
+        "commit": "2021-11-14T20:29:15Z"
+      },
+      {
+        "name": "watermark",
+        "commit": "2024-01-22T13:15:20Z"
+      }
+    ],
+    "tags": []
+  }
+]
