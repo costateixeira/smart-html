@@ -3,7 +3,7 @@ import fs from "fs";
 import yaml from "js-yaml";
 import fetch from "node-fetch";
 
-const GITHUB_TOKEN = process.env.VITE_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.GH_TOKEN || process.env.GH_TOKEN;
 
 if (!GITHUB_TOKEN) {
   console.error("❌ No GitHub token set. Use VITE_GITHUB_TOKEN locally or GITHUB_TOKEN in CI.");
