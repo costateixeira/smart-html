@@ -5,7 +5,7 @@
     "published": "http://smart.who.int/hiv",
     "html_url": "https://github.com/WorldHealthOrganization/smart-hiv",
     "default_branch": "main",
-    "last_commit": "2025-05-28T13:55:29Z",
+    "last_commit": "2025-07-07T07:32:00Z",
     "branches": [
       {
         "name": "itechuw",
@@ -13,11 +13,15 @@
       },
       {
         "name": "main",
-        "commit": "2025-05-28T13:55:29Z"
+        "commit": "2025-07-07T07:32:00Z"
       },
       {
         "name": "pmanko-patch-1",
         "commit": "2025-01-13T20:01:34Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2025-07-07T09:17:50Z"
       },
       {
         "name": "revert-9-develop",
@@ -36,7 +40,7 @@
     "published": "http://smart.who.int/trust",
     "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
     "default_branch": "main",
-    "last_commit": "2025-05-07T08:57:58Z",
+    "last_commit": "2025-07-09T09:42:00Z",
     "branches": [
       {
         "name": "1.0.0",
@@ -104,7 +108,7 @@
       },
       {
         "name": "did-context-extension-links-FHIR-spec",
-        "commit": "2025-06-23T05:48:34Z"
+        "commit": "2025-07-08T17:28:11Z"
       },
       {
         "name": "did-updates",
@@ -156,7 +160,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-05-07T08:57:58Z"
+        "commit": "2025-07-09T09:42:00Z"
       },
       {
         "name": "onboarding_checklist_enhancement",
@@ -184,7 +188,7 @@
       },
       {
         "name": "smart_trust_enhancement",
-        "commit": "2025-06-25T08:57:39Z"
+        "commit": "2025-06-30T14:19:39Z"
       },
       {
         "name": "test",
@@ -270,7 +274,7 @@
     "published": "http://smart.who.int/pcmt",
     "html_url": "https://github.com/WorldHealthOrganization/smart-pcmt",
     "default_branch": "main",
-    "last_commit": "2025-06-25T12:49:21Z",
+    "last_commit": "2025-07-01T08:14:55Z",
     "branches": [
       {
         "name": "1/merge",
@@ -294,11 +298,11 @@
       },
       {
         "name": "main",
-        "commit": "2025-06-25T12:49:21Z"
+        "commit": "2025-07-01T08:14:55Z"
       },
       {
         "name": "release-candidate",
-        "commit": "2025-06-25T12:48:46Z"
+        "commit": "2025-06-26T06:11:31Z"
       }
     ],
     "tags": []
@@ -309,7 +313,7 @@
     "published": "http://smart.who.int/base-clinical",
     "html_url": "https://github.com/WorldHealthOrganization/smart-base-clinical",
     "default_branch": "main",
-    "last_commit": "2024-12-02T08:33:44Z",
+    "last_commit": "2025-06-30T17:22:13Z",
     "branches": [
       {
         "name": "br-commons-profiles",
@@ -321,7 +325,7 @@
       },
       {
         "name": "main",
-        "commit": "2024-12-02T08:33:44Z"
+        "commit": "2025-06-30T17:22:13Z"
       },
       {
         "name": "use-current-IG-template",
@@ -356,7 +360,7 @@
       },
       {
         "name": "br-update-indicator-guidance",
-        "commit": "2024-06-28T14:27:14Z"
+        "commit": "2025-06-30T13:07:41Z"
       },
       {
         "name": "costateixeira-patch-1",
@@ -516,7 +520,7 @@
     "published": "http://smart.who.int/base",
     "html_url": "https://github.com/WorldHealthOrganization/smart-base",
     "default_branch": "main",
-    "last_commit": "2025-05-26T10:05:11Z",
+    "last_commit": "2025-07-10T21:57:25Z",
     "branches": [
       {
         "name": "3/merge",
@@ -563,6 +567,10 @@
         "commit": "2025-02-28T20:14:40Z"
       },
       {
+        "name": "add-validation-versioned",
+        "commit": "2025-05-26T10:05:11Z"
+      },
+      {
         "name": "br-base-profiles",
         "commit": "2024-03-04T12:31:10Z"
       },
@@ -575,8 +583,12 @@
         "commit": "2024-09-16T04:32:45Z"
       },
       {
+        "name": "cql-processing",
+        "commit": "2025-07-11T06:02:47Z"
+      },
+      {
         "name": "main",
-        "commit": "2025-05-26T10:05:11Z"
+        "commit": "2025-07-10T21:57:25Z"
       },
       {
         "name": "r5-enhancements",
@@ -634,11 +646,15 @@
     "published": "http://smart.who.int/immunizations-measles",
     "html_url": "https://github.com/WorldHealthOrganization/smart-example-immz",
     "default_branch": "main",
-    "last_commit": "2024-09-21T14:56:49Z",
+    "last_commit": "2025-07-01T14:16:53Z",
     "branches": [
       {
         "name": "age-stratifiers-use-end",
         "commit": "2025-03-13T21:23:55Z"
+      },
+      {
+        "name": "br-estimated-denominator-example",
+        "commit": "2025-06-30T16:59:43Z"
       },
       {
         "name": "br-l2-source",
@@ -670,7 +686,7 @@
       },
       {
         "name": "main",
-        "commit": "2024-09-21T14:56:49Z"
+        "commit": "2025-07-01T14:16:53Z"
       },
       {
         "name": "med-resources",
@@ -722,6 +738,10 @@
       {
         "name": "master",
         "commit": "2025-06-25T03:12:49Z"
+      },
+      {
+        "name": "release-candidate",
+        "commit": "2025-07-10T09:18:14Z"
       },
       {
         "name": "testbuild",
@@ -797,7 +817,7 @@
     "published": "http://smart.who.int/ig/smart-immunizations",
     "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
     "default_branch": "main",
-    "last_commit": "2025-03-05T14:46:26Z",
+    "last_commit": "2025-07-02T18:42:16Z",
     "branches": [
       {
         "name": "AcceleratorToAdaptation",
@@ -846,6 +866,14 @@
       {
         "name": "combined-logic",
         "commit": "2023-03-24T05:59:32Z"
+      },
+      {
+        "name": "costateixeira-update-readme",
+        "commit": "2025-07-02T07:24:04Z"
+      },
+      {
+        "name": "dak-extract",
+        "commit": "2025-07-11T04:47:53Z"
       },
       {
         "name": "document3",
@@ -913,7 +941,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-03-05T14:46:26Z"
+        "commit": "2025-07-02T18:42:16Z"
       },
       {
         "name": "master",
@@ -922,6 +950,10 @@
       {
         "name": "no-fsh",
         "commit": "2022-05-06T16:00:08Z"
+      },
+      {
+        "name": "oldmain",
+        "commit": "2025-03-05T14:46:26Z"
       },
       {
         "name": "pr/74",
@@ -1117,7 +1149,7 @@
     "published": null,
     "html_url": "https://github.com/WorldHealthOrganization/smart-ig-template",
     "default_branch": "master",
-    "last_commit": "2025-06-13T11:17:36Z",
+    "last_commit": "2025-07-03T14:37:58Z",
     "branches": [
       {
         "name": "costateixeira-patch-1",
@@ -1165,7 +1197,7 @@
       },
       {
         "name": "master",
-        "commit": "2025-06-13T11:17:36Z"
+        "commit": "2025-07-03T14:37:58Z"
       },
       {
         "name": "removecqf",
