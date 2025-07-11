@@ -208,6 +208,139 @@
         "date" : "2025-06-13",
         "path" : "http://smart.who.int/dak-bds/v1.0.0"
       }
+    },
+    {
+      "path" : "pcmt/package-list.json",
+      "package-id" : "smart.who.int.pcmt",
+      "title" : "SMART Product Catalog",
+      "canonical" : "http://smart.who.int/pcmt",
+      "category" : "base",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-pcmt",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "0.1.0",
+        "date" : "2025-06-26",
+        "path" : "http://smart.who.int/pcmt/v0.1.0"
+      },
+      "milestone" : {
+        "version" : "0.1.0",
+        "date" : "2025-06-26",
+        "path" : "http://smart.who.int/pcmt/v0.1.0"
+      }
+    },
+    {
+      "path" : "dak-smbp/package-list.json",
+      "package-id" : "smart.who.int.dak-smbp",
+      "title" : "SMART DAK SMBP",
+      "canonical" : "http://smart.who.int/dak-smbp",
+      "category" : "base",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-dak-smbp",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "1.0.0",
+        "date" : "2025-07-01",
+        "path" : "http://smart.who.int/dak-smbp/v1.0.0"
+      },
+      "milestone" : {
+        "version" : "1.0.0",
+        "date" : "2025-07-01",
+        "path" : "http://smart.who.int/dak-smbp/v1.0.0"
+      }
+    },
+    {
+      "path" : "ra/package-list.json",
+      "package-id" : "smart.who.int.ra",
+      "title" : "Reference Architecture",
+      "canonical" : "http://smart.who.int/ra",
+      "category" : "base",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-ra",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "0.1.0",
+        "date" : "2025-07-01",
+        "path" : "http://smart.who.int/ra/v0.1.0"
+      },
+      "milestone" : {
+        "version" : "0.1.0",
+        "date" : "2025-07-01",
+        "path" : "http://smart.who.int/ra/v0.1.0"
+      }
+    },
+    {
+      "path" : "pcmt-vaxprequal/package-list.json",
+      "package-id" : "smart.who.int.pcmt-vaxprequal",
+      "title" : "SMART Product Dataset for Prequalified Vaccines",
+      "canonical" : "http://smart.who.int/pcmt-vaxprequal",
+      "category" : "base",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-pcmt-vaxprequal",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "0.1.0",
+        "date" : "2025-07-01",
+        "path" : "http://smart.who.int/pcmt-vaxprequal/v0.1.0"
+      },
+      "milestone" : {
+        "version" : "0.1.0",
+        "date" : "2025-07-01",
+        "path" : "http://smart.who.int/pcmt-vaxprequal/v0.1.0"
+      }
+    },
+    {
+      "path" : "hiv/package-list.json",
+      "package-id" : "smart.who.int.hiv",
+      "title" : "WHO SMART Guidelines - HIV",
+      "canonical" : "http://smart.who.int/hiv",
+      "category" : "base",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-hiv",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "1.0.0",
+        "date" : "2025-07-08",
+        "path" : "http://smart.who.int/hiv/v1.0.0"
+      },
+      "milestone" : {
+        "version" : "1.0.0",
+        "date" : "2025-07-08",
+        "path" : "http://smart.who.int/hiv/v1.0.0"
+      }
+    },
+    {
+      "path" : "anc/package-list.json",
+      "package-id" : "smart.who.int.anc",
+      "title" : "WHO SMART Guidelines - ANC",
+      "canonical" : "http://smart.who.int/anc",
+      "category" : "SMART (WHO)",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-anc",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "0.3.0",
+        "date" : "2025-07-10",
+        "path" : "http://smart.who.int/anc/v0.3.0"
+      },
+      "milestone" : {
+        "version" : "0.3.0",
+        "date" : "2025-07-10",
+        "path" : "http://smart.who.int/anc/v0.3.0"
+      }
+    },
+    {
+      "path" : "dak-pnc/package-list.json",
+      "package-id" : "smart.who.int.dak-pnc",
+      "title" : "SMART DAK PNC",
+      "canonical" : "http://smart.who.int/dak-pnc",
+      "category" : "SMART (WHO)",
+      "ci-build" : "http://worldhealthorganization.github.io/smart-dak-pnc",
+      "version-count" : 1,
+      "latest" : {
+        "version" : "0.9.9",
+        "date" : "2025-07-11",
+        "path" : "http://smart.who.int/dak-pnc/v0.9.9"
+      },
+      "milestone" : {
+        "version" : "0.9.9",
+        "date" : "2025-07-11",
+        "path" : "http://smart.who.int/dak-pnc/v0.9.9"
+      }
     }
   ]
 }

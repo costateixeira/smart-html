@@ -10,6 +10,105 @@
     <pubDate>Thu, 03 Oct 2024 05:49:46 +0200</pubDate>
     <language>en</language>
     <ttl>600</ttl>
+    <item>
+      <title>SMART DAK PNC version 0.9.9</title>
+      <description>0.9.9 Draft Release</description>
+      <link>http://smart.who.int/dak-pnc/v0.9.9/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/dak-pnc/v0.9.9/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Fri, 11 Jul 2025 09:27:53 +0200</pubDate>
+      <fhir:details>Publication run at 11/07/2025 by BEE using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (13 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>SMART DAK PNC version 0.9.9</title>
+      <description>0.9.9 Draft Release</description>
+      <link>http://smart.who.int/dak-pnc/v0.9.9/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/dak-pnc/v0.9.9/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Thu, 10 Jul 2025 10:46:55 +0200</pubDate>
+      <fhir:details>Publication run at 10/07/2025 by BEE using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (12 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>WHO SMART Guidelines - ANC version 0.3.0</title>
+      <description>0.3.0 Release</description>
+      <link>http://smart.who.int/anc/v0.3.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/anc/v0.3.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Thu, 10 Jul 2025 11:54:36 +0200</pubDate>
+      <fhir:details>Publication run at 10/07/2025 by BEE using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (12 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>WHO SMART Guidelines - ANC version 0.3.0</title>
+      <description>0.3.0 Release</description>
+      <link>http://smart.who.int/anc/v0.3.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/anc/v0.3.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Wed, 09 Jul 2025 10:14:31 +0200</pubDate>
+      <fhir:details>Publication run at 09/07/2025 by BEE using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (11 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>WHO SMART Guidelines - HIV version 1.0.0</title>
+      <description>1.0.0 Release</description>
+      <link>http://smart.who.int/hiv/v1.0.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/hiv/v1.0.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Tue, 08 Jul 2025 11:21:58 +0200</pubDate>
+      <fhir:details>Publication run at 08/07/2025 by BEE using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (10 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>SMART Product Dataset for Prequalified Vaccines version 0.1.0</title>
+      <description>0.1.0 draft release</description>
+      <link>http://smart.who.int/pcmt-vaxprequal/v0.1.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/pcmt-vaxprequal/v0.1.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>5.0.0</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Tue, 01 Jul 2025 08:29:35 +0000</pubDate>
+      <fhir:details>Publication run at 01/07/2025 by 4a9a9798aa12 using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (3 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>Reference Architecture version 0.1.0</title>
+      <description>0.1.0 draft release</description>
+      <link>http://smart.who.int/ra/v0.1.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/ra/v0.1.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Tue, 01 Jul 2025 07:59:35 +0000</pubDate>
+      <fhir:details>Publication run at 01/07/2025 by ca09e62233c8 using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (3 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>SMART DAK SMBP version 1.0.0</title>
+      <description>1.0.0 Release</description>
+      <link>http://smart.who.int/dak-smbp/v1.0.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/dak-smbp/v1.0.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Tue, 01 Jul 2025 06:57:19 +0000</pubDate>
+      <fhir:details>Publication run at 01/07/2025 by 0bc7f67e19c5 using Version 2.0.8 (Git# e7d965b03a28). Built 2025-06-27T22:18:09.321Z (3 days old) source id Unknown (todo)</fhir:details>
+    </item>
+    <item>
+      <title>SMART Product Catalog version 0.1.0</title>
+      <description>0.1.0 draft release</description>
+      <link>http://smart.who.int/pcmt/v0.1.0/index.html</link>
+      <guid isPermaLink="true">http://smart.who.int/pcmt/v0.1.0/index.html</guid>
+      <dc:creator>WHO</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>IG</fhir:kind>
+      <pubDate>Thu, 26 Jun 2025 06:29:23 +0000</pubDate>
+      <fhir:details>Publication run at 26/06/2025 by 3ff94631626f using Version 2.0.7 (Git# f2fdf4e51a8d). Built 2025-06-14T10:53:27.183Z (11 days old) source id Unknown (todo)</fhir:details>
+    </item>
       <item>
       <title>SMART DAK BDS version 1.0.0</title>
       <description>1.0.0 Release</description>
