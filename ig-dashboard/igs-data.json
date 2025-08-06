@@ -151,6 +151,10 @@
         "commit": "2025-03-10T14:39:11Z"
       },
       {
+        "name": "gherkintests",
+        "commit": "2025-08-04T14:38:11Z"
+      },
+      {
         "name": "jct-testdependencies",
         "commit": "2024-09-18T08:55:56Z"
       },
@@ -227,7 +231,7 @@
     "published": "http://smart.who.int/icvp",
     "html_url": "https://github.com/WorldHealthOrganization/smart-icvp",
     "default_branch": "main",
-    "last_commit": "2025-03-07T00:31:43Z",
+    "last_commit": "2025-07-15T18:51:24Z",
     "branches": [
       {
         "name": "5/merge",
@@ -251,7 +255,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-03-07T00:31:43Z"
+        "commit": "2025-07-15T18:51:24Z"
       },
       {
         "name": "prequal-vaccines",
@@ -295,6 +299,10 @@
       {
         "name": "draft-logical-model",
         "commit": "2025-01-31T21:31:08Z"
+      },
+      {
+        "name": "jct-prduct-models",
+        "commit": "2025-07-28T13:04:20Z"
       },
       {
         "name": "main",
@@ -474,7 +482,7 @@
     "published": "http://smart.who.int/dak-immz",
     "html_url": "https://github.com/WorldHealthOrganization/smart-dak-immz",
     "default_branch": "main",
-    "last_commit": "2025-04-23T09:08:18Z",
+    "last_commit": "2025-07-28T10:31:35Z",
     "branches": [
       {
         "name": "5/merge",
@@ -482,7 +490,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-04-23T09:08:18Z"
+        "commit": "2025-07-28T10:31:35Z"
       },
       {
         "name": "v1.0.0_releaseCandidate",
@@ -520,7 +528,7 @@
     "published": "http://smart.who.int/base",
     "html_url": "https://github.com/WorldHealthOrganization/smart-base",
     "default_branch": "main",
-    "last_commit": "2025-07-10T21:57:25Z",
+    "last_commit": "2025-07-28T00:42:16Z",
     "branches": [
       {
         "name": "3/merge",
@@ -559,12 +567,12 @@
         "commit": "2025-03-17T16:52:05Z"
       },
       {
-        "name": "R5",
-        "commit": "2023-10-07T07:36:41Z"
+        "name": "Persona",
+        "commit": "2025-07-25T15:13:47Z"
       },
       {
-        "name": "actors-and-transactions",
-        "commit": "2025-02-28T20:14:40Z"
+        "name": "R5",
+        "commit": "2023-10-07T07:36:41Z"
       },
       {
         "name": "add-validation-versioned",
@@ -583,24 +591,88 @@
         "commit": "2024-09-16T04:32:45Z"
       },
       {
+        "name": "copilot/fix-04d12962-5131-4662-a7b8-1735a0565e98",
+        "commit": "2025-07-24T20:31:07Z"
+      },
+      {
+        "name": "copilot/fix-9c38fa4a-2164-4aed-b33d-9cd38ba9c53f",
+        "commit": "2025-07-18T05:44:42Z"
+      },
+      {
+        "name": "copilot/fix-30c60c47-173e-45dd-bc5b-d2d27fce6371",
+        "commit": "2025-07-24T20:13:24Z"
+      },
+      {
+        "name": "copilot/fix-51e9bdae-1bd9-4c1b-9083-0095dc8d1b8a",
+        "commit": "2025-07-25T03:20:33Z"
+      },
+      {
+        "name": "copilot/fix-51",
+        "commit": "2025-07-28T00:01:59Z"
+      },
+      {
+        "name": "copilot/fix-172c92bf-db39-42b8-b7b4-b8093c7ec9c3",
+        "commit": "2025-07-25T04:10:36Z"
+      },
+      {
+        "name": "copilot/fix-1644a8cb-4c0e-4857-95ce-617b2f3eb48c",
+        "commit": "2025-07-25T12:54:38Z"
+      },
+      {
+        "name": "copilot/fix-513342d2-ffea-4df5-84fa-1c1ffd0511d0",
+        "commit": "2025-07-24T19:42:54Z"
+      },
+      {
+        "name": "copilot/fix-2124748a-cb2a-448f-aabe-3eb3028fb0b6",
+        "commit": "2025-07-18T05:48:26Z"
+      },
+      {
+        "name": "copilot/fix-19300214-5bc2-4c3c-9a3e-1fbf75df5042",
+        "commit": "2025-07-18T05:41:20Z"
+      },
+      {
+        "name": "copilot/fix-cc9eb6f3-56e5-4bd7-b78c-76c3ef72427e",
+        "commit": "2025-07-24T21:40:21Z"
+      },
+      {
+        "name": "copilot/fix-d72925c6-1064-400b-9ac4-d8886122a7a0",
+        "commit": "2025-07-25T03:02:38Z"
+      },
+      {
+        "name": "copilot/fix-e4c0d1f6-e10f-4387-a878-66ae1c0edebe",
+        "commit": "2025-07-24T18:53:00Z"
+      },
+      {
+        "name": "copilot/fix-e1630a6d-c675-472c-bfc8-b172d8292594",
+        "commit": "2025-07-24T23:40:19Z"
+      },
+      {
+        "name": "copilot/fix-ec140c1c-dcfe-4398-9ad1-40ef8105b928",
+        "commit": "2025-07-24T17:28:16Z"
+      },
+      {
+        "name": "copilot/fix-ffc69980-b0ed-4dfa-ac52-9d3e8e19114d",
+        "commit": "2025-07-24T22:32:01Z"
+      },
+      {
         "name": "cql-processing",
-        "commit": "2025-07-11T06:02:47Z"
+        "commit": "2025-07-13T18:33:08Z"
       },
       {
         "name": "main",
-        "commit": "2025-07-10T21:57:25Z"
+        "commit": "2025-07-28T00:42:16Z"
       },
       {
         "name": "r5-enhancements",
         "commit": "2024-09-02T18:41:37Z"
       },
       {
-        "name": "restore-r4",
-        "commit": "2024-09-06T07:46:19Z"
-      },
-      {
         "name": "rr-updates",
         "commit": "2024-09-19T12:06:14Z"
+      },
+      {
+        "name": "scripts-windows",
+        "commit": "2025-07-25T12:45:38Z"
       },
       {
         "name": "skip-large-files",
@@ -817,7 +889,7 @@
     "published": "http://smart.who.int/ig/smart-immunizations",
     "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
     "default_branch": "main",
-    "last_commit": "2025-07-02T18:42:16Z",
+    "last_commit": "2025-07-31T21:22:45Z",
     "branches": [
       {
         "name": "AcceleratorToAdaptation",
@@ -873,7 +945,7 @@
       },
       {
         "name": "dak-extract",
-        "commit": "2025-07-11T04:47:53Z"
+        "commit": "2025-07-28T02:10:31Z"
       },
       {
         "name": "document3",
@@ -941,7 +1013,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-07-02T18:42:16Z"
+        "commit": "2025-07-31T21:22:45Z"
       },
       {
         "name": "master",
@@ -978,6 +1050,10 @@
       {
         "name": "sop",
         "commit": "2025-06-25T20:07:13Z"
+      },
+      {
+        "name": "sushi-fixes",
+        "commit": "2025-07-22T16:04:41Z"
       },
       {
         "name": "test-magick",
