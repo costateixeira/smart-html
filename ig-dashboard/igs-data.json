@@ -262,6 +262,10 @@
         "commit": "2025-02-09T07:58:37Z"
       },
       {
+        "name": "ritika",
+        "commit": "2025-08-08T06:12:21Z"
+      },
+      {
         "name": "selective-disclosure",
         "commit": "2025-02-15T17:13:35Z"
       },
@@ -348,7 +352,7 @@
     "published": "http://smart.who.int/ig-starter-kit",
     "html_url": "https://github.com/WorldHealthOrganization/smart-ig-starter-kit",
     "default_branch": "main",
-    "last_commit": "2025-05-16T12:30:47Z",
+    "last_commit": "2025-08-06T13:11:41Z",
     "branches": [
       {
         "name": "L4-compliance.md",
@@ -388,7 +392,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-05-16T12:30:47Z"
+        "commit": "2025-08-06T13:11:41Z"
       },
       {
         "name": "pcmt",
