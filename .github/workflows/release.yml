@@ -4,68 +4,94 @@ on:
   workflow_call:
     inputs:
       sitepreview_dir:
+        description: "Destination folder under gh-pages"
+        required: false
         default: "sitepreview"
-        description: "Folder under gh-pages for build output"
       java-version:
-        default: "17"
         description: "Java version"
+        required: false
+        default: "17"
       python-version:
-        default: "3.11"
         description: "Python version"
+        required: false
+        default: "3.11"
 
 permissions:
-  contents: write
+  contents: write  # needed to push to gh-pages of the caller repo
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout caller repo (IG source)
+      # 1) Checkout the CALLER repo (the IG source)
       - name: Checkout caller repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # If caller repo doesn't have its own release-config.yaml, use global one
-      - name: Use global release-config.yaml if not overridden
+      # 2) If caller keeps config in .github/, copy it to root so the script can find it
+      - name: Use .github/release-config.yaml if present
         run: |
-          if [ ! -f "release-config.yaml" ]; then
-            cp "${{ github.action_path }}/release-config.yaml" release-config.yaml
-            echo "Using global release-config.yaml from smart-html"
-          else
-            echo "Using repo-specific release-config.yaml"
+          if [ -f ".github/release-config.yaml" ] && [ ! -f "release-config.yaml" ]; then
+            cp .github/release-config.yaml release-config.yaml
+            echo "Using caller .github/release-config.yaml"
           fi
 
-      # Setup Java
+      # 3) Setup toolchains
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: ${{ inputs.java-version }}
 
-      # Setup Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ inputs.python-version }}
 
-      # Install Python dependencies
       - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
           pip install gitpython pyyaml
 
-      # Run Python build script from smart-html
+      # 4) Build IG with the Python script that lives NEXT TO THIS WORKFLOW in smart-html
+      #    We pass the global config path (from this repo) and the local config path (from caller repo).
       - name: Build IG to local webroot (no push)
+        env:
+          GLOBAL_RELEASE_CONFIG: "${{ github.action_path }}/release-config.yaml"
         run: |
+          set -euxo pipefail
           mkdir -p webroot-local
+          # Run the script from smart-html without checking out that repo
           python "${{ github.action_path }}/release-ui.py" \
+            --global-config "$GLOBAL_RELEASE_CONFIG" \
+            --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
             --webroot-repo "file://$PWD/webroot-local" \
             --webroot-branch "main"
 
-      # Checkout gh-pages branch of caller repo
+      # 5) Ensure caller's gh-pages exists; if not, create it as an orphan
+      - name: Ensure gh-pages branch exists
+        run: |
+          set -e
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            echo "gh-pages exists."
+          else
+            echo "Initializing gh-pages branch…"
+            tmpdir=$(mktemp -d)
+            git clone --no-checkout "https://github.com/${{ github.repository }}" "$tmpdir"
+            cd "$tmpdir"
+            git checkout --orphan gh-pages
+            rm -rf ./*
+            touch .nojekyll
+            git add .nojekyll
+            git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" \
+              commit -m "Initialize gh-pages"
+            git push origin gh-pages
+          fi
+
+      # 6) Checkout gh-pages into ./gh-pages
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
@@ -73,15 +99,17 @@ jobs:
           path: gh-pages
           fetch-depth: 0
 
-      # Copy build output into sitepreview/
+      # 7) Copy built site into gh-pages/<sitepreview_dir>
       - name: Copy built site into gh-pages/${{ inputs.sitepreview_dir }}
         run: |
+          set -euxo pipefail
           mkdir -p "gh-pages/${{ inputs.sitepreview_dir }}"
           rsync -a --delete webroot-local/ "gh-pages/${{ inputs.sitepreview_dir }}/"
 
-      # Commit & push to gh-pages
+      # 8) Commit & push
       - name: Commit and push to gh-pages
         run: |
+          set -euxo pipefail
           cd gh-pages
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
