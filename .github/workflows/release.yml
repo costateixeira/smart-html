@@ -1,122 +1,60 @@
-name: IG Release to gh-pages/sitepreview
+name: Reusable Release IG & Publish to sitepreview
 
 on:
   workflow_call:
     inputs:
-      sitepreview_dir:
-        description: "Destination folder under gh-pages"
-        required: false
-        default: "sitepreview"
-      java-version:
-        description: "Java version"
-        required: false
-        default: "17"
-      python-version:
-        description: "Python version"
-        required: false
-        default: "3.11"
-
-permissions:
-  contents: write  # needed to push to gh-pages of the caller repo
+      branch:
+        description: 'Source branch in the caller repo to build from'
+        required: true
+        type: string
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-
     steps:
-      # 1) Checkout the CALLER repo (the IG source)
       - name: Checkout caller repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ inputs.branch }}
 
-      # 2) If caller keeps config in .github/, copy it to root so the script can find it
-      - name: Use .github/release-config.yaml if present
-        run: |
-          if [ -f ".github/release-config.yaml" ] && [ ! -f "release-config.yaml" ]; then
-            cp .github/release-config.yaml release-config.yaml
-            echo "Using caller .github/release-config.yaml"
-          fi
-
-      # 3) Setup toolchains
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: ${{ inputs.java-version }}
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ inputs.python-version }}
-
-      - name: Install Python deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install gitpython pyyaml
-
-      # 4) Build IG with the Python script that lives NEXT TO THIS WORKFLOW in smart-html
-      #    We pass the global config path (from this repo) and the local config path (from caller repo).
-      - name: Build IG to local webroot (no push)
-        env:
-          GLOBAL_RELEASE_CONFIG: "${{ github.action_path }}/release-config.yaml"
-        run: |
-          set -euxo pipefail
-          mkdir -p webroot-local
-          # Run the script from smart-html without checking out that repo
-          python "${{ github.action_path }}/release-ui.py" \
-            --global-config "$GLOBAL_RELEASE_CONFIG" \
-            --local-config "release-config.yaml" \
-            --source "${{ github.workspace }}" \
-            --webroot-repo "file://$PWD/webroot-local" \
-            --webroot-branch "main"
-
-      # 5) Ensure caller's gh-pages exists; if not, create it as an orphan
-      - name: Ensure gh-pages branch exists
-        run: |
-          set -e
-          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
-            echo "gh-pages exists."
-          else
-            echo "Initializing gh-pages branch…"
-            tmpdir=$(mktemp -d)
-            git clone --no-checkout "https://github.com/${{ github.repository }}" "$tmpdir"
-            cd "$tmpdir"
-            git checkout --orphan gh-pages
-            rm -rf ./*
-            touch .nojekyll
-            git add .nojekyll
-            git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" \
-              commit -m "Initialize gh-pages"
-            git push origin gh-pages
-          fi
-
-      # 6) Checkout gh-pages into ./gh-pages
-      - name: Checkout gh-pages branch
+      - name: Checkout smart-html scripts
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
-          path: gh-pages
-          fetch-depth: 0
+          repository: WorldHealthOrganization/smart-html
+          path: smart-html
+          sparse-checkout: |
+            scripts/
+          sparse-checkout-cone-mode: false
 
-      # 7) Copy built site into gh-pages/<sitepreview_dir>
-      - name: Copy built site into gh-pages/${{ inputs.sitepreview_dir }}
-        run: |
-          set -euxo pipefail
-          mkdir -p "gh-pages/${{ inputs.sitepreview_dir }}"
-          rsync -a --delete webroot-local/ "gh-pages/${{ inputs.sitepreview_dir }}/"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-      # 8) Commit & push
-      - name: Commit and push to gh-pages
+      - name: Set up Java (for publisher.jar)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install Python dependencies
         run: |
-          set -euxo pipefail
-          cd gh-pages
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "${{ inputs.sitepreview_dir }}"
-          if ! git diff --cached --quiet; then
-            git commit -m "Update ${{ inputs.sitepreview_dir }} from ${GITHUB_REF##*/} @ ${GITHUB_SHA::7}"
-            git push origin gh-pages
-          else
-            echo "No changes to commit."
-          fi
+          python -m pip install --upgrade pip
+          pip install -r smart-html/scripts/requirements.txt || true
+
+      - name: Build IG using release-ui.py
+        run: |
+          python smart-html/scripts/release-ui.py \
+            --config smart-html/scripts/release-config.yaml
+
+      - name: Deploy webroot to gh-pages/sitepreview
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages || git checkout --orphan gh-pages
+          git checkout gh-pages
+          mkdir -p sitepreview
+          rsync -av --delete webroot/ sitepreview/
+          git add sitepreview
+          git commit -m "Update sitepreview from branch ${{ inputs.branch }}" || echo "No changes to commit"
+          git push origin gh-pages

@@ -1,0 +1,9 @@
+pyjson
+logging
+argparse
+pathlib
+typing 
+datetime 
+pyyaml
+requests
+tkinter
