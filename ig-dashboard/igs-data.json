@@ -263,7 +263,7 @@
       },
       {
         "name": "ritika",
-        "commit": "2025-08-08T06:19:41Z"
+        "commit": "2025-08-08T09:33:39Z"
       },
       {
         "name": "selective-disclosure",
@@ -893,7 +893,7 @@
     "published": "http://smart.who.int/ig/smart-immunizations",
     "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
     "default_branch": "main",
-    "last_commit": "2025-07-31T21:22:45Z",
+    "last_commit": "2025-08-08T19:09:41Z",
     "branches": [
       {
         "name": "AcceleratorToAdaptation",
@@ -1017,7 +1017,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-07-31T21:22:45Z"
+        "commit": "2025-08-08T19:09:41Z"
       },
       {
         "name": "master",
