@@ -1,7 +1,7 @@
 name: IG Release to gh-pages/sitepreview
 
 on:
-  workflow_call: {}
+  workflow_call:
 
 permissions:
   contents: write  # push to gh-pages in the caller repo
