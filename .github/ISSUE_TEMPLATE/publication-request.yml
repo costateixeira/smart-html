@@ -1,0 +1,41 @@
+name: "Publication request"
+description: "Request publication of an IG"
+title: "Publish: <package-id> <version>"
+labels: ["publication-request"]
+body:
+  - type: input
+    id: package_id
+    attributes:
+      label: Package ID
+      placeholder: smart.who.int.dak-pnc
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: canonical
+    attributes:
+      label: Canonical URL
+      placeholder: https://smart.who.int/dak-pnc
+    validations:
+      required: true
+  - type: input
+    id: site_path
+    attributes:
+      label: Site path (under smart.who.int)
+      description: "Leading slash, e.g. /dak-pnc/v1.0.0 (or /dak-pnc/dev for previews)"
+      placeholder: /dak-pnc/v1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / change summary
+      placeholder: Anything reviewers should know…
+    validations:
+      required: false

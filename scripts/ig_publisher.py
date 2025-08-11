@@ -89,7 +89,7 @@ class ReleasePublisher:
                  sparse_dirs=None, enable_sparse_checkout=False, progress_callback=None,
                  github_token=None, enable_pr_creation=False,
                  publish_to_gh_pages=False, sitepreview_dir="sitepreview",
-                 gh_pages_branch="gh-pages", exclude_paths=None,
+                 gh_pages_branch="gh-pages", exclude_paths=None,v
                  webroot_pr_target_branch="main", registry_pr_target_branch="master"):
 
         self.base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -130,6 +130,29 @@ class ReleasePublisher:
 
         # Check if running in GitHub Actions
         self.is_github_actions = os.environ.get('GITHUB_ACTIONS') == 'true'
+
+        self.ensure_pubreq = ensure_pubreq
+        self.pubreq_overrides = pubreq_overrides or {}
+
+
+    def _maybe_write_pubreq(self):
+        target = os.path.join(self.source_dir, 'publication-request.json')
+        if os.path.exists(target):
+            return
+        d = {
+            "path": self.pubreq_overrides.get("path"),
+            "canonical": self.pubreq_overrides.get("canonical"),
+            "package-id": self.pubreq_overrides.get("package_id"),
+            "version": self.pubreq_overrides.get("version"),
+        }
+        # keep only provided fields
+        d = {k: v for k, v in d.items() if v}
+        if not d:
+            return
+        with open(target, 'w', encoding='utf-8') as f:
+            json.dump(d, f, indent=2)
+        self.log_progress(f"Wrote minimal publication-request.json to {target}")
+
 
     def get_github_token(self):
         """Get GitHub token from environment (GitHub Actions or manual)"""
@@ -440,6 +463,9 @@ This PR updates the FHIR Implementation Guide registry with latest information.
         # 1) Ensure source exists locally (so we can read publication-request.json)
         if self.source_repo:
             self.clone_repo(self.source_repo, self.source_dir, self.source_branch)
+
+        if self.ensure_pubreq:
+            self._maybe_write_pubreq()
 
         # 2) Determine IG slug (first path segment) from source
         slug = _ig_slug_from_pubreq(self.source_dir)
@@ -808,6 +834,11 @@ def main():
     parser.add_argument('--sitepreview-dir', type=str, default='sitepreview', help='Subfolder in gh-pages to place the built site')
     parser.add_argument('--gh-pages-branch', type=str, default='gh-pages', help='Branch to publish the preview to')
     parser.add_argument('--exclude', action='append', default=[], help='Paths (relative to webroot) to exclude when copying to sitepreview; repeatable')
+    parser.add_argument('--ensure-pubreq', action='store_true')
+    parser.add_argument('--pubreq-path', type=str)
+    parser.add_argument('--pubreq-canonical', type=str)
+    parser.add_argument('--pubreq-package-id', type=str)
+    parser.add_argument('--pubreq-version', type=str)
 
     args = parser.parse_args()
 
@@ -839,7 +870,14 @@ def main():
             publish_to_gh_pages=args.publish_gh_pages,
             sitepreview_dir=args.sitepreview_dir,
             gh_pages_branch=args.gh_pages_branch,
-            exclude_paths=args.exclude
+            exclude_paths=args.exclude,
+            ensure_pubreq=args.ensure_pubreq,
+            pubreq_overrides={
+                "path": args.pubreq_path or os.environ.get("PUBREQ_PATH"),
+                "canonical": args.pubreq_canonical or os.environ.get("PUBREQ_CANONICAL"),
+                "package_id": args.pubreq_package_id or os.environ.get("PUBREQ_PACKAGE_ID"),
+                "version": args.pubreq_version or os.environ.get("PUBREQ_VERSION"),
+            }
         )
 
         publisher.run()
