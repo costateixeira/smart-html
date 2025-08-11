@@ -91,6 +91,11 @@ jobs:
           jekyll -v
           bundle -v
 
+      - name: Check Jekyll
+        run: |
+          jekyll -v
+          bundle -v
+
 
       - name: Prepare local webroot git remote
         run: |

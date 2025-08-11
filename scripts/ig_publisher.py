@@ -33,6 +33,12 @@ CONFIG_FILE = "release-config.yaml"
 
 ALWAYS_INCLUDE = ["templates", "publish-setup.json"]
 
+
+
+def _looks_like_file(p: str) -> bool:
+    # crude heuristic: root file like "publish-setup.json"
+    return '/' not in p and '.' in p
+
 def _normalize_sparse_list(paths):
     if not paths:
         return []
@@ -138,20 +144,30 @@ class ReleasePublisher:
         if use_sparse and ensured:
             self.log_progress(f"Cloning with sparse checkout: {url}")
             clone_cmd = ['git', 'clone', '--depth=1', '--filter=blob:none', '--sparse']
-            if branch:
-                clone_cmd += ['--branch', branch]
+            if branch: clone_cmd += ['--branch', branch]
             clone_cmd += [url, path]
             self.run_command(clone_cmd)
-    
-            # configure sparse patterns
+
+            # decide cone vs no-cone
+            needs_no_cone = any(_looks_like_file(p) for p in ensured)
+            init_args = ['git', '-C', path, 'sparse-checkout', 'init', '--no-cone'] if needs_no_cone \
+                        else ['git', '-C', path, 'sparse-checkout', 'init', '--cone']
             try:
-                self.run_command(['git', '-C', path, 'sparse-checkout', 'init', '--cone'])
+                self.run_command(init_args)
             except Exception:
+                # fallback without flag if runner git is older
                 self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
-            self.run_command(['git', '-C', path, 'sparse-checkout', 'set'] + ensured)
+
+            # set patterns
+            set_cmd = ['git', '-C', path, 'sparse-checkout', 'set']
+            if needs_no_cone:
+                set_cmd.append('--no-cone')
+            set_cmd += ensured
+            self.run_command(set_cmd)
+
             self.log_progress(f"Sparse checkout includes: {' '.join(ensured)}")
-            return  # <-- important: avoid a second clone
-    
+            return
+
         # non-sparse clone
         self.log_progress(f"Cloning repository: {url}")
         clone_cmd = ['git', 'clone', '--depth=1']
