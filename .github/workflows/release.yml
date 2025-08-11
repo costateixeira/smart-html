@@ -91,27 +91,21 @@ jobs:
           jekyll -v
           bundle -v
 
-      - name: Check Jekyll
-        run: |
-          jekyll -v
-          bundle -v
-
-
-      - name: Prepare local webroot git remote
-        run: |
-          set -euxo pipefail
-          mkdir -p .ci-tools
-          # Create a bare remote with main branch seeded
-          git init --bare --initial-branch=main .ci-tools/webroot-remote.git
-          # Seed an initial commit so cloning --branch main works
-          git clone .ci-tools/webroot-remote.git .ci-tools/webroot-seed
-          git -C .ci-tools/webroot-seed config user.name  "github-actions[bot]"
-          git -C .ci-tools/webroot-seed config user.email "github-actions[bot]@users.noreply.github.com"
-          touch .ci-tools/webroot-seed/.nojekyll
-          git -C .ci-tools/webroot-seed add .nojekyll
-          git -C .ci-tools/webroot-seed commit -m "Initialize webroot main"
-          git -C .ci-tools/webroot-seed push origin main
-          rm -rf .ci-tools/webroot-seed
+      # - name: Prepare local webroot git remote
+      #   run: |
+      #     set -euxo pipefail
+      #     mkdir -p .ci-tools
+      #     # Create a bare remote with main branch seeded
+      #     git init --bare --initial-branch=main .ci-tools/webroot-remote.git
+      #     # Seed an initial commit so cloning --branch main works
+      #     git clone .ci-tools/webroot-remote.git .ci-tools/webroot-seed
+      #     git -C .ci-tools/webroot-seed config user.name  "github-actions[bot]"
+      #     git -C .ci-tools/webroot-seed config user.email "github-actions[bot]@users.noreply.github.com"
+      #     touch .ci-tools/webroot-seed/.nojekyll
+      #     git -C .ci-tools/webroot-seed add .nojekyll
+      #     git -C .ci-tools/webroot-seed commit -m "Initialize webroot main"
+      #     git -C .ci-tools/webroot-seed push origin main
+      #     rm -rf .ci-tools/webroot-seed
 
       - name: Pre-clone webroot (sparse) for verification
         run: |
@@ -135,8 +129,6 @@ jobs:
           echo "Root tree:"
           ls -la .ci-tools/webroot | sed -n '1,200p'
           test -f .ci-tools/webroot/publish-setup.json || (echo "publish-setup.json MISSING" && exit 1)
-
-
 
 
 
