@@ -403,7 +403,7 @@ This PR updates the FHIR Implementation Guide registry with latest information.
         self.log_progress("🔨 Building Implementation Guide...")
         self.run_command([
             'java', '-Xmx4g', '-jar', self.publisher_jar,
-            'publisher', '-ig', self.source_dir,
+            '-ig', self.source_dir,
             '-package-cache-folder', self.package_cache
         ])
 
@@ -424,7 +424,7 @@ This PR updates the FHIR Implementation Guide registry with latest information.
     def run(self):
         try:
             self.prepare()
-            # self.build()
+            self.build()
             self.publish()
             self.log_progress("✅ Publication completed successfully!")
             
