@@ -113,7 +113,14 @@ jobs:
           git -C .ci-tools/webroot-seed push origin main
           rm -rf .ci-tools/webroot-seed
 
-
+      - name: Pre-clone webroot (sparse) for verification
+        run: |
+          set -euxo pipefail
+          mkdir -p .ci-tools
+          git clone --depth=1 --filter=blob:none --sparse "file://$PWD/.ci-tools/webroot-remote.git" .ci-tools/webroot
+          # use non-cone so single files are allowed
+          git -C .ci-tools/webroot sparse-checkout init --no-cone || git -C .ci-tools/webroot sparse-checkout init
+          git -C .ci-tools/webroot sparse-checkout set --no-cone templates publish-setup.json
 
       - name: Verify sparse contents
         run: |
