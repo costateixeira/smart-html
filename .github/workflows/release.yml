@@ -140,9 +140,9 @@ jobs:
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
-            --webroot-repo "https://github.com/WorldHealthOrganization/smart-html" \
-            --webroot-branch "main" \
-            --enable-sparse
+#            --webroot-branch "main" \
+#            --enable-sparse
+#            --webroot-repo "https://github.com/costateixeira/smart-html" \
 
       # 6) Ensure caller's gh-pages exists (create as orphan if missing)
       - name: Ensure gh-pages branch exists
