@@ -117,10 +117,16 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p .ci-tools
-          git clone --depth=1 --filter=blob:none --sparse "file://$PWD/.ci-tools/webroot-remote.git" .ci-tools/webroot
-          # use non-cone so single files are allowed
+          git clone --depth=1 --filter=blob:none --sparse \
+            https://github.com/WorldHealthOrganization/smart-html .ci-tools/webroot
+          # allow single-file patterns
           git -C .ci-tools/webroot sparse-checkout init --no-cone || git -C .ci-tools/webroot sparse-checkout init
           git -C .ci-tools/webroot sparse-checkout set --no-cone templates publish-setup.json
+          # optional: show what we got
+          git -C .ci-tools/webroot sparse-checkout list || true
+          ls -la .ci-tools/webroot | sed -n '1,200p'
+          test -f .ci-tools/webroot/publish-setup.json
+          
 
       - name: Verify sparse contents
         run: |
@@ -142,8 +148,9 @@ jobs:
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
-            --webroot-repo "file://$PWD/.ci-tools/webroot-remote.git" \
-            --webroot-branch "main"
+            --webroot-repo "https://github.com/WorldHealthOrganization/smart-html" \
+            --webroot-branch "main" \
+            --enable-sparse
 
       # 6) Ensure caller's gh-pages exists (create as orphan if missing)
       - name: Ensure gh-pages branch exists
@@ -178,8 +185,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p "gh-pages/sitepreview"
-          # Use the script’s worktree (contains the rendered site)
-          rsync -a --delete .ci-tools/webroot/ "gh-pages/sitepreview/"
+          rsync -a --delete --exclude '.git' .ci-tools/webroot/ "gh-pages/sitepreview/"
 
       # 9) Commit & push
       - name: Commit and push to gh-pages
