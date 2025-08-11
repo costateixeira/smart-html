@@ -58,6 +58,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r .ci-tools/requirements.txt
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install SUSHI
+        run: |
+          npm install -g fsh-sushi
+          sushi --version
+          
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+          dot -V          
 
 
       - name: Prepare local webroot git remote
