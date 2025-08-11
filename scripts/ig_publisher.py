@@ -68,7 +68,6 @@ class ReleasePublisher:
         self.temp_dir = os.path.join(self.base_dir, 'temp')
         self.publisher_jar = os.path.join(self.base_dir, 'publisher.jar')
         
-        self.sparse_dirs = sparse_dirs
         self.enable_sparse_checkout = enable_sparse_checkout
         self.sparse_dirs = _normalize_sparse_list(sparse_dirs) or []
         if self.enable_sparse_checkout:
@@ -113,24 +112,19 @@ class ReleasePublisher:
         subprocess.run(cmd, shell=shell, check=True)
 
     def clone_repo(self, url, path, branch=None, use_sparse=False, sparse_dirs=None):
-        sparse_dirs = _normalize_sparse_list(sparse_dirs)  # normalize here too
-        if use_sparse:
-            # guarantee the always-included paths
-            ensured = sorted(set((sparse_dirs or []) + ALWAYS_INCLUDE))
-        else:
-            ensured = sparse_dirs or []
-            
+        sparse_dirs = _normalize_sparse_list(sparse_dirs)
+        ensured = sorted(set((sparse_dirs or []) + ALWAYS_INCLUDE)) if use_sparse else (sparse_dirs or [])
+    
         if os.path.exists(path):
             self.log_progress(f"Updating existing repository: {path}")
             try:
                 repo = git.Repo(path)
                 repo.git.reset('--hard')
-                # If sparse is enabled, re-assert the patterns (idempotent)
                 if use_sparse:
+                    # idempotent: ensures required paths are present
                     try:
                         self.run_command(['git', '-C', path, 'sparse-checkout', 'init', '--cone'])
                     except Exception:
-                        # older git might not support --cone; fall back to init
                         self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
                     self.run_command(['git', '-C', path, 'sparse-checkout', 'add'] + ensured)
                 repo.remotes.origin.fetch('--depth=1')
@@ -140,7 +134,7 @@ class ReleasePublisher:
             except Exception as e:
                 self.log_progress(f"Warning: Failed to update {path}: {e}")
             return
-            
+    
         if use_sparse and ensured:
             self.log_progress(f"Cloning with sparse checkout: {url}")
             clone_cmd = ['git', 'clone', '--depth=1', '--filter=blob:none', '--sparse']
@@ -154,16 +148,18 @@ class ReleasePublisher:
                 self.run_command(['git', '-C', path, 'sparse-checkout', 'init', '--cone'])
             except Exception:
                 self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
-            # Use 'set' on fresh clone (replaces), 'add' is fine too
             self.run_command(['git', '-C', path, 'sparse-checkout', 'set'] + ensured)
             self.log_progress(f"Sparse checkout includes: {' '.join(ensured)}")
-        else:
-            self.log_progress(f"Cloning repository: {url}")
-            clone_cmd = ['git', 'clone', '--depth=1']
-            if branch:
-                clone_cmd += ['--branch', branch]
-            clone_cmd += [url, path]
+            return  # <-- important: avoid a second clone
+    
+        # non-sparse clone
+        self.log_progress(f"Cloning repository: {url}")
+        clone_cmd = ['git', 'clone', '--depth=1']
+        if branch:
+            clone_cmd += ['--branch', branch]
+        clone_cmd += [url, path]
         self.run_command(clone_cmd)
+
 
     
     def get_repo_info_from_url(self, repo_url):
@@ -1640,3 +1636,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
