@@ -31,6 +31,18 @@ logging.basicConfig(
 
 CONFIG_FILE = "release-config.yaml"
 
+ALWAYS_INCLUDE = ["templates", "publish-setup"]
+
+def _normalize_sparse_list(paths):
+    if not paths:
+        return []
+    norm = []
+    for p in paths:
+        p = (p or "").strip().lstrip("/")  # drop leading slash
+        if p:
+            norm.append(p)
+    return norm
+
 class ReleasePublisher:
     def __init__(self, source_dir=None, source_repo=None, source_branch=None,
                  webroot_repo=None, webroot_branch=None,
@@ -58,6 +70,11 @@ class ReleasePublisher:
         
         self.sparse_dirs = sparse_dirs
         self.enable_sparse_checkout = enable_sparse_checkout
+        self.sparse_dirs = _normalize_sparse_list(sparse_dirs) or []
+        if self.enable_sparse_checkout:
+            # ensure templates + publish-setup are always present
+            self.sparse_dirs = sorted(set(self.sparse_dirs + ALWAYS_INCLUDE))
+                     
         self.progress_callback = progress_callback
         
         # GitHub PR settings - auto-detect GitHub Actions environment
@@ -96,35 +113,59 @@ class ReleasePublisher:
         subprocess.run(cmd, shell=shell, check=True)
 
     def clone_repo(self, url, path, branch=None, use_sparse=False, sparse_dirs=None):
+        sparse_dirs = _normalize_sparse_list(sparse_dirs)  # normalize here too
+        if use_sparse:
+            # guarantee the always-included paths
+            ensured = sorted(set((sparse_dirs or []) + ALWAYS_INCLUDE))
+        else:
+            ensured = sparse_dirs or []
+            
         if os.path.exists(path):
             self.log_progress(f"Updating existing repository: {path}")
             try:
                 repo = git.Repo(path)
                 repo.git.reset('--hard')
+                # If sparse is enabled, re-assert the patterns (idempotent)
+                if use_sparse:
+                    try:
+                        self.run_command(['git', '-C', path, 'sparse-checkout', 'init', '--cone'])
+                    except Exception:
+                        # older git might not support --cone; fall back to init
+                        self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
+                    self.run_command(['git', '-C', path, 'sparse-checkout', 'add'] + ensured)
+                repo.remotes.origin.fetch('--depth=1')
+                if branch:
+                    repo.git.checkout(branch)
                 repo.remotes.origin.pull()
             except Exception as e:
                 self.log_progress(f"Warning: Failed to update {path}: {e}")
             return
             
-        if use_sparse and sparse_dirs:
+        if use_sparse and ensured:
             self.log_progress(f"Cloning with sparse checkout: {url}")
-            self.run_command(['git', 'clone', '--depth=1', '--filter=blob:none', '--sparse', url, path])
-            original_cwd = os.getcwd()
-            os.chdir(path)
+            clone_cmd = ['git', 'clone', '--depth=1', '--filter=blob:none', '--sparse']
+            if branch:
+                clone_cmd += ['--branch', branch]
+            clone_cmd += [url, path]
+            self.run_command(clone_cmd)
+    
+            # configure sparse patterns
             try:
-                self.run_command(['git', 'sparse-checkout', 'init'])
-                self.run_command(['git', 'sparse-checkout', 'set'] + sparse_dirs)
-                self.log_progress(f"Sparse checkout configured for: {' '.join(sparse_dirs)}")
-            finally:
-                os.chdir(original_cwd)
+                self.run_command(['git', '-C', path, 'sparse-checkout', 'init', '--cone'])
+            except Exception:
+                self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
+            # Use 'set' on fresh clone (replaces), 'add' is fine too
+            self.run_command(['git', '-C', path, 'sparse-checkout', 'set'] + ensured)
+            self.log_progress(f"Sparse checkout includes: {' '.join(ensured)}")
         else:
             self.log_progress(f"Cloning repository: {url}")
             clone_cmd = ['git', 'clone', '--depth=1']
             if branch:
                 clone_cmd += ['--branch', branch]
             clone_cmd += [url, path]
-            self.run_command(clone_cmd)
+        self.run_command(clone_cmd)
 
+    
     def get_repo_info_from_url(self, repo_url):
         """Extract owner and repo name from GitHub URL"""
         if 'github.com' in repo_url:
@@ -1597,4 +1638,5 @@ def main():
         publisher.run()
 
 if __name__ == '__main__':
+
     main()
