@@ -424,7 +424,7 @@ This PR updates the FHIR Implementation Guide registry with latest information.
     def run(self):
         try:
             self.prepare()
-            self.build()
+            # self.build()
             self.publish()
             self.log_progress("✅ Publication completed successfully!")
             
