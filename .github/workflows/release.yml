@@ -173,23 +173,40 @@ jobs:
           fetch-depth: 0
 
       # 8) Copy built site into gh-pages/sitepreview
-      - name: Copy built site into gh-pages/sitepreview
-        run: |
-          set -euxo pipefail
-          mkdir -p "gh-pages/sitepreview"
-          rsync -a --delete --exclude '.git' .ci-tools/webroot/ "gh-pages/sitepreview/"
-
-      # 9) Commit & push
-      - name: Commit and push to gh-pages
+      - name: Commit and push to gh-pages (resilient)
         run: |
           set -euxo pipefail
           cd gh-pages
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add sitepreview
-          if ! git diff --cached --quiet; then
-            git commit -m "Update sitepreview from ${GITHUB_REF##*/} @ ${GITHUB_SHA::7}"
-            git push origin gh-pages
-          else
+          if git diff --cached --quiet; then
             echo "No changes to commit."
+            exit 0
           fi
+
+          git commit -m "Update sitepreview from ${GITHUB_REF##*/} @ ${GITHUB_SHA::7}"
+
+          # Harden HTTP for large pushes / flaky HTTP2
+          git config http.version HTTP/1.1
+          git config http.lowSpeedLimit 1
+          git config http.lowSpeedTime 600
+          # Legacy knob (ignored on some new gits, harmless otherwise)
+          git config http.postBuffer 524288000 || true
+
+          # (Optional) compact locally to reduce the pack size
+          git gc --prune=now || true
+          git count-objects -vH || true
+
+          # Retry push a few times in case of transient 408s
+          for i in 1 2 3; do
+            if git push origin gh-pages; then
+              exit 0
+            fi
+            echo "Push attempt $i failed. Retrying after backoff..."
+            sleep $((i*10))
+          done
+
+          echo "Push failed after retries." >&2
+          exit 1
