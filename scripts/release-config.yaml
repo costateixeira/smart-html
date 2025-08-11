@@ -4,9 +4,9 @@ github_token: ''
 history_branch: master
 history_repo: https://github.com/HL7/fhir-ig-history-template
 registry_pr_target_branch: master
-source_branch: main
+#source_branch: main
 source_dir: ''
-source_repo: https://github.com/costateixeira/smart-dak-pnc
+#source_repo: https://github.com/costateixeira/smart-dak-pnc
 sparse_dirs:
 - templates
 - assets
