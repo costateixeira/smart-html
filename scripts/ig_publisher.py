@@ -33,7 +33,7 @@ logging.basicConfig(
 CONFIG_FILE = "release-config.yaml"
 
 # Keep these as relative paths; we normalize/strip leading slashes below
-ALWAYS_INCLUDE = ["templates", "publish-setup.json", "package-registry.json"]
+ALWAYS_INCLUDE = ["templates", "/publish-setup.json", "/package-registry.json", "/package-feed.xml", "publication-feed.xml"]
 
 
 def _first_path_segment(s: str) -> str | None:
