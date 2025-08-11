@@ -75,6 +75,17 @@ jobs:
           dot -V          
 
 
+      - name: Install Ruby and Jekyll
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full build-essential zlib1g-dev
+          echo '# Install gems to ~/.local/share/gem/ruby' >> ~/.bashrc
+          echo 'export GEM_HOME="$HOME/.local/share/gem/ruby/$(ruby -e "puts RUBY_VERSION[/\d+\.\d+/]")"' >> ~/.bashrc
+          echo 'export PATH="$GEM_HOME/bin:$PATH"' >> ~/.bashrc
+          source ~/.bashrc
+          gem install jekyll bundler
+          jekyll -v
+
       - name: Prepare local webroot git remote
         run: |
           set -euxo pipefail
