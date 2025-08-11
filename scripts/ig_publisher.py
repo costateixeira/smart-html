@@ -33,7 +33,7 @@ logging.basicConfig(
 CONFIG_FILE = "release-config.yaml"
 
 # Keep these as relative paths; we normalize/strip leading slashes below
-ALWAYS_INCLUDE = ["templates", "/publish-setup.json", "/package-registry.json", "/package-feed.xml", "publication-feed.xml"]
+ALWAYS_INCLUDE = ["/templates", "/publish-setup.json", "/package-registry.json", "/package-feed.xml", "/publication-feed.xml"]
 
 
 def _first_path_segment(s: str) -> str | None:
@@ -70,9 +70,12 @@ def _normalize_sparse_list(paths):
         return []
     norm = []
     for p in paths:
-        p = (p or "").strip().lstrip("/")  # drop leading slash
-        if p:
-            norm.append(p)
+        p = (p or "").strip().lstrip("/")
+        if not p:
+            continue
+        if not p.startswith("/"):
+            p = "/" + p
+        norm.append(p)
     return norm
 
 
@@ -161,7 +164,8 @@ class ReleasePublisher:
 
     def clone_repo(self, url, path, branch=None, use_sparse=False, sparse_dirs=None):
         sparse_dirs = _normalize_sparse_list(sparse_dirs)
-        ensured = sorted(set((sparse_dirs or []) + (ALWAYS_INCLUDE if use_sparse else [])))
+        ensured = _normalize_sparse_list((sparse_dirs or []) + (ALWAYS_INCLUDE if use_sparse else []))
+        ensured = sorted(set(ensured))
 
         # Update existing working tree
         if os.path.exists(path) and os.path.isdir(os.path.join(path, '.git')):
@@ -190,7 +194,7 @@ class ReleasePublisher:
 
                 # Correct fetch ordering
                 try:
-                    repo.git.fetch('origin', '--depth=1')
+                    repo.git.fetch('--depth=1', 'origin')
                 except Exception as e:
                     self.log_progress(f"Fetch skipped: {e}")
 
@@ -198,7 +202,7 @@ class ReleasePublisher:
                 # Fast-forward pull if possible
                 try:
                     if branch:
-                        repo.git.pull('origin', branch, '--ff-only')
+                        repo.git.pull('--ff-only', 'origin', branch)
                     else:
                         repo.git.pull('--ff-only')
                 except Exception as e:
@@ -436,16 +440,10 @@ This PR updates the FHIR Implementation Guide registry with latest information.
 
         # 3) Prepare sparse list for webroot (if enabled)
         sparse_dirs_for_webroot = list(self.sparse_dirs) if self.sparse_dirs else []
-        if self.enable_sparse_checkout and slug:
-            # Include the top-level folder for the IG and its package-list.json
-            candidates = [slug, f"{slug}/package-list.json"]
-            for c in candidates:
-                if c not in sparse_dirs_for_webroot:
-                    sparse_dirs_for_webroot.append(c)
-            # Always include core files
-            for a in ALWAYS_INCLUDE:
-                if a not in sparse_dirs_for_webroot:
-                    sparse_dirs_for_webroot.append(a)
+        if self.enable_sparse_checkout:
+            if slug:
+                sparse_dirs_for_webroot += [f"/{slug}", f"/{slug}/package-list.json"]
+            sparse_dirs_for_webroot += ALWAYS_INCLUDE
             sparse_dirs_for_webroot = sorted(set(_normalize_sparse_list(sparse_dirs_for_webroot)))
             self.log_progress(f"➕ Sparse includes: {' '.join(sparse_dirs_for_webroot)}")
 
@@ -461,11 +459,11 @@ This PR updates the FHIR Implementation Guide registry with latest information.
             sparse_dirs=sparse_dirs_for_webroot
         )
 
-        # If sparse & slug present, warn if package-list.json is absent (publishing will need it)
+        # Optional: sanity check, don't change sparse dirs after clone
         if self.enable_sparse_checkout and slug:
             pkg = os.path.join(self.webroot_dir, slug, 'package-list.json')
             if not os.path.exists(pkg):
-                self.log_progress(f"⚠️ Expected '{pkg}' not found in webroot. Publication may fail.")
+                self.log_progress(f"⚠️ Expected '{pkg}' not found in webroot after sparse checkout.")
 
         # 6) Clone registry
         self.clone_repo(self.registry_repo, self.registry_dir)

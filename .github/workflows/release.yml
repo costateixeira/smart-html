@@ -139,7 +139,7 @@ jobs:
           python .ci-tools/ig_publisher.py \
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
-            --source "${{ github.workspace }}" \
+            --source "${{ github.workspace }}" 
 #            --webroot-branch "main" \
 #            --enable-sparse
 #            --webroot-repo "https://github.com/costateixeira/smart-html" \
@@ -172,7 +172,21 @@ jobs:
           path: gh-pages
           fetch-depth: 0
 
-      # 8) Copy built site into gh-pages/sitepreview
+      # 8) Copy built site into gh-pages/sitepreview (with debug)
+      - name: Copy built site into gh-pages/sitepreview
+        run: |
+          set -euxo pipefail
+          mkdir -p gh-pages/sitepreview
+          rsync -a --delete --exclude '.git' .ci-tools/webroot/ gh-pages/sitepreview/
+
+          echo "DEBUG: top of gh-pages/"
+          ls -la gh-pages | sed -n '1,200p'
+          echo "DEBUG: top of gh-pages/sitepreview/"
+          ls -la gh-pages/sitepreview | sed -n '1,200p'
+          echo "DEBUG: top of .ci-tools/webroot/"
+          ls -la .ci-tools/webroot | sed -n '1,200p'
+
+      # 9) Commit & push (keep your resilient push)
       - name: Commit and push to gh-pages (resilient)
         run: |
           set -euxo pipefail
@@ -180,7 +194,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add sitepreview
+          git add -A sitepreview
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -192,14 +206,9 @@ jobs:
           git config http.version HTTP/1.1
           git config http.lowSpeedLimit 1
           git config http.lowSpeedTime 600
-          # Legacy knob (ignored on some new gits, harmless otherwise)
-          git config http.postBuffer 524288000 || true
-
-          # (Optional) compact locally to reduce the pack size
           git gc --prune=now || true
           git count-objects -vH || true
 
-          # Retry push a few times in case of transient 408s
           for i in 1 2 3; do
             if git push origin gh-pages; then
               exit 0
