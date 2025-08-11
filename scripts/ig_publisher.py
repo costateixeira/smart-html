@@ -581,24 +581,26 @@ This PR updates the FHIR Implementation Guide registry with latest information.
 
         # Commit & push with retries
         ref = os.environ.get('GITHUB_REF', '')
+        ref_short = ref.rsplit('/', 1)[-1] if ref else ''
         sha = os.environ.get('GITHUB_SHA', '')[:7]
+        
         self.run_command(['bash', '-lc', f'''
-            set -e
-            cd "{ghdir}"
-            git config user.name  "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add -A {self.sitepreview_dir} .gitignore
-            if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-            fi
-            git commit -m "Update {self.sitepreview_dir} from ${ref##*/} @ {sha}"
+          set -e
+          cd "{ghdir}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A {self.sitepreview_dir} .gitignore
+          if git diff --cached --quiet; then
+              echo "No changes to commit."
+              exit 0
+          fi
+          git commit -m "Update {self.sitepreview_dir} from {ref_short} @ {sha}"
 
-            git config http.version HTTP/1.1
-            git config http.lowSpeedLimit 1
-            git config http.lowSpeedTime 600
-            git gc --prune=now || true
-            git count-objects -vH || true
+          git config http.version HTTP/1.1
+          git config http.lowSpeedLimit 1
+          git config http.lowSpeedTime 600
+          git gc --prune=now || true
+          git count-objects -vH || true
         '''])
 
         last_err = None
