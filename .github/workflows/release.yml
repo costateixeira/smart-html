@@ -58,16 +58,40 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r .ci-tools/requirements.txt
 
+
+
+      - name: Prepare local webroot git remote
+        run: |
+          set -euxo pipefail
+          mkdir -p .ci-tools
+          # Create a bare remote with main branch seeded
+          git init --bare --initial-branch=main .ci-tools/webroot-remote.git
+          # Seed an initial commit so cloning --branch main works
+          git clone .ci-tools/webroot-remote.git .ci-tools/webroot-seed
+          git -C .ci-tools/webroot-seed config user.name  "github-actions[bot]"
+          git -C .ci-tools/webroot-seed config user.email "github-actions[bot]@users.noreply.github.com"
+          touch .ci-tools/webroot-seed/.nojekyll
+          git -C .ci-tools/webroot-seed add .nojekyll
+          git -C .ci-tools/webroot-seed commit -m "Initialize webroot main"
+          git -C .ci-tools/webroot-seed push origin main
+          rm -rf .ci-tools/webroot-seed
+
+
+
+
+
+
+
+
       # 5) Build IG into a local webroot (no push inside the script)
       - name: Build IG to local webroot (no push)
         run: |
           set -euxo pipefail
-          mkdir -p webroot-local
           python .ci-tools/ig_publisher.py \
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
-            --webroot-repo "file://$PWD/webroot-local" \
+            --webroot-repo "file://$PWD/.ci-tools/webroot-remote.git" \
             --webroot-branch "main"
 
       # 6) Ensure caller's gh-pages exists (create as orphan if missing)
@@ -103,7 +127,8 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p "gh-pages/sitepreview"
-          rsync -a --delete webroot-local/ "gh-pages/sitepreview/"
+          # Use the script’s worktree (contains the rendered site)
+          rsync -a --delete .ci-tools/webroot/ "gh-pages/sitepreview/"
 
       # 9) Commit & push
       - name: Commit and push to gh-pages
