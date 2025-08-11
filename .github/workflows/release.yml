@@ -2,7 +2,24 @@ name: IG Release to gh-pages/sitepreview
 
 on:
   workflow_call:
-
+    inputs:
+      pubreq_package_id:
+        type: string
+        required: false
+      pubreq_version:
+        type: string
+        required: false
+      pubreq_canonical:
+        type: string
+        required: false
+      pubreq_path:
+        type: string
+        required: false
+      sitepreview_dir:
+        type: string
+        required: false
+        default: sitepreview
+        
 permissions:
   contents: write  # push to gh-pages in the caller repo
 
@@ -152,5 +169,12 @@ jobs:
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
+            --ensure-pubreq \
+            --pubreq-package-id "${{ inputs.pubreq_package_id }}" \
+            --pubreq-version     "${{ inputs.pubreq_version }}" \
+            --pubreq-canonical   "${{ inputs.pubreq_canonical }}" \
+            --pubreq-path        "${{ inputs.pubreq_path }}" \
             --publish-gh-pages \
-            --sitepreview-dir "sitepreview"
+            --sitepreview-dir    "${{ inputs.sitepreview_dir }}"
+
+
