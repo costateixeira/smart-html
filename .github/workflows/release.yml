@@ -177,14 +177,19 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p gh-pages/sitepreview
-          rsync -a --delete --exclude '.git' .ci-tools/webroot/ gh-pages/sitepreview/
-
+          rsync -a --delete --exclude '.git' --exclude 'ig-build-zips/' .ci-tools/webroot/ gh-pages/sitepreview/
           echo "DEBUG: top of gh-pages/"
           ls -la gh-pages | sed -n '1,200p'
           echo "DEBUG: top of gh-pages/sitepreview/"
           ls -la gh-pages/sitepreview | sed -n '1,200p'
           echo "DEBUG: top of .ci-tools/webroot/"
           ls -la .ci-tools/webroot | sed -n '1,200p'
+          cd gh-pages
+          git rm -r --cached sitepreview/ig-build-zips || true
+          printf "sitepreview/ig-build-zips/\n" >> .gitignore
+          git add .gitignore
+          git commit -m "Ignore large ig-build-zips in sitepreview"
+
 
       # 9) Commit & push (keep your resilient push)
       - name: Commit and push to gh-pages (resilient)
