@@ -115,6 +115,13 @@ jobs:
 
 
 
+      - name: Verify sparse contents
+        run: |
+          echo "Sparse list:"
+          git -C .ci-tools/webroot sparse-checkout list || true
+          echo "Root tree:"
+          ls -la .ci-tools/webroot | sed -n '1,200p'
+          test -f .ci-tools/webroot/publish-setup.json || (echo "publish-setup.json MISSING" && exit 1)
 
 
 
