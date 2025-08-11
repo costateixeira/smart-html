@@ -115,7 +115,7 @@ jobs:
             https://github.com/WorldHealthOrganization/smart-html .ci-tools/webroot
           # allow single-file patterns
           git -C .ci-tools/webroot sparse-checkout init --no-cone || git -C .ci-tools/webroot sparse-checkout init
-          git -C .ci-tools/webroot sparse-checkout set --no-cone templates publish-setup.json
+          git -C .ci-tools/webroot sparse-checkout set --no-cone templates publish-setup.json package-registry.json
           # optional: show what we got
           git -C .ci-tools/webroot sparse-checkout list || true
           ls -la .ci-tools/webroot | sed -n '1,200p'

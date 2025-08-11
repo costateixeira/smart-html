@@ -31,7 +31,7 @@ logging.basicConfig(
 
 CONFIG_FILE = "release-config.yaml"
 
-ALWAYS_INCLUDE = ["templates", "publish-setup.json"]
+ALWAYS_INCLUDE = ["templates", "publish-setup.json", "package-registry.json"]
 
 
 
