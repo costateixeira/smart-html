@@ -31,7 +31,7 @@ logging.basicConfig(
 
 CONFIG_FILE = "release-config.yaml"
 
-ALWAYS_INCLUDE = ["templates", "publish-setup"]
+ALWAYS_INCLUDE = ["templates", "publish-setup.json"]
 
 def _normalize_sparse_list(paths):
     if not paths:
