@@ -10,6 +10,9 @@ import json
 from datetime import datetime
 from copy import deepcopy
 from urllib.parse import urlparse
+import shutil
+import tempfile
+import time
 
 try:
     import git
@@ -85,6 +88,8 @@ class ReleasePublisher:
                  history_repo=None, history_branch=None,
                  sparse_dirs=None, enable_sparse_checkout=False, progress_callback=None,
                  github_token=None, enable_pr_creation=False,
+                 publish_to_gh_pages=False, sitepreview_dir="sitepreview",
+                 gh_pages_branch="gh-pages", exclude_paths=None,
                  webroot_pr_target_branch="main", registry_pr_target_branch="master"):
 
         self.base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -103,6 +108,11 @@ class ReleasePublisher:
         self.package_cache = os.path.join(self.base_dir, 'fhir-package-cache')
         self.temp_dir = os.path.join(self.base_dir, 'temp')
         self.publisher_jar = os.path.join(self.base_dir, 'publisher.jar')
+    
+        self.publish_to_gh_pages = publish_to_gh_pages
+        self.sitepreview_dir = sitepreview_dir
+        self.gh_pages_branch = gh_pages_branch
+        self.exclude_paths = exclude_paths or []
 
         self.enable_sparse_checkout = enable_sparse_checkout
         self.sparse_dirs = _normalize_sparse_list(sparse_dirs) or []
@@ -479,11 +489,142 @@ This PR updates the FHIR Implementation Guide registry with latest information.
 
         os.makedirs(self.package_cache, exist_ok=True)
 
+
+    def _rsync_copy(self, src, dest, excludes):
+        # Build rsync-like exclude args for subprocess
+        exclude_args = []
+        for e in excludes:
+            exclude_args += ['--exclude', e]
+        # Ensure trailing slash semantics
+        src = os.path.join(src, '')
+        dest = os.path.join(dest, '')
+        self.run_command(['rsync', '-a', '--delete', '--exclude', '.git'] + exclude_args + [src, dest])
+
+    def _gh_remote_url(self):
+        repo_slug = os.environ.get('GITHUB_REPOSITORY')
+        token = self.github_token
+        if not repo_slug or not token:
+            return None
+        # GITHUB_TOKEN works with x-access-token over HTTPS
+        return f"https://x-access-token:{token}@github.com/{repo_slug}.git"
+
+    def _ensure_gh_pages_checkout(self, workdir):
+        remote = self._gh_remote_url()
+        if not remote:
+            raise RuntimeError("GITHUB_REPOSITORY or token missing; cannot push to gh-pages")
+
+        # Try clone gh-pages directly; fall back to orphan create
+        try:
+            self.run_command(['git', 'clone', '--depth=1', '--branch', self.gh_pages_branch, remote, workdir])
+            return
+        except Exception:
+            pass
+
+        # Clone default branch, then create orphan gh-pages
+        self.run_command(['git', 'clone', '--depth=1', remote, workdir])
+        self.run_command(['bash', '-lc', f'''
+            set -e
+            cd "{workdir}"
+            git checkout --orphan {self.gh_pages_branch}
+            find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {{}} +
+            touch .nojekyll
+            git add .nojekyll
+            git -c user.name="github-actions[bot]" \
+                -c user.email="github-actions[bot]@users.noreply.github.com" \
+                commit -m "Initialize {self.gh_pages_branch}"
+            git push origin {self.gh_pages_branch}
+        '''])
+
+    def _append_gitignore_line(self, ghdir, line):
+        gi = os.path.join(ghdir, '.gitignore')
+        existing = ""
+        if os.path.exists(gi):
+            with open(gi, 'r', encoding='utf-8') as f:
+                existing = f.read()
+        if line not in existing:
+            with open(gi, 'a', encoding='utf-8') as f:
+                if existing and not existing.endswith('\n'):
+                    f.write('\n')
+                f.write(line.rstrip('\n') + '\n')
+
+    def push_sitepreview_to_gh_pages(self):
+        """Copy self.webroot_dir to gh-pages/<sitepreview_dir> and push."""
+        remote = self._gh_remote_url()
+        if not remote:
+            self.log_progress("Skipping gh-pages push (no GITHUB_TOKEN or GITHUB_REPOSITORY).")
+            return
+
+        ghdir = os.path.join(self.temp_dir, 'gh-pages-work')
+        if os.path.exists(ghdir):
+            shutil.rmtree(ghdir, ignore_errors=True)
+        os.makedirs(self.temp_dir, exist_ok=True)
+
+        self._ensure_gh_pages_checkout(ghdir)
+
+        dest = os.path.join(ghdir, self.sitepreview_dir)
+        os.makedirs(dest, exist_ok=True)
+
+        # Default excludes + user supplied
+        excludes = list(self.exclude_paths)
+        # Always exclude big zip folder unless user explicitly removed it
+        if 'ig-build-zips/' not in excludes:
+            excludes.append('ig-build-zips/')
+
+        # Copy built site into sitepreview
+        self._rsync_copy(self.webroot_dir, dest, excludes)
+
+        # Ignore big zips in repo
+        self._append_gitignore_line(ghdir, f"{self.sitepreview_dir}/ig-build-zips/")
+
+        # Untrack cached big zips, if any were ever committed
+        self.run_command(['bash', '-lc', f'cd "{ghdir}" && git rm -r --cached {self.sitepreview_dir}/ig-build-zips || true'])
+
+        # Commit & push with retries
+        ref = os.environ.get('GITHUB_REF', '')
+        sha = os.environ.get('GITHUB_SHA', '')[:7]
+        self.run_command(['bash', '-lc', f'''
+            set -e
+            cd "{ghdir}"
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A {self.sitepreview_dir} .gitignore
+            if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+            fi
+            git commit -m "Update {self.sitepreview_dir} from ${ref##*/} @ {sha}"
+
+            git config http.version HTTP/1.1
+            git config http.lowSpeedLimit 1
+            git config http.lowSpeedTime 600
+            git gc --prune=now || true
+            git count-objects -vH || true
+        '''])
+
+        last_err = None
+        for i in range(3):
+            try:
+                self.run_command(['bash', '-lc', f'cd "{ghdir}" && git push origin {self.gh_pages_branch}'])
+                self.log_progress("✅ Pushed to gh-pages successfully.")
+                return
+            except Exception as e:
+                last_err = e
+                self.log_progress(f"Push attempt {i+1} failed, retrying...")
+                time.sleep(10 * (i+1))
+        raise last_err
+
+
+
+
+
+
     def run(self):
         try:
             self.prepare()
             self.build()
             self.publish()
+            if self.publish_to_gh_pages:
+                self.push_sitepreview_to_gh_pages()
             self.log_progress("✅ Publication completed successfully!")
             self.create_prs_if_needed()
         except Exception as e:
@@ -661,6 +802,10 @@ def main():
     parser.add_argument('--registry-pr-target', type=str, default='master', help='Registry PR target branch')
     parser.add_argument('--global-config', type=str, help='Path to global default release-config.yaml')
     parser.add_argument('--local-config', type=str, default='release-config.yaml', help='Path to repo-specific release-config.yaml')
+    parser.add_argument('--publish-gh-pages', action='store_true', help='After publishing, push site into gh-pages/<sitepreview-dir>')
+    parser.add_argument('--sitepreview-dir', type=str, default='sitepreview', help='Subfolder in gh-pages to place the built site')
+    parser.add_argument('--gh-pages-branch', type=str, default='gh-pages', help='Branch to publish the preview to')
+    parser.add_argument('--exclude', action='append', default=[], help='Paths (relative to webroot) to exclude when copying to sitepreview; repeatable')
 
     args = parser.parse_args()
 
@@ -689,6 +834,10 @@ def main():
             history_branch=args.history_branch or config.get('history_branch'),
             sparse_dirs=args.sparse or config.get('sparse_dirs'),
             enable_sparse_checkout=args.enable_sparse or config.get('enable_sparse_checkout', False),
+            publish_to_gh_pages=args.publish_gh_pages,
+            sitepreview_dir=args.sitepreview_dir,
+            gh_pages_branch=args.gh_pages_branch,
+            exclude_paths=args.exclude
         )
 
         publisher.run()

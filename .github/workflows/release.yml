@@ -132,97 +132,25 @@ jobs:
 
 
 
-      # 5) Build IG into a local webroot (no push inside the script)
-      - name: Build IG to local webroot (no push)
+#       # 5) Build IG into a local webroot (no push inside the script)
+#       - name: Build IG to local webroot (no push)
+#         run: |
+#           set -euxo pipefail
+#           python .ci-tools/ig_publisher.py \
+#             --global-config ".ci-tools/release-config.global.yaml" \
+#             --local-config "release-config.yaml" \
+#             --source "${{ github.workspace }}" 
+# #            --webroot-branch "main" \
+# #            --enable-sparse
+# #            --webroot-repo "https://github.com/costateixeira/smart-html" \
+
+
+      - name: Build & publish (Python drives gh-pages)
         run: |
           set -euxo pipefail
           python .ci-tools/ig_publisher.py \
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
-            --source "${{ github.workspace }}" 
-#            --webroot-branch "main" \
-#            --enable-sparse
-#            --webroot-repo "https://github.com/costateixeira/smart-html" \
-
-      # 6) Ensure caller's gh-pages exists (create as orphan if missing)
-      - name: Ensure gh-pages branch exists
-        run: |
-          set -e
-          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
-            echo "gh-pages exists."
-          else
-            echo "Initializing gh-pages branch…"
-            tmpdir=$(mktemp -d)
-            git clone --no-checkout "https://github.com/${{ github.repository }}" "$tmpdir"
-            cd "$tmpdir"
-            git checkout --orphan gh-pages
-            rm -rf ./*
-            touch .nojekyll
-            git add .nojekyll
-            git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" \
-              commit -m "Initialize gh-pages"
-            git push origin gh-pages
-          fi
-
-      # 7) Checkout gh-pages into ./gh-pages
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
-          fetch-depth: 0
-
-      # 8) Copy built site into gh-pages/sitepreview (with debug)
-      - name: Copy built site into gh-pages/sitepreview
-        run: |
-          set -euxo pipefail
-          mkdir -p gh-pages/sitepreview
-          rsync -a --delete --exclude '.git' --exclude 'ig-build-zips/' .ci-tools/webroot/ gh-pages/sitepreview/
-          echo "DEBUG: top of gh-pages/"
-          ls -la gh-pages | sed -n '1,200p'
-          echo "DEBUG: top of gh-pages/sitepreview/"
-          ls -la gh-pages/sitepreview | sed -n '1,200p'
-          echo "DEBUG: top of .ci-tools/webroot/"
-          ls -la .ci-tools/webroot | sed -n '1,200p'
-          cd gh-pages
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git rm -r --cached sitepreview/ig-build-zips || true
-          printf "sitepreview/ig-build-zips/\n" >> .gitignore
-          git add .gitignore
-          git commit -m "Ignore large ig-build-zips in sitepreview"
-
-
-      # 9) Commit & push (keep your resilient push)
-      - name: Commit and push to gh-pages (resilient)
-        run: |
-          set -euxo pipefail
-          cd gh-pages
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add -A sitepreview
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          git commit -m "Update sitepreview from ${GITHUB_REF##*/} @ ${GITHUB_SHA::7}"
-
-          # Harden HTTP for large pushes / flaky HTTP2
-          git config http.version HTTP/1.1
-          git config http.lowSpeedLimit 1
-          git config http.lowSpeedTime 600
-          git gc --prune=now || true
-          git count-objects -vH || true
-
-          for i in 1 2 3; do
-            if git push origin gh-pages; then
-              exit 0
-            fi
-            echo "Push attempt $i failed. Retrying after backoff..."
-            sleep $((i*10))
-          done
-
-          echo "Push failed after retries." >&2
-          exit 1
+            --source "${{ github.workspace }}" \
+            --publish-gh-pages \
+            --sitepreview-dir "sitepreview"
