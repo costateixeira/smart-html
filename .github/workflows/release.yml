@@ -50,9 +50,9 @@ jobs:
           REF="${{ github.workflow_ref }}"
           REF="${REF##*@}"   # => "main" (or a tag/SHA)
           mkdir -p .ci-tools
-          curl -fsSL "https://raw.githubusercontent.com/WorldHealthOrganization/smart-html/${REF}/scripts/release-ui.py" \
+          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/${REF}/scripts/release-ui.py" \
             -o .ci-tools/release-ui.py
-          curl -fsSL "https://raw.githubusercontent.com/WorldHealthOrganization/smart-html/${REF}/scripts/release-config.yaml" \
+          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/${REF}/scripts/release-config.yaml" \
             -o .ci-tools/release-config.global.yaml
           chmod +x .ci-tools/release-ui.py
 
