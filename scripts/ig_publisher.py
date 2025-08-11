@@ -368,36 +368,6 @@ This PR updates the FHIR Implementation Guide registry with latest information.
         else:
             self.log_progress("No changes in registry repository, skipping PR")
 
-    def prepare(self):
-        self.log_progress("🔄 Preparing repositories...")
-        
-        if self.is_github_actions:
-            self.log_progress("🤖 Running in GitHub Actions environment")
-        
-        self.clone_repo(self.history_repo, self.history_dir, self.history_branch)
-        
-        self.clone_repo(
-            self.webroot_repo, 
-            self.webroot_dir, 
-            self.webroot_branch, 
-            use_sparse=self.enable_sparse_checkout,
-            sparse_dirs=self.sparse_dirs
-        )
-        
-        self.clone_repo(self.registry_repo, self.registry_dir)
-
-        if self.source_repo:
-            self.clone_repo(self.source_repo, self.source_dir, self.source_branch)
-
-        if not os.path.exists(self.publisher_jar):
-            self.log_progress("📥 Downloading FHIR IG Publisher...")
-            self.run_command([
-                'curl', '-L',
-                'https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar',
-                '-o', self.publisher_jar
-            ])
-
-        os.makedirs(self.package_cache, exist_ok=True)
 
     def build(self):
         self.log_progress("🔨 Building Implementation Guide...")
@@ -434,6 +404,98 @@ This PR updates the FHIR Implementation Guide registry with latest information.
         except Exception as e:
             self.log_progress(f"❌ Error: {str(e)}")
             raise
+
+
+    def get_ig_folder_from_publication_request(self):
+        """Extract IG folder name from publication-request.json"""
+        pub_request_file = os.path.join(self.source_dir, 'publication-request.json')
+        
+        if not os.path.exists(pub_request_file):
+            self.log_progress("⚠️ publication-request.json not found")
+            return None
+        
+        try:
+            with open(pub_request_file, 'r') as f:
+                pub_request = json.load(f)
+            
+            # The path in publication-request.json typically looks like: "/dak-pnc" or "dak-pnc"
+            # or could be in the 'path' field
+            path = pub_request.get('path', '')
+            
+            # Remove leading slash if present
+            if path.startswith('/'):
+                path = path[1:]
+            
+            # If path is empty, try to extract from the canonical URL
+            if not path:
+                canonical = pub_request.get('canonical', '')
+                if canonical:
+                    # Extract the last segment from canonical URL
+                    # e.g., "http://smart.who.int/dak-pnc" -> "dak-pnc"
+                    path = canonical.rstrip('/').split('/')[-1]
+            
+            if path:
+                self.log_progress(f"📁 Detected IG folder from publication-request.json: {path}")
+                return path
+            else:
+                self.log_progress("⚠️ Could not determine IG folder from publication-request.json")
+                return None
+                
+        except Exception as e:
+            self.log_progress(f"⚠️ Error reading publication-request.json: {e}")
+            return None
+
+    def prepare(self):
+        self.log_progress("🔄 Preparing repositories...")
+        
+        if self.is_github_actions:
+            self.log_progress("🤖 Running in GitHub Actions environment")
+        
+        # Clone source repo first if needed (so we can read publication-request.json)
+        if self.source_repo:
+            self.clone_repo(self.source_repo, self.source_dir, self.source_branch)
+        
+        # Now we can read publication-request.json to get the IG folder
+        sparse_dirs_for_webroot = self.sparse_dirs.copy() if self.sparse_dirs else []
+        
+        if self.enable_sparse_checkout:
+            # Get IG folder from publication-request.json
+            ig_folder = self.get_ig_folder_from_publication_request()
+            if ig_folder:
+                # Add the IG folder to sparse dirs if not already there
+                if ig_folder not in sparse_dirs_for_webroot:
+                    sparse_dirs_for_webroot.append(ig_folder)
+                    self.log_progress(f"➕ Adding '{ig_folder}' folder to sparse checkout for webroot")
+            else:
+                self.log_progress("⚠️ Could not detect IG folder, sparse checkout may be incomplete")
+        
+        # Clone history repo
+        self.clone_repo(self.history_repo, self.history_dir, self.history_branch)
+        
+        # Clone webroot with the updated sparse dirs
+        self.clone_repo(
+            self.webroot_repo, 
+            self.webroot_dir, 
+            self.webroot_branch, 
+            use_sparse=self.enable_sparse_checkout,
+            sparse_dirs=sparse_dirs_for_webroot
+        )
+        
+        # Clone registry
+        self.clone_repo(self.registry_repo, self.registry_dir)
+
+        # Download publisher.jar if needed
+        if not os.path.exists(self.publisher_jar):
+            self.log_progress("📥 Downloading FHIR IG Publisher...")
+            self.run_command([
+                'curl', '-L',
+                'https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar',
+                '-o', self.publisher_jar
+            ])
+
+        os.makedirs(self.package_cache, exist_ok=True)
+
+
 
 
 # --- add helpers ---
