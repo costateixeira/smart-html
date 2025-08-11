@@ -185,6 +185,8 @@ jobs:
           echo "DEBUG: top of .ci-tools/webroot/"
           ls -la .ci-tools/webroot | sed -n '1,200p'
           cd gh-pages
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git rm -r --cached sitepreview/ig-build-zips || true
           printf "sitepreview/ig-build-zips/\n" >> .gitignore
           git add .gitignore
