@@ -36,8 +36,9 @@ ALWAYS_INCLUDE = ["templates", "publish-setup.json"]
 
 
 def _looks_like_file(p: str) -> bool:
-    # crude heuristic: root file like "publish-setup.json"
-    return '/' not in p and '.' in p
+    # crude heuristic: file if no slash and has a dot, or ends with .json/.yml etc
+    return ('/' not in p and '.' in p) or p.endswith(('.json', '.yml', '.yaml'))
+
 
 def _normalize_sparse_list(paths):
     if not paths:
@@ -120,19 +121,25 @@ class ReleasePublisher:
     def clone_repo(self, url, path, branch=None, use_sparse=False, sparse_dirs=None):
         sparse_dirs = _normalize_sparse_list(sparse_dirs)
         ensured = sorted(set((sparse_dirs or []) + ALWAYS_INCLUDE)) if use_sparse else (sparse_dirs or [])
-    
+
         if os.path.exists(path):
             self.log_progress(f"Updating existing repository: {path}")
             try:
                 repo = git.Repo(path)
                 repo.git.reset('--hard')
-                if use_sparse:
-                    # idempotent: ensures required paths are present
+                if use_sparse and ensured:
+                    needs_no_cone = any(_looks_like_file(p) for p in ensured)
+                    # (Re)initialize sparse mode with right flavor
                     try:
-                        self.run_command(['git', '-C', path, 'sparse-checkout', 'init', '--cone'])
+                        init = ['git', '-C', path, 'sparse-checkout', 'init', '--no-cone' if needs_no_cone else '--cone']
+                        self.run_command(init)
                     except Exception:
                         self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
-                    self.run_command(['git', '-C', path, 'sparse-checkout', 'add'] + ensured)
+                    set_cmd = ['git', '-C', path, 'sparse-checkout', 'set']
+                    if needs_no_cone:
+                        set_cmd.append('--no-cone')
+                    set_cmd += ensured
+                    self.run_command(set_cmd)
                 repo.remotes.origin.fetch('--depth=1')
                 if branch:
                     repo.git.checkout(branch)
@@ -140,30 +147,46 @@ class ReleasePublisher:
             except Exception as e:
                 self.log_progress(f"Warning: Failed to update {path}: {e}")
             return
-    
+
         if use_sparse and ensured:
             self.log_progress(f"Cloning with sparse checkout: {url}")
             clone_cmd = ['git', 'clone', '--depth=1', '--filter=blob:none', '--sparse']
-            if branch: clone_cmd += ['--branch', branch]
+            if branch:
+                clone_cmd += ['--branch', branch]
             clone_cmd += [url, path]
             self.run_command(clone_cmd)
 
-            # decide cone vs no-cone
             needs_no_cone = any(_looks_like_file(p) for p in ensured)
-            init_args = ['git', '-C', path, 'sparse-checkout', 'init', '--no-cone'] if needs_no_cone \
-                        else ['git', '-C', path, 'sparse-checkout', 'init', '--cone']
             try:
-                self.run_command(init_args)
+                init = ['git', '-C', path, 'sparse-checkout', 'init', '--no-cone' if needs_no_cone else '--cone']
+                self.run_command(init)
             except Exception:
-                # fallback without flag if runner git is older
                 self.run_command(['git', '-C', path, 'sparse-checkout', 'init'])
-
-            # set patterns
             set_cmd = ['git', '-C', path, 'sparse-checkout', 'set']
             if needs_no_cone:
                 set_cmd.append('--no-cone')
             set_cmd += ensured
             self.run_command(set_cmd)
+
+            self.log_progress(f"Sparse checkout includes: {' '.join(ensured)}")
+
+            # Assert the file is really present; fail fast with a helpful message
+            pub = os.path.join(path, 'publish-setup.json')
+            if not os.path.exists(pub):
+                raise RuntimeError(
+                    "publish-setup.json not found after sparse checkout. "
+                    "Double-check the branch and path in the webroot repo. "
+                    f"Looked at: {pub}"
+                )
+            return
+
+        # non-sparse clone
+        self.log_progress(f"Cloning repository: {url}")
+        clone_cmd = ['git', 'clone', '--depth=1']
+        if branch:
+            clone_cmd += ['--branch', branch]
+        clone_cmd += [url, path]
+        self.run_command(clone_cmd)
 
             self.log_progress(f"Sparse checkout includes: {' '.join(ensured)}")
             return
