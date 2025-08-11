@@ -37,11 +37,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
       # 4) Download the script + global config from smart-html/scripts at the exact ref used in "uses:"
       - name: Download scripts from smart-html@ref
         run: |
@@ -57,6 +52,11 @@ jobs:
           curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/${REF}/scripts/release-config.yaml" \
             -o .ci-tools/release-config.global.yaml
           chmod +x .ci-tools/ig_publisher.py
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       # 5) Build IG into a local webroot (no push inside the script)
       - name: Build IG to local webroot (no push)
