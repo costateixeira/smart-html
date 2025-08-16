@@ -62,11 +62,11 @@ jobs:
           REF="${{ github.workflow_ref }}"
           REF="${REF##*@}"   # => "main" (or a tag/SHA)
           mkdir -p .ci-tools
-          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/${REF}/scripts/ig_publisher.py" \
+          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/main/scripts/ig_publisher.py" \
             -o .ci-tools/ig_publisher.py
-          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/${REF}/scripts/requirements.txt" \
+          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/main/scripts/requirements.txt" \
             -o .ci-tools/requirements.txt
-          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/${REF}/scripts/release-config.yaml" \
+          curl -fsSL "https://raw.githubusercontent.com/costateixeira/smart-html/main/scripts/release-config.yaml" \
             -o .ci-tools/release-config.global.yaml
           chmod +x .ci-tools/ig_publisher.py
 
