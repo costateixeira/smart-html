@@ -198,6 +198,17 @@ class ReleasePublisher:
             self.log_progress(f"Checkout '{branch}' skipped: {e}")
 
     def clone_repo(self, url, path, branch=None, use_sparse=False, sparse_dirs=None):
+        """Clone repository with authentication if token is available"""
+        
+        # Add authentication to URL if token is available and it's a GitHub URL
+        if self.github_token and 'github.com' in url and '://' in url:
+            if url.startswith('https://github.com/'):
+                # Convert https://github.com/owner/repo to authenticated URL
+                parts = url.split('github.com/')
+                if len(parts) == 2:
+                    url = f"https://x-access-token:{self.github_token}@github.com/{parts[1]}"
+                    self.log_progress("Using authenticated URL for cloning")
+        
         sparse_dirs = _normalize_sparse_list(sparse_dirs)
         ensured = _normalize_sparse_list((sparse_dirs or []) + (ALWAYS_INCLUDE if use_sparse else []))
         ensured = sorted(set(ensured))
@@ -1000,5 +1011,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
