@@ -629,105 +629,105 @@ This PR updates the FHIR Implementation Guide registry with latest information.
                     f.write('\n')
                 f.write(line.rstrip('\n') + '\n')
 
-def push_sitepreview_to_gh_pages(self):
-    """Copy self.webroot_dir to gh-pages/<sitepreview_dir> and push."""
-    remote = self._gh_remote_url()
-    if not remote:
-        self.log_progress("Skipping gh-pages push (no GITHUB_TOKEN or GITHUB_REPOSITORY).")
-        return
-
-    ghdir = os.path.join(self.temp_dir, 'gh-pages-work')
-    if os.path.exists(ghdir):
-        shutil.rmtree(ghdir, ignore_errors=True)
-    os.makedirs(self.temp_dir, exist_ok=True)
-
-    self._ensure_gh_pages_checkout(ghdir)
-
-    dest = os.path.join(ghdir, self.sitepreview_dir)
-    os.makedirs(dest, exist_ok=True)
-
-    # Default excludes + user supplied
-    excludes = list(self.exclude_paths)
-    # Always exclude big zip folder unless user explicitly removed it
-    if 'ig-build-zips/' not in excludes:
-        excludes.append('ig-build-zips/')
-
-    # Copy built site into sitepreview
-    self._rsync_copy(self.webroot_dir, dest, excludes)
-
-    # Ignore big zips in repo
-    self._append_gitignore_line(ghdir, f"{self.sitepreview_dir}/ig-build-zips/")
-
-    # Untrack cached big zips, if any were ever committed
-    self.run_command(['bash', '-lc', f'cd "{ghdir}" && git rm -r --cached {self.sitepreview_dir}/ig-build-zips || true'])
-
-    # Commit & push with retries
-    ref = os.environ.get('GITHUB_REF', '')
-    ref_short = ref.rsplit('/', 1)[-1] if ref else ''
-    sha = os.environ.get('GITHUB_SHA', '')[:7]
-    
-    # First, configure git
-    self.run_command(['bash', '-lc', f'''
-      set -e
-      cd "{ghdir}"
-      git config user.name  "github-actions[bot]"
-      git config user.email "github-actions[bot]@users.noreply.github.com"
-      git config http.version HTTP/1.1
-      git config http.lowSpeedLimit 1
-      git config http.lowSpeedTime 600
-    '''])
-
-    # Add and commit changes
-    self.run_command(['bash', '-lc', f'''
-      set -e
-      cd "{ghdir}"
-      git add -A {self.sitepreview_dir} .gitignore
-      if git diff --cached --quiet; then
-          echo "No changes to commit."
-          exit 0
-      fi
-      git commit -m "Update {self.sitepreview_dir} from {ref_short} @ {sha}"
-    '''])
-
-    # Try to run gc, but don't fail if it can't (another process might be doing it)
-    try:
-        self.run_command(['bash', '-lc', f'''
-          cd "{ghdir}"
-          # Kill any existing gc processes for this repo (if we have permission)
-          pkill -f "git.*gc.*{ghdir}" || true
-          # Wait a bit for any gc to finish
-          sleep 2
-          # Try gc with force flag to override lock
-          git gc --prune=now --force || true
-          git count-objects -vH || true
-        '''])
-    except Exception as e:
-        self.log_progress(f"Warning: gc failed (non-fatal): {e}")
-
-    # Push with retries
-    last_err = None
-    for i in range(3):
-        try:
-            self.log_progress(f"Push attempt {i+1} to gh-pages...")
-            self.run_command(['bash', '-lc', f'''
-              cd "{ghdir}"
-              # Try to remove gc lock file if it exists
-              rm -f .git/gc.pid || true
-              git push origin {self.gh_pages_branch}
-            '''])
-            self.log_progress("✅ Pushed to gh-pages successfully.")
+    def push_sitepreview_to_gh_pages(self):
+        """Copy self.webroot_dir to gh-pages/<sitepreview_dir> and push."""
+        remote = self._gh_remote_url()
+        if not remote:
+            self.log_progress("Skipping gh-pages push (no GITHUB_TOKEN or GITHUB_REPOSITORY).")
             return
+
+        ghdir = os.path.join(self.temp_dir, 'gh-pages-work')
+        if os.path.exists(ghdir):
+            shutil.rmtree(ghdir, ignore_errors=True)
+        os.makedirs(self.temp_dir, exist_ok=True)
+
+        self._ensure_gh_pages_checkout(ghdir)
+
+        dest = os.path.join(ghdir, self.sitepreview_dir)
+        os.makedirs(dest, exist_ok=True)
+
+        # Default excludes + user supplied
+        excludes = list(self.exclude_paths)
+        # Always exclude big zip folder unless user explicitly removed it
+        if 'ig-build-zips/' not in excludes:
+            excludes.append('ig-build-zips/')
+
+        # Copy built site into sitepreview
+        self._rsync_copy(self.webroot_dir, dest, excludes)
+
+        # Ignore big zips in repo
+        self._append_gitignore_line(ghdir, f"{self.sitepreview_dir}/ig-build-zips/")
+
+        # Untrack cached big zips, if any were ever committed
+        self.run_command(['bash', '-lc', f'cd "{ghdir}" && git rm -r --cached {self.sitepreview_dir}/ig-build-zips || true'])
+
+        # Commit & push with retries
+        ref = os.environ.get('GITHUB_REF', '')
+        ref_short = ref.rsplit('/', 1)[-1] if ref else ''
+        sha = os.environ.get('GITHUB_SHA', '')[:7]
+        
+        # First, configure git
+        self.run_command(['bash', '-lc', f'''
+        set -e
+        cd "{ghdir}"
+        git config user.name  "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config http.version HTTP/1.1
+        git config http.lowSpeedLimit 1
+        git config http.lowSpeedTime 600
+        '''])
+
+        # Add and commit changes
+        self.run_command(['bash', '-lc', f'''
+        set -e
+        cd "{ghdir}"
+        git add -A {self.sitepreview_dir} .gitignore
+        if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+        fi
+        git commit -m "Update {self.sitepreview_dir} from {ref_short} @ {sha}"
+        '''])
+
+        # Try to run gc, but don't fail if it can't (another process might be doing it)
+        try:
+            self.run_command(['bash', '-lc', f'''
+            cd "{ghdir}"
+            # Kill any existing gc processes for this repo (if we have permission)
+            pkill -f "git.*gc.*{ghdir}" || true
+            # Wait a bit for any gc to finish
+            sleep 2
+            # Try gc with force flag to override lock
+            git gc --prune=now --force || true
+            git count-objects -vH || true
+            '''])
         except Exception as e:
-            last_err = e
-            self.log_progress(f"Push attempt {i+1} failed: {e}")
-            if i < 2:  # Don't sleep on last attempt
-                wait_time = 10 * (i+1)
-                self.log_progress(f"Waiting {wait_time} seconds before retry...")
-                time.sleep(wait_time)
-    
-    # If we get here, all retries failed
-    self.log_progress(f"❌ All push attempts failed. Last error: {last_err}")
-    raise last_err
+            self.log_progress(f"Warning: gc failed (non-fatal): {e}")
+
+        # Push with retries
+        last_err = None
+        for i in range(3):
+            try:
+                self.log_progress(f"Push attempt {i+1} to gh-pages...")
+                self.run_command(['bash', '-lc', f'''
+                cd "{ghdir}"
+                # Try to remove gc lock file if it exists
+                rm -f .git/gc.pid || true
+                git push origin {self.gh_pages_branch}
+                '''])
+                self.log_progress("✅ Pushed to gh-pages successfully.")
+                return
+            except Exception as e:
+                last_err = e
+                self.log_progress(f"Push attempt {i+1} failed: {e}")
+                if i < 2:  # Don't sleep on last attempt
+                    wait_time = 10 * (i+1)
+                    self.log_progress(f"Waiting {wait_time} seconds before retry...")
+                    time.sleep(wait_time)
+        
+        # If we get here, all retries failed
+        self.log_progress(f"❌ All push attempts failed. Last error: {last_err}")
+        raise last_err
 
 
 
