@@ -176,7 +176,8 @@ jobs:
             --pubreq-canonical   "${{ inputs.pubreq_canonical }}" \
             --pubreq-path        "${{ inputs.pubreq_path }}" \
             --publish-gh-pages \
-            --sitepreview-dir    "${{ inputs.sitepreview_dir }}"
+            --sitepreview-dir    "${{ inputs.sitepreview_dir }}" \
+            --enable-pr \
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
