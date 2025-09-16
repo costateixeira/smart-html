@@ -170,15 +170,15 @@ jobs:
             --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
             --source-repo "https://github.com/${{ github.repository }}" \
+            --webroot-repo "https://github.com/costateixeira/smart-html" \
+            --registry-repo "https://github.com/costateixeira/ig-registry" \
             --ensure-pubreq \
             --pubreq-package-id "${{ inputs.pubreq_package_id }}" \
-            --webroot-repo "https://github.com/costateixeira/smart-html" \
-            --registry-repo "https://github.com/costateixeira/ig-registry" \            
-            --pubreq-version     "${{ inputs.pubreq_version }}" \
-            --pubreq-canonical   "${{ inputs.pubreq_canonical }}" \
-            --pubreq-path        "${{ inputs.pubreq_path }}" \
+            --pubreq-version "${{ inputs.pubreq_version }}" \
+            --pubreq-canonical "${{ inputs.pubreq_canonical }}" \
+            --pubreq-path "${{ inputs.pubreq_path }}" \
             --publish-gh-pages \
-            --sitepreview-dir    "${{ inputs.sitepreview_dir }}" \
+            --sitepreview-dir "${{ inputs.sitepreview_dir }}"
             --enable-pr \
             --github-token "${{ secrets.GITHUB_TOKEN }}"
         env:
