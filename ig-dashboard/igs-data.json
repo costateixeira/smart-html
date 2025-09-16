@@ -40,7 +40,7 @@
     "published": "http://smart.who.int/trust",
     "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
     "default_branch": "main",
-    "last_commit": "2025-07-09T09:42:00Z",
+    "last_commit": "2025-09-16T10:22:50Z",
     "branches": [
       {
         "name": "1.0.0",
@@ -103,6 +103,38 @@
         "commit": "2024-09-10T10:36:51Z"
       },
       {
+        "name": "copilot/create-dev-uat-prod-valuesets",
+        "commit": "2025-09-11T04:48:48Z"
+      },
+      {
+        "name": "copilot/fix-81",
+        "commit": "2025-08-26T11:11:04Z"
+      },
+      {
+        "name": "copilot/fix-83",
+        "commit": "2025-09-04T11:21:13Z"
+      },
+      {
+        "name": "copilot/fix-85",
+        "commit": "2025-09-08T11:16:36Z"
+      },
+      {
+        "name": "copilot/fix-89",
+        "commit": "2025-09-11T06:06:23Z"
+      },
+      {
+        "name": "copilot/fix-91",
+        "commit": "2025-09-12T16:47:31Z"
+      },
+      {
+        "name": "copilot/fix-93",
+        "commit": "2025-09-12T22:20:39Z"
+      },
+      {
+        "name": "copilot/fix-95",
+        "commit": "2025-09-15T17:07:49Z"
+      },
+      {
         "name": "costateixeira-patch-1",
         "commit": "2024-04-12T07:48:25Z"
       },
@@ -151,8 +183,12 @@
         "commit": "2025-03-10T14:39:11Z"
       },
       {
+        "name": "fix-qa",
+        "commit": "2025-09-12T22:56:53Z"
+      },
+      {
         "name": "gherkintests",
-        "commit": "2025-08-15T19:31:35Z"
+        "commit": "2025-09-10T05:42:04Z"
       },
       {
         "name": "jct-testdependencies",
@@ -164,7 +200,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-07-09T09:42:00Z"
+        "commit": "2025-09-16T10:22:50Z"
       },
       {
         "name": "onboarding_checklist_enhancement",
@@ -207,6 +243,10 @@
         "commit": "2025-02-05T19:06:21Z"
       },
       {
+        "name": "toc-errors",
+        "commit": "2025-09-10T18:03:47Z"
+      },
+      {
         "name": "transactions",
         "commit": "2024-04-23T19:07:02Z"
       },
@@ -231,7 +271,7 @@
     "published": "http://smart.who.int/icvp",
     "html_url": "https://github.com/WorldHealthOrganization/smart-icvp",
     "default_branch": "main",
-    "last_commit": "2025-07-15T18:51:24Z",
+    "last_commit": "2025-09-12T08:46:31Z",
     "branches": [
       {
         "name": "5/merge",
@@ -250,12 +290,16 @@
         "commit": "2025-02-14T13:53:33Z"
       },
       {
+        "name": "jct",
+        "commit": "2025-09-05T08:12:44Z"
+      },
+      {
         "name": "jct-testdependencies",
         "commit": "2024-09-18T08:58:12Z"
       },
       {
         "name": "main",
-        "commit": "2025-07-15T18:51:24Z"
+        "commit": "2025-09-12T08:46:31Z"
       },
       {
         "name": "prequal-vaccines",
@@ -263,7 +307,7 @@
       },
       {
         "name": "ritika",
-        "commit": "2025-08-08T09:33:39Z"
+        "commit": "2025-09-12T07:22:53Z"
       },
       {
         "name": "selective-disclosure",
@@ -352,7 +396,7 @@
     "published": "http://smart.who.int/ig-starter-kit",
     "html_url": "https://github.com/WorldHealthOrganization/smart-ig-starter-kit",
     "default_branch": "main",
-    "last_commit": "2025-08-11T06:16:16Z",
+    "last_commit": "2025-09-09T13:27:21Z",
     "branches": [
       {
         "name": "L4-compliance.md",
@@ -392,7 +436,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-08-11T06:16:16Z"
+        "commit": "2025-09-09T13:27:21Z"
       },
       {
         "name": "pcmt",
@@ -532,7 +576,7 @@
     "published": "http://smart.who.int/base",
     "html_url": "https://github.com/WorldHealthOrganization/smart-base",
     "default_branch": "main",
-    "last_commit": "2025-07-28T00:42:16Z",
+    "last_commit": "2025-09-16T09:56:25Z",
     "branches": [
       {
         "name": "3/merge",
@@ -603,6 +647,10 @@
         "commit": "2025-07-18T05:44:42Z"
       },
       {
+        "name": "copilot/fix-24",
+        "commit": "2025-08-28T07:27:40Z"
+      },
+      {
         "name": "copilot/fix-30c60c47-173e-45dd-bc5b-d2d27fce6371",
         "commit": "2025-07-24T20:13:24Z"
       },
@@ -613,6 +661,198 @@
       {
         "name": "copilot/fix-51",
         "commit": "2025-07-28T00:01:59Z"
+      },
+      {
+        "name": "copilot/fix-54",
+        "commit": "2025-08-27T23:03:03Z"
+      },
+      {
+        "name": "copilot/fix-56",
+        "commit": "2025-08-31T09:17:35Z"
+      },
+      {
+        "name": "copilot/fix-58-2",
+        "commit": "2025-08-31T09:20:56Z"
+      },
+      {
+        "name": "copilot/fix-58",
+        "commit": "2025-08-30T18:06:59Z"
+      },
+      {
+        "name": "copilot/fix-61",
+        "commit": "2025-09-01T17:35:17Z"
+      },
+      {
+        "name": "copilot/fix-63",
+        "commit": "2025-09-03T01:51:57Z"
+      },
+      {
+        "name": "copilot/fix-65",
+        "commit": "2025-09-01T15:28:52Z"
+      },
+      {
+        "name": "copilot/fix-67-2",
+        "commit": "2025-09-08T11:07:30Z"
+      },
+      {
+        "name": "copilot/fix-67",
+        "commit": "2025-09-04T15:53:14Z"
+      },
+      {
+        "name": "copilot/fix-69",
+        "commit": "2025-09-02T13:57:18Z"
+      },
+      {
+        "name": "copilot/fix-71",
+        "commit": "2025-09-01T22:37:08Z"
+      },
+      {
+        "name": "copilot/fix-73",
+        "commit": "2025-09-04T11:48:08Z"
+      },
+      {
+        "name": "copilot/fix-75",
+        "commit": "2025-09-02T00:15:54Z"
+      },
+      {
+        "name": "copilot/fix-77",
+        "commit": "2025-09-02T14:15:55Z"
+      },
+      {
+        "name": "copilot/fix-79-2",
+        "commit": "2025-09-02T15:12:28Z"
+      },
+      {
+        "name": "copilot/fix-79",
+        "commit": "2025-09-02T14:49:51Z"
+      },
+      {
+        "name": "copilot/fix-82",
+        "commit": "2025-09-02T17:29:29Z"
+      },
+      {
+        "name": "copilot/fix-84",
+        "commit": "2025-09-04T11:35:43Z"
+      },
+      {
+        "name": "copilot/fix-86",
+        "commit": "2025-09-04T18:34:17Z"
+      },
+      {
+        "name": "copilot/fix-88",
+        "commit": "2025-09-04T15:54:53Z"
+      },
+      {
+        "name": "copilot/fix-90",
+        "commit": "2025-09-04T12:13:24Z"
+      },
+      {
+        "name": "copilot/fix-92",
+        "commit": "2025-09-04T12:09:10Z"
+      },
+      {
+        "name": "copilot/fix-94",
+        "commit": "2025-09-04T15:13:04Z"
+      },
+      {
+        "name": "copilot/fix-96",
+        "commit": "2025-09-04T17:07:32Z"
+      },
+      {
+        "name": "copilot/fix-98",
+        "commit": "2025-09-05T16:37:25Z"
+      },
+      {
+        "name": "copilot/fix-100",
+        "commit": "2025-09-08T11:12:26Z"
+      },
+      {
+        "name": "copilot/fix-103",
+        "commit": "2025-09-08T13:24:28Z"
+      },
+      {
+        "name": "copilot/fix-105",
+        "commit": "2025-09-10T01:00:53Z"
+      },
+      {
+        "name": "copilot/fix-107",
+        "commit": "2025-09-12T11:27:36Z"
+      },
+      {
+        "name": "copilot/fix-109",
+        "commit": "2025-09-10T18:00:18Z"
+      },
+      {
+        "name": "copilot/fix-111",
+        "commit": "2025-09-12T16:28:53Z"
+      },
+      {
+        "name": "copilot/fix-113",
+        "commit": "2025-09-12T21:13:51Z"
+      },
+      {
+        "name": "copilot/fix-115",
+        "commit": "2025-09-12T22:08:57Z"
+      },
+      {
+        "name": "copilot/fix-117",
+        "commit": "2025-09-12T22:34:23Z"
+      },
+      {
+        "name": "copilot/fix-119",
+        "commit": "2025-09-12T22:45:52Z"
+      },
+      {
+        "name": "copilot/fix-121",
+        "commit": "2025-09-12T23:26:45Z"
+      },
+      {
+        "name": "copilot/fix-123",
+        "commit": "2025-09-14T10:17:04Z"
+      },
+      {
+        "name": "copilot/fix-125",
+        "commit": "2025-09-15T19:30:25Z"
+      },
+      {
+        "name": "copilot/fix-127",
+        "commit": "2025-09-15T23:16:04Z"
+      },
+      {
+        "name": "copilot/fix-129",
+        "commit": "2025-09-15T11:50:58Z"
+      },
+      {
+        "name": "copilot/fix-131",
+        "commit": "2025-09-15T14:47:54Z"
+      },
+      {
+        "name": "copilot/fix-133",
+        "commit": "2025-09-15T14:58:28Z"
+      },
+      {
+        "name": "copilot/fix-135",
+        "commit": "2025-09-15T23:07:34Z"
+      },
+      {
+        "name": "copilot/fix-137",
+        "commit": "2025-09-15T15:24:55Z"
+      },
+      {
+        "name": "copilot/fix-139-2",
+        "commit": "2025-09-15T16:10:07Z"
+      },
+      {
+        "name": "copilot/fix-139",
+        "commit": "2025-09-15T15:37:29Z"
+      },
+      {
+        "name": "copilot/fix-142",
+        "commit": "2025-09-15T16:29:42Z"
+      },
+      {
+        "name": "copilot/fix-144",
+        "commit": "2025-09-16T10:04:59Z"
       },
       {
         "name": "copilot/fix-172c92bf-db39-42b8-b7b4-b8093c7ec9c3",
@@ -664,7 +904,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-07-28T00:42:16Z"
+        "commit": "2025-09-16T09:56:25Z"
       },
       {
         "name": "r5-enhancements",
@@ -685,6 +925,10 @@
       {
         "name": "updatescript",
         "commit": "2024-04-05T11:33:59Z"
+      },
+      {
+        "name": "v1",
+        "commit": "2025-09-06T09:15:06Z"
       }
     ],
     "tags": []
@@ -893,7 +1137,7 @@
     "published": "http://smart.who.int/ig/smart-immunizations",
     "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
     "default_branch": "main",
-    "last_commit": "2025-08-08T19:09:41Z",
+    "last_commit": "2025-09-10T05:56:23Z",
     "branches": [
       {
         "name": "AcceleratorToAdaptation",
@@ -1017,7 +1261,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-08-08T19:09:41Z"
+        "commit": "2025-09-10T05:56:23Z"
       },
       {
         "name": "master",
@@ -1231,6 +1475,14 @@
     "default_branch": "master",
     "last_commit": "2025-07-03T14:37:58Z",
     "branches": [
+      {
+        "name": "copilot/fix-40",
+        "commit": "2025-09-04T16:37:05Z"
+      },
+      {
+        "name": "copilot/fix-42",
+        "commit": "2025-09-11T12:26:12Z"
+      },
       {
         "name": "costateixeira-patch-1",
         "commit": "2023-05-26T17:25:59Z"
