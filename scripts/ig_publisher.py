@@ -959,6 +959,11 @@ def main():
             gh_pages_branch=args.gh_pages_branch,
             exclude_paths=args.exclude,
             ensure_pubreq=args.ensure_pubreq,
+            # ADD THESE MISSING PARAMETERS:
+            enable_pr_creation=args.enable_pr,  # <-- This was missing!
+            github_token=args.github_token,      # <-- This was missing!
+            webroot_pr_target_branch=args.webroot_pr_target,
+            registry_pr_target_branch=args.registry_pr_target,
             pubreq_overrides={
                 "path": args.pubreq_path or os.environ.get("PUBREQ_PATH"),
                 "canonical": args.pubreq_canonical or os.environ.get("PUBREQ_CANONICAL"),
@@ -966,9 +971,9 @@ def main():
                 "version": args.pubreq_version or os.environ.get("PUBREQ_VERSION"),
             }
         )
-
         publisher.run()
 
 
 if __name__ == '__main__':
     main()
+
