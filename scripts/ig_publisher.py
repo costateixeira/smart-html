@@ -434,26 +434,75 @@ This PR updates the FHIR Implementation Guide registry with latest information.
         else:
             self.log_progress("No changes in registry repository, skipping PR")
 
+
     def build(self):
         self.log_progress("🔨 Building Implementation Guide...")
-        self.run_command([
-            'java', '-Xmx4g', '-jar', self.publisher_jar,
-            '-ig', self.source_dir,
-            '-package-cache-folder', self.package_cache
-        ])
+        
+        # Save current directory
+        original_dir = os.getcwd()
+        
+        try:
+            # Change to source directory
+            os.chdir(self.source_dir)
+            self.log_progress(f"Changed to source directory: {self.source_dir}")
+            
+            # Publisher jar path needs to be absolute or relative to source_dir
+            publisher_jar_path = os.path.abspath(self.publisher_jar)
+            package_cache_path = os.path.abspath(self.package_cache)
+            
+            # Run publisher from within source directory
+            self.run_command([
+                'java', '-Xmx4g', '-jar', publisher_jar_path,
+                '-ig', '.',  # Current directory (which is now source_dir)
+                '-package-cache-folder', package_cache_path
+            ])
+            
+        finally:
+            # Always change back to original directory
+            os.chdir(original_dir)
+            self.log_progress(f"Returned to original directory: {original_dir}")
 
     def publish(self):
         self.log_progress("📤 Publishing Implementation Guide...")
+        
+        # DON'T change directory - run from current location with absolute paths
+        
+        # All paths need to be absolute
+        publisher_jar_path = os.path.abspath(self.publisher_jar)
+        package_cache_path = os.path.abspath(self.package_cache)
+        source_path = os.path.abspath(self.source_dir)  # Use absolute path, not '.'
+        webroot_path = os.path.abspath(self.webroot_dir)
+        temp_path = os.path.abspath(self.temp_dir)
+        registry_path = os.path.abspath(os.path.join(self.registry_dir, 'fhir-ig-list.json'))
+        history_path = os.path.abspath(self.history_dir)
+        templates_path = os.path.abspath(os.path.join(self.webroot_dir, 'templates'))
+        
+        # Check for templates in different locations
+        if not os.path.exists(templates_path):
+            alt_templates = os.path.abspath(os.path.join(self.base_dir, 'templates'))
+            if os.path.exists(alt_templates):
+                templates_path = alt_templates
+                self.log_progress(f"Using alternative templates path: {templates_path}")
+        
+        # Verify paths
+        self.log_progress(f"Source: {source_path}")
+        self.log_progress(f"Webroot: {webroot_path}")
+        self.log_progress(f"Templates: {templates_path}")
+        
+        # Ensure temp directory exists
+        os.makedirs(temp_path, exist_ok=True)
+        
+        # Run publisher from current directory with absolute paths
         self.run_command([
-            'java', '-Xmx4g', '-Dfile.encoding=UTF-8', '-jar', self.publisher_jar,
+            'java', '-Xmx4g', '-Dfile.encoding=UTF-8', '-jar', publisher_jar_path,
             '-go-publish',
-            '-package-cache-folder', self.package_cache,
-            '-source', self.source_dir,
-            '-web', self.webroot_dir,
-            '-temp', self.temp_dir,
-            '-registry', os.path.join(self.registry_dir, 'fhir-ig-list.json'),
-            '-history', self.history_dir,
-            '-templates', os.path.join(self.webroot_dir, 'templates')
+            '-package-cache-folder', package_cache_path,
+            '-source', source_path,  # Use absolute path instead of '.'
+            '-web', webroot_path,
+            '-temp', temp_path,
+            '-registry', registry_path,
+            '-history', history_path,
+            '-templates', templates_path
         ])
 
     def prepare(self):
