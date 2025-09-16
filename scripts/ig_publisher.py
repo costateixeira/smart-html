@@ -86,6 +86,7 @@ class ReleasePublisher:
     def __init__(self, source_dir=None, source_repo=None, source_branch=None,
                  webroot_repo=None, webroot_branch=None,
                  history_repo=None, history_branch=None,
+                 registry_repo=None,
                  sparse_dirs=None, enable_sparse_checkout=False, progress_callback=None,
                  github_token=None, enable_pr_creation=False,
                  publish_to_gh_pages=False, sitepreview_dir="sitepreview",
@@ -102,7 +103,7 @@ class ReleasePublisher:
         self.webroot_branch = webroot_branch
         self.history_repo = history_repo or 'https://github.com/HL7/fhir-ig-history-template'
         self.history_branch = history_branch
-        self.registry_repo = 'https://github.com/FHIR/ig-registry'
+        self.registry_repo = registry_repo or 'https://github.com/FHIR/ig-registry'
 
         self.webroot_dir = os.path.join(self.base_dir, 'webroot')
         self.history_dir = os.path.join(self.base_dir, 'history-template')
@@ -973,6 +974,8 @@ def main():
     parser.add_argument('--history-branch', type=str, help='History branch name')
     parser.add_argument('--sparse', nargs='*', help='Sparse checkout folders for webroot')
     parser.add_argument('--enable-sparse', action='store_true', help='Enable sparse checkout')
+    parser.add_argument('--registry-repo', type=str, help='Registry repo URL')
+    
     # GitHub PR arguments
     parser.add_argument('--enable-pr', action='store_true', help='Enable automatic PR creation')
     parser.add_argument('--github-token', type=str, help='GitHub personal access token')
@@ -1016,6 +1019,7 @@ def main():
             webroot_branch=args.webroot_branch or config.get('webroot_branch'),
             history_repo=args.history_repo or config.get('history_repo'),
             history_branch=args.history_branch or config.get('history_branch'),
+            registry_repo=args.registry_repo or config.get('registry_repo'),            
             sparse_dirs=args.sparse or config.get('sparse_dirs'),
             enable_sparse_checkout=args.enable_sparse or config.get('enable_sparse_checkout', False),
             publish_to_gh_pages=args.publish_gh_pages,
@@ -1040,6 +1044,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
