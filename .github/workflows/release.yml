@@ -178,6 +178,7 @@ jobs:
             --publish-gh-pages \
             --sitepreview-dir    "${{ inputs.sitepreview_dir }}" \
             --enable-pr \
+            --github-token "${{ secrets.GITHUB_TOKEN }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
