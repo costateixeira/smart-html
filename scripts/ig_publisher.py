@@ -322,41 +322,70 @@ class ReleasePublisher:
             return False
 
     def create_branch_and_commit(self, repo_path, branch_name, commit_message):
-        """Create a new branch and commit all changes"""
+        """Create a new branch and commit all changes using subprocess to avoid GitPython version issues"""
         try:
-            repo = git.Repo(repo_path)
-            new_branch = repo.create_head(branch_name)
-            new_branch.checkout()
-            
             # Check if sparse checkout is enabled
             sparse_file = os.path.join(repo_path, '.git', 'info', 'sparse-checkout')
             is_sparse = os.path.exists(sparse_file)
             
+            # Use subprocess for all git operations to avoid GitPython compatibility issues
+            self.log_progress(f"Creating branch '{branch_name}'...")
+            
+            # Create and checkout new branch
+            self.run_command(['git', '-C', repo_path, 'checkout', '-b', branch_name])
+            
+            # Add files (with --sparse flag if needed)
             if is_sparse:
-                # Use --sparse flag for sparse checkout repos
                 self.log_progress("Using --sparse flag for git add (sparse checkout detected)")
-                repo.git.add('-A', '--sparse')
+                self.run_command(['git', '-C', repo_path, 'add', '-A', '--sparse'])
             else:
-                repo.git.add(A=True)
+                self.run_command(['git', '-C', repo_path, 'add', '-A'])
+            
+            # Check if there are changes to commit
+            result = subprocess.run(
+                ['git', '-C', repo_path, 'diff', '--cached', '--quiet'],
+                capture_output=True
+            )
+            
+            if result.returncode == 0:
+                self.log_progress("No changes to commit")
+                return False
                 
-            repo.index.commit(commit_message)
+            # Commit changes
+            self.run_command([
+                'git', '-C', repo_path, 
+                '-c', 'user.name=github-actions[bot]',
+                '-c', 'user.email=github-actions[bot]@users.noreply.github.com',
+                'commit', '-m', commit_message
+            ])
             
-            # Configure the remote URL with authentication
-            origin = repo.remote('origin')
+            # Get the current remote URL and add authentication if needed
             if self.github_token:
-                # Parse the current URL and add authentication
-                current_url = list(origin.urls)[0]
-                if 'github.com' in current_url and '://' in current_url:
-                    # Convert https://github.com/owner/repo to authenticated URL
-                    parts = current_url.split('github.com/')
-                    if len(parts) == 2:
-                        auth_url = f"https://x-access-token:{self.github_token}@github.com/{parts[1]}"
-                        origin.set_url(auth_url)
-                        self.log_progress(f"Configured authenticated push URL")
+                # Get current remote URL
+                result = subprocess.run(
+                    ['git', '-C', repo_path, 'remote', 'get-url', 'origin'],
+                    capture_output=True, text=True
+                )
+                current_url = result.stdout.strip()
+                
+                if 'github.com' in current_url and 'x-access-token' not in current_url:
+                    if current_url.startswith('https://github.com/'):
+                        parts = current_url.split('github.com/')
+                        if len(parts) == 2:
+                            auth_url = f"https://x-access-token:{self.github_token}@github.com/{parts[1]}"
+                            self.run_command(['git', '-C', repo_path, 'remote', 'set-url', 'origin', auth_url])
+                            self.log_progress("Configured authenticated push URL")
             
-            origin.push(new_branch)
+            # Push the new branch
+            self.run_command(['git', '-C', repo_path, 'push', 'origin', branch_name])
             self.log_progress(f"Created branch '{branch_name}' and pushed changes")
             return True
+            
+        except subprocess.CalledProcessError as e:
+            self.log_progress(f"Error creating branch and committing: {e}")
+            if e.stderr:
+                self.log_progress(f"Error details: {e.stderr.decode('utf-8', errors='ignore')}")
+            return False
         except Exception as e:
             self.log_progress(f"Error creating branch and committing: {e}")
             return False
@@ -1011,6 +1040,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
