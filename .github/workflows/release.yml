@@ -169,6 +169,7 @@ jobs:
             --global-config ".ci-tools/release-config.global.yaml" \
             --local-config "release-config.yaml" \
             --source "${{ github.workspace }}" \
+            --source-repo "https://github.com/${{ github.repository }}" \
             --ensure-pubreq \
             --pubreq-package-id "${{ inputs.pubreq_package_id }}" \
             --pubreq-version     "${{ inputs.pubreq_version }}" \
@@ -176,5 +177,7 @@ jobs:
             --pubreq-path        "${{ inputs.pubreq_path }}" \
             --publish-gh-pages \
             --sitepreview-dir    "${{ inputs.sitepreview_dir }}"
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
