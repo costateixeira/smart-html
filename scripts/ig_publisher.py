@@ -214,7 +214,7 @@ class ReleasePublisher:
                     pass
 
                 if use_sparse and ensured:
-                    needs_no_cone = any(_looks_like_file(p) for p in ensured)
+                    needs_no_cone = any(_looks_like_file(p) for p in ensured) or any('*' in p for p in ensured)
                     # (Re)initialize sparse mode with correct flavor
                     try:
                         self.run_command(['git', '-C', path, 'sparse-checkout', 'init',
@@ -480,7 +480,12 @@ This PR updates the FHIR Implementation Guide registry with latest information.
         sparse_dirs_for_webroot = list(self.sparse_dirs) if self.sparse_dirs else []
         if self.enable_sparse_checkout:
             if slug:
-                sparse_dirs_for_webroot += [f"/{slug}", f"/{slug}/package-list.json"]
+                # Include the IG folder and ALL its contents (including version subfolders)
+                sparse_dirs_for_webroot += [
+                    f"/{slug}",
+                    f"/{slug}/*",  # All direct children
+                    f"/{slug}/**"  # All nested content (requires no-cone mode)
+                ]
             sparse_dirs_for_webroot += ALWAYS_INCLUDE
             sparse_dirs_for_webroot = sorted(set(_normalize_sparse_list(sparse_dirs_for_webroot)))
             self.log_progress(f"➕ Sparse includes: {' '.join(sparse_dirs_for_webroot)}")
