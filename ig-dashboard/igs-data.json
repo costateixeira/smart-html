@@ -40,7 +40,7 @@
     "published": "http://smart.who.int/trust",
     "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
     "default_branch": "main",
-    "last_commit": "2025-09-16T10:22:50Z",
+    "last_commit": "2025-09-16T15:52:01Z",
     "branches": [
       {
         "name": "1.0.0",
@@ -135,6 +135,10 @@
         "commit": "2025-09-15T17:07:49Z"
       },
       {
+        "name": "copilot/fix-97",
+        "commit": "2025-09-16T15:45:59Z"
+      },
+      {
         "name": "costateixeira-patch-1",
         "commit": "2024-04-12T07:48:25Z"
       },
@@ -200,7 +204,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-09-16T10:22:50Z"
+        "commit": "2025-09-16T15:52:01Z"
       },
       {
         "name": "onboarding_checklist_enhancement",
@@ -857,6 +861,10 @@
       {
         "name": "copilot/fix-146",
         "commit": "2025-09-16T14:04:02Z"
+      },
+      {
+        "name": "copilot/fix-148",
+        "commit": "2025-09-16T16:21:47Z"
       },
       {
         "name": "copilot/fix-172c92bf-db39-42b8-b7b4-b8093c7ec9c3",
