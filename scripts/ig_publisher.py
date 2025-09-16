@@ -316,9 +316,33 @@ class ReleasePublisher:
             repo = git.Repo(repo_path)
             new_branch = repo.create_head(branch_name)
             new_branch.checkout()
-            repo.git.add(A=True)
+            
+            # Check if sparse checkout is enabled
+            sparse_file = os.path.join(repo_path, '.git', 'info', 'sparse-checkout')
+            is_sparse = os.path.exists(sparse_file)
+            
+            if is_sparse:
+                # Use --sparse flag for sparse checkout repos
+                self.log_progress("Using --sparse flag for git add (sparse checkout detected)")
+                repo.git.add('-A', '--sparse')
+            else:
+                repo.git.add(A=True)
+                
             repo.index.commit(commit_message)
+            
+            # Configure the remote URL with authentication
             origin = repo.remote('origin')
+            if self.github_token:
+                # Parse the current URL and add authentication
+                current_url = list(origin.urls)[0]
+                if 'github.com' in current_url and '://' in current_url:
+                    # Convert https://github.com/owner/repo to authenticated URL
+                    parts = current_url.split('github.com/')
+                    if len(parts) == 2:
+                        auth_url = f"https://x-access-token:{self.github_token}@github.com/{parts[1]}"
+                        origin.set_url(auth_url)
+                        self.log_progress(f"Configured authenticated push URL")
+            
             origin.push(new_branch)
             self.log_progress(f"Created branch '{branch_name}' and pushed changes")
             return True
@@ -976,4 +1000,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
