@@ -40,7 +40,7 @@
     "published": "http://smart.who.int/trust",
     "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
     "default_branch": "main",
-    "last_commit": "2025-09-16T15:52:01Z",
+    "last_commit": "2025-09-18T00:44:43Z",
     "branches": [
       {
         "name": "1.0.0",
@@ -139,6 +139,10 @@
         "commit": "2025-09-16T15:45:59Z"
       },
       {
+        "name": "copilot/fix-100",
+        "commit": "2025-09-18T00:53:16Z"
+      },
+      {
         "name": "costateixeira-patch-1",
         "commit": "2024-04-12T07:48:25Z"
       },
@@ -204,7 +208,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-09-16T15:52:01Z"
+        "commit": "2025-09-18T00:44:43Z"
       },
       {
         "name": "onboarding_checklist_enhancement",
@@ -245,6 +249,10 @@
       {
         "name": "testing-feature",
         "commit": "2025-02-05T19:06:21Z"
+      },
+      {
+        "name": "tng-additional-context-jsonld",
+        "commit": "2025-09-17T09:24:51Z"
       },
       {
         "name": "toc-errors",
@@ -580,7 +588,7 @@
     "published": "http://smart.who.int/base",
     "html_url": "https://github.com/WorldHealthOrganization/smart-base",
     "default_branch": "main",
-    "last_commit": "2025-09-16T18:45:06Z",
+    "last_commit": "2025-09-18T02:02:02Z",
     "branches": [
       {
         "name": "3/merge",
@@ -864,7 +872,31 @@
       },
       {
         "name": "copilot/fix-148",
-        "commit": "2025-09-16T19:39:42Z"
+        "commit": "2025-09-17T21:10:57Z"
+      },
+      {
+        "name": "copilot/fix-150",
+        "commit": "2025-09-17T22:21:54Z"
+      },
+      {
+        "name": "copilot/fix-152",
+        "commit": "2025-09-18T00:25:50Z"
+      },
+      {
+        "name": "copilot/fix-154",
+        "commit": "2025-09-18T01:32:12Z"
+      },
+      {
+        "name": "copilot/fix-156",
+        "commit": "2025-09-18T01:30:25Z"
+      },
+      {
+        "name": "copilot/fix-158",
+        "commit": "2025-09-18T01:27:49Z"
+      },
+      {
+        "name": "copilot/fix-160",
+        "commit": "2025-09-18T02:05:26Z"
       },
       {
         "name": "copilot/fix-172c92bf-db39-42b8-b7b4-b8093c7ec9c3",
@@ -916,7 +948,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-09-16T18:45:06Z"
+        "commit": "2025-09-18T02:02:02Z"
       },
       {
         "name": "r5-enhancements",
@@ -1149,7 +1181,7 @@
     "published": "http://smart.who.int/ig/smart-immunizations",
     "html_url": "https://github.com/WorldHealthOrganization/smart-immunizations",
     "default_branch": "main",
-    "last_commit": "2025-09-10T05:56:23Z",
+    "last_commit": "2025-09-17T23:01:28Z",
     "branches": [
       {
         "name": "AcceleratorToAdaptation",
@@ -1273,7 +1305,7 @@
       },
       {
         "name": "main",
-        "commit": "2025-09-10T05:56:23Z"
+        "commit": "2025-09-17T23:01:28Z"
       },
       {
         "name": "master",
