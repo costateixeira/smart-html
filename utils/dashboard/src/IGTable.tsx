@@ -17,6 +17,8 @@ interface Version {
   version: string;
   hasTag: boolean;
   publishedUrl: string | null;
+  sizeBytes?: number | null;
+  size?: string | null;
 }
 
 interface PublishedVersion {
@@ -35,6 +37,10 @@ interface IG {
   versions: Version[];
   publishedVersions: PublishedVersion[];
   ciBuildUrl: string;
+  size?: string;
+  sizeBytes?: number;
+  rootSize?: string;
+  rootSizeBytes?: number;
 }
 
 interface Config {
@@ -69,12 +75,24 @@ export default function IGTable() {
   const [igs, setIgs] = useState<IG[]>([]);
   const [showOldBranches, setShowOldBranches] = useState(false);
   const [showUnpublishedTags, setShowUnpublishedTags] = useState(true);
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+
+  const toggleRow = (repo: string) => {
+    setExpandedRows((prev) => {
+      const next = new Set(prev);
+      if (next.has(repo)) next.delete(repo);
+      else next.add(repo);
+      return next;
+    });
+  };
 
   const getVisibleBranches = (ig: IG) =>
-    showOldBranches ? ig.branches : ig.branches.filter((b) => b.isDefault || !b.isStale);
+    showOldBranches ? (ig.branches ?? []) : (ig.branches ?? []).filter((b) => b.isDefault || !b.isStale);
 
   const getVisibleVersions = (ig: IG) =>
-    showUnpublishedTags ? ig.versions : ig.versions.filter((v) => v.publishedUrl);
+    showUnpublishedTags
+      ? (ig.versions ?? [])
+      : (ig.versions ?? []).filter((v) => v.publishedUrl);
 
   const triggerBuild = (ig: IG, branch: string) => {
     alert(`Trigger build for ${ig.name} on ${branch}`);
@@ -82,29 +100,55 @@ export default function IGTable() {
 
   useEffect(() => {
     const loadData = async () => {
-      // ✅ FIRST TRY LOCAL igs-data.json
+      // FIRST TRY LOCAL igs-data.json
       try {
         const res = await fetch("./igs-data.json");
         if (res.ok) {
           const json = await res.json();
-          setIgs(json);
-          console.log("✅ Loaded prebuilt igs-data.json");
+          setIgs(
+            json.map((ig: any) => {
+              const publishedVersions = ig.publishedVersions ?? [];
+              const versions: Version[] = ig.versions ?? Array.from(
+                new Set([
+                  ...(publishedVersions.map((v: any) => v.version) ?? [])
+                ])
+              ).map((version: string) => {
+                const publishedEntry = publishedVersions.find((v: any) => v.version === version);
+                return {
+                  version,
+                  hasTag: true,
+                  publishedUrl: publishedEntry?.publishedUrl ?? null,
+                };
+              });
+
+              return {
+                ...ig,
+                branches: ig.branches ?? [],
+                versions,
+                publishedVersions,
+                html_url: ig.html_url ?? "",
+                default_branch: ig.default_branch ?? "",
+                last_commit: ig.last_commit ?? "",
+                ciBuildUrl: ig.ciBuildUrl ?? "",
+              } as IG;
+            })
+          );
+          console.log("Loaded prebuilt igs-data.json");
           return;
         }
       } catch {
-        console.log("⚠️ No prebuilt igs-data.json found, using live mode");
+        console.log("No prebuilt igs-data.json found, using live mode");
       }
 
-      // ✅ OTHERWISE USE LIVE GRAPHQL
+      // OTHERWISE USE LIVE GRAPHQL
       if (!GITHUB_TOKEN) {
-        console.error("❌ No GitHub token, cannot load live data");
+        console.error("No GitHub token, cannot load live data");
         return;
       }
 
       const yamlText = await fetch("./igs.yaml").then((res) => res.text());
       const config: Config = parse(yamlText);
 
-      const now = new Date();
       const MAX_DAYS = 90;
 
       const allIgs = await Promise.all(
@@ -163,7 +207,7 @@ export default function IGTable() {
 
             const tagVersions = (repo.tags?.nodes || [])
               .map((n: any) => n.name.replace(/^v/, ""))
-              .filter((v) => !["current", "vcurrent"].includes(v.toLowerCase()));
+              .filter((v: string) => !["current", "vcurrent"].includes(v.toLowerCase()));
 
             let publishedEntries: PublishedVersion[] = [];
             if (ig.published) {
@@ -213,7 +257,7 @@ export default function IGTable() {
               ciBuildUrl,
             };
           } catch (e) {
-            console.error(`❌ Failed to load IG [${ig.name}]:`, e);
+            console.error(`Failed to load IG [${ig.name}]:`, e);
             return {
               ...ig,
               html_url: "",
@@ -228,7 +272,18 @@ export default function IGTable() {
         })
       );
 
-      setIgs(allIgs);
+      setIgs(
+        allIgs.map((ig: any) => ({
+          ...ig,
+          branches: ig.branches ?? [],
+          versions: ig.versions ?? [],
+          publishedVersions: ig.publishedVersions ?? [],
+          html_url: ig.html_url ?? "",
+          default_branch: ig.default_branch ?? "",
+          last_commit: ig.last_commit ?? "",
+          ciBuildUrl: ig.ciBuildUrl ?? "",
+        } as IG))
+      );
     };
 
     loadData();
@@ -236,7 +291,7 @@ export default function IGTable() {
 
   return (
     <div className="container">
-      <h1>📄 IG Dashboard</h1>
+      <h1>IG Dashboard</h1>
       <div className="filters">
         <label>
           <input type="checkbox" checked={showOldBranches} onChange={e => setShowOldBranches(e.target.checked)} />
@@ -250,70 +305,136 @@ export default function IGTable() {
       <table className="dashboard-table">
         <thead>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Repo</th>
             <th>Branches</th>
             <th>Default Branch</th>
             <th>Last Commit</th>
-            <th>GitHub Tags</th>
-            <th>Published Versions</th>
+            <th>Latest Release</th>
+            <th>Disk Size</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {igs.map(ig => (
-            <tr key={ig.repo}>
-              <td>{ig.name}</td>
-              <td><a href={ig.html_url} target="_blank" rel="noreferrer">{ig.repo}</a></td>
-              <td>
-                <ul className="branch-list compact">
-                  {getVisibleBranches(ig).map(b => (
-                    <li key={b.name}>{b.name} <small>({b.daysSince} d)</small></li>
-                  ))}
-                </ul>
-              </td>
-              <td>{ig.default_branch}</td>
-              <td>{ig.last_commit}</td>
-              <td>
-                <ul className="tags-list compact">
-                  {getVisibleVersions(ig).map(v => (
-                    <li key={v.version}>
-                      <span className={v.hasTag ? "green-ok" : ""}>v{v.version}</span>
-                      {!v.publishedUrl && <span className="warning-icon">⚠️</span>}
-                    </li>
-                  ))}
-                </ul>
-              </td>
-              <td>
-                {ig.publishedVersions.length ? (
-                  <ul className="tags-list compact">
-                    {ig.publishedVersions.map(v => (
-                      <li key={v.version}>
-                        <a href={v.publishedUrl} target="_blank" rel="noreferrer" className="green-ok">v{v.version}</a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <span>No releases</span>
+          {igs.map(ig => {
+            const isExpanded = expandedRows.has(ig.repo);
+            const visibleVersions = getVisibleVersions(ig);
+            const latestVersion = visibleVersions[0] || null;
+            const olderVersions = visibleVersions.slice(1);
+            const pv = ig.publishedVersions ?? [];
+            const latestPublished = pv[0] || null;
+            const olderPublished = pv.slice(1);
+
+            return (
+              <React.Fragment key={ig.repo}>
+                <tr className="ig-row" onClick={() => toggleRow(ig.repo)}>
+                  <td className="expand-cell">
+                    <span className={`expand-arrow ${isExpanded ? "expanded" : ""}`}>
+                      {olderVersions.length > 0 || olderPublished.length > 0 ? "▶" : ""}
+                    </span>
+                  </td>
+                  <td>{ig.name}</td>
+                  <td><a href={ig.html_url} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>{ig.repo.split("/")[1]}</a></td>
+                  <td>
+                    <ul className="branch-list compact">
+                      {getVisibleBranches(ig).map(b => (
+                        <li key={b.name}>{b.name} <small>({b.daysSince} d)</small></li>
+                      ))}
+                    </ul>
+                  </td>
+                  <td>{ig.default_branch}</td>
+                  <td>{ig.last_commit}</td>
+                  <td>
+                    {latestVersion ? (
+                      <span>
+                        {latestPublished ? (
+                          <a href={latestPublished.publishedUrl} target="_blank" rel="noreferrer" className="green-ok" onClick={e => e.stopPropagation()}>
+                            v{latestVersion.version}
+                          </a>
+                        ) : (
+                          <span className={latestVersion.hasTag ? "green-ok" : ""}>v{latestVersion.version}</span>
+                        )}
+                        {latestVersion.size && <small className="size-badge">{latestVersion.size}</small>}
+                        {!latestVersion.publishedUrl && <span className="warning-icon">unpublished</span>}
+                        {olderVersions.length > 0 && (
+                          <small className="more-count">+{olderVersions.length} more</small>
+                        )}
+                      </span>
+                    ) : (
+                      <span className="no-releases">No releases</span>
+                    )}
+                  </td>
+                  <td>
+                    {ig.size ? (
+                      <span className="size-total">
+                        {ig.size}
+                        {ig.rootSize && <small className="size-detail"> (root: {ig.rootSize})</small>}
+                      </span>
+                    ) : (
+                      <span>-</span>
+                    )}
+                  </td>
+                  <td className="build-dropdown" onClick={e => e.stopPropagation()}>
+                    <div className="dropdown">
+                      <button className="action-btn">Build &#x23F7;</button>
+                      <ul className="dropdown-menu compact">
+                        {(ig.branches ?? []).map((branch) => (
+                          <li
+                            key={branch.name}
+                            onClick={() => triggerBuild(ig, branch.name)}
+                          >
+                            {branch.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+
+                {isExpanded && olderVersions.length > 0 && (
+                  <tr className="expanded-row">
+                    <td></td>
+                    <td colSpan={3}>
+                      <div className="expanded-section">
+                        <strong>All Versions (Tags)</strong>
+                        <ul className="tags-list compact">
+                          {visibleVersions.map(v => (
+                            <li key={v.version}>
+                              <span className={v.hasTag ? "green-ok" : ""}>v{v.version}</span>
+                              {v.size ? <small className="size-badge">{v.size}</small> : <small className="no-local">no local copy</small>}
+                              {!v.publishedUrl && <span className="warning-icon">not in package-list</span>}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </td>
+                    <td colSpan={3}>
+                      <div className="expanded-section">
+                        <strong>Published Versions</strong>
+                        {(ig.publishedVersions?.length ?? 0) > 0 ? (
+                          <ul className="tags-list compact">
+                            {(ig.publishedVersions ?? []).map(v => {
+                              const versionInfo = ig.versions.find(ver => ver.version === v.version);
+                              return (
+                                <li key={v.version}>
+                                  <a href={v.publishedUrl} target="_blank" rel="noreferrer" className="green-ok">v{v.version}</a>
+                                  {versionInfo?.size ? <small className="size-badge">{versionInfo.size}</small> : <small className="no-local">no local copy</small>}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        ) : (
+                          <span className="no-releases">No published versions</span>
+                        )}
+                      </div>
+                    </td>
+                    <td colSpan={2}></td>
+                  </tr>
                 )}
-              </td>
-              <td className="build-dropdown">
-                <div className="dropdown">
-                  <button className="action-btn">Trigger Build ⏷</button>
-                  <ul className="dropdown-menu compact">
-                    {ig.branches.map((branch) => (
-                      <li
-                        key={branch.name}
-                        onClick={() => triggerBuild(ig, branch.name)}
-                      >
-                        {branch.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </td>
-            </tr>
-          ))}
+              </React.Fragment>
+            );
+          })}
         </tbody>
       </table>
     </div>

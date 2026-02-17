@@ -28,12 +28,10 @@ jobs:
         working-directory: utils/dashboard
         run: npm ci
 
-      # 4️⃣ Build IGs data
+      # 4️⃣ Build IGs data from local repo content (no token needed)
       - name: Build IGs data
         working-directory: utils/dashboard
-        run: node build-igs-data.js
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node build-igs-data-local.js
 
       # 5️⃣ Build Vite site
       - name: Build Vite site

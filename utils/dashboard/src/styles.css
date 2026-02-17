@@ -53,6 +53,57 @@ h1 {
   background: #fafafa;
 }
 
+/* Collapsible rows */
+.ig-row {
+  cursor: pointer;
+}
+
+.ig-row:hover {
+  background: #f0f4ff !important;
+}
+
+.expand-cell {
+  width: 24px;
+  text-align: center;
+  padding: 0.75rem 0.25rem !important;
+}
+
+.expand-arrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  color: #888;
+  transition: transform 0.15s ease;
+}
+
+.expand-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+/* Expanded detail row */
+.expanded-row {
+  background: #f7f9fc !important;
+}
+
+.expanded-row td {
+  border-top: none;
+  padding-top: 0.25rem;
+  padding-bottom: 1rem;
+}
+
+.expanded-section {
+  padding: 0.5rem;
+}
+
+.expanded-section strong {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Lists */
 .branch-list.compact,
 .tags-list.compact,
 .dropdown-menu.compact {
@@ -82,10 +133,55 @@ h1 {
 }
 
 .warning-icon {
-  margin-left: 0.3rem;
-  color: #d77;
+  margin-left: 0.4rem;
+  color: #c44;
+  font-size: 0.75rem;
+  font-style: italic;
 }
 
+.no-releases {
+  color: #999;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+/* Size badges */
+.size-badge {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  background: #e8ecf1;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  color: #555;
+}
+
+.size-total {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.size-detail {
+  font-weight: 400;
+  color: #777;
+  font-size: 0.75rem;
+}
+
+.no-local {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  background: #fff3e0;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  color: #b57300;
+}
+
+.more-count {
+  margin-left: 0.5rem;
+  color: #0066cc;
+  font-size: 0.75rem;
+}
+
+/* Dropdown */
 .build-dropdown {
   position: relative;
 }

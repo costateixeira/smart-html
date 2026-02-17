@@ -1,0 +1,628 @@
+[
+  {
+    "name": "HIV",
+    "repo": "WorldHealthOrganization/smart-hiv",
+    "published": "http://smart.who.int/hiv",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-hiv",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.0",
+        "hasTag": false,
+        "publishedUrl": "http://smart.who.int/hiv/v1.0.0",
+        "sizeBytes": null,
+        "size": null
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/hiv/v1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-hiv/",
+    "sizeBytes": 1210232411,
+    "size": "1.13 GB",
+    "rootSizeBytes": 1210232411,
+    "rootSize": "1.13 GB"
+  },
+  {
+    "name": "TRUST",
+    "repo": "WorldHealthOrganization/smart-trust",
+    "published": "http://smart.who.int/trust",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-trust",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.3.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.3.0",
+        "sizeBytes": 200834614,
+        "size": "191.5 MB"
+      },
+      {
+        "version": "1.2.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/1.2.0",
+        "sizeBytes": 127343875,
+        "size": "121.4 MB"
+      },
+      {
+        "version": "1.1.5",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.1.5",
+        "sizeBytes": 92126116,
+        "size": "87.9 MB"
+      },
+      {
+        "version": "1.1.4",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/1.1.4",
+        "sizeBytes": 91912073,
+        "size": "87.7 MB"
+      },
+      {
+        "version": "1.1.3",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.1.3",
+        "sizeBytes": 86974930,
+        "size": "82.9 MB"
+      },
+      {
+        "version": "1.1.2",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/trust/v1.1.2",
+        "sizeBytes": 58847112,
+        "size": "56.1 MB"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": null,
+        "sizeBytes": 17069087,
+        "size": "16.3 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.3.0",
+        "publishedUrl": "http://smart.who.int/trust/v1.3.0"
+      },
+      {
+        "version": "1.2.0",
+        "publishedUrl": "http://smart.who.int/trust/1.2.0"
+      },
+      {
+        "version": "1.1.5",
+        "publishedUrl": "http://smart.who.int/trust/v1.1.5"
+      },
+      {
+        "version": "1.1.4",
+        "publishedUrl": "http://smart.who.int/trust/1.1.4"
+      },
+      {
+        "version": "1.1.3",
+        "publishedUrl": "http://smart.who.int/trust/v1.1.3"
+      },
+      {
+        "version": "1.1.2",
+        "publishedUrl": "http://smart.who.int/trust/v1.1.2"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-trust/",
+    "sizeBytes": 945994156,
+    "size": "902.2 MB",
+    "rootSizeBytes": 270886349,
+    "rootSize": "258.3 MB"
+  },
+  {
+    "name": "ICVP",
+    "repo": "WorldHealthOrganization/smart-icvp",
+    "published": "http://smart.who.int/icvp",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-icvp",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.3.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/icvp/0.3.0",
+        "sizeBytes": 127270395,
+        "size": "121.4 MB"
+      },
+      {
+        "version": "0.2.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/icvp/0.2.0",
+        "sizeBytes": 120763270,
+        "size": "115.2 MB"
+      },
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/icvp/0.1.0",
+        "sizeBytes": 103513841,
+        "size": "98.7 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.3.0",
+        "publishedUrl": "http://smart.who.int/icvp/0.3.0"
+      },
+      {
+        "version": "0.2.0",
+        "publishedUrl": "http://smart.who.int/icvp/0.2.0"
+      },
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/icvp/0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-icvp/",
+    "sizeBytes": 555040616,
+    "size": "529.3 MB",
+    "rootSizeBytes": 203493110,
+    "rootSize": "194.1 MB"
+  },
+  {
+    "name": "PCMT",
+    "repo": "WorldHealthOrganization/smart-pcmt",
+    "published": "http://smart.who.int/pcmt",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-pcmt",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/pcmt/v0.1.0",
+        "sizeBytes": 21715271,
+        "size": "20.7 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/pcmt/v0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-pcmt/",
+    "sizeBytes": 44740365,
+    "size": "42.7 MB",
+    "rootSizeBytes": 23025094,
+    "rootSize": "22.0 MB"
+  },
+  {
+    "name": "Starter Kit",
+    "repo": "WorldHealthOrganization/smart-ig-starter-kit",
+    "published": "http://smart.who.int/ig-starter-kit",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ig-starter-kit",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "2.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v2.0.0",
+        "sizeBytes": 31137420,
+        "size": "29.7 MB"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v1.0.0",
+        "sizeBytes": 11027751,
+        "size": "10.5 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "2.0.0",
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v2.0.0"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/ig-starter-kit/v1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ig-starter-kit/",
+    "sizeBytes": 74369975,
+    "size": "70.9 MB",
+    "rootSizeBytes": 32204804,
+    "rootSize": "30.7 MB"
+  },
+  {
+    "name": "Smart-pilgrimage",
+    "repo": "WorldHealthOrganization/smart-ips-pilgrimage",
+    "published": "http://smart.who.int/ips-pilgrimage",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ips-pilgrimage",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "2.0.3",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.3",
+        "sizeBytes": 90668128,
+        "size": "86.5 MB"
+      },
+      {
+        "version": "2.0.2",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.2",
+        "sizeBytes": 83768230,
+        "size": "79.9 MB"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/1.0.0",
+        "sizeBytes": 15116612,
+        "size": "14.4 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "2.0.3",
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.3"
+      },
+      {
+        "version": "2.0.2",
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/2.0.2"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/ips-pilgrimage/1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ips-pilgrimage/",
+    "sizeBytes": 293187872,
+    "size": "279.6 MB",
+    "rootSizeBytes": 103634902,
+    "rootSize": "98.8 MB"
+  },
+  {
+    "name": "DAK-IMMZ",
+    "repo": "WorldHealthOrganization/smart-dak-immz",
+    "published": "http://smart.who.int/dak-immz",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-immz",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.1.0",
+        "sizeBytes": 25782024,
+        "size": "24.6 MB"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.0.0",
+        "sizeBytes": 24134052,
+        "size": "23.0 MB"
+      },
+      {
+        "version": "0.9.9",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-immz/v0.9.9",
+        "sizeBytes": 17406251,
+        "size": "16.6 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.1.0",
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.1.0"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/dak-immz/v1.0.0"
+      },
+      {
+        "version": "0.9.9",
+        "publishedUrl": "http://smart.who.int/dak-immz/v0.9.9"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-immz/",
+    "sizeBytes": 100218663,
+    "size": "95.6 MB",
+    "rootSizeBytes": 32896336,
+    "rootSize": "31.4 MB"
+  },
+  {
+    "name": "Base",
+    "repo": "WorldHealthOrganization/smart-base",
+    "published": "http://smart.who.int/base",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-base",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.2.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/base/0.2.0",
+        "sizeBytes": 154102370,
+        "size": "147.0 MB"
+      },
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/base/0.1.0",
+        "sizeBytes": 82179567,
+        "size": "78.4 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.2.0",
+        "publishedUrl": "http://smart.who.int/base/0.2.0"
+      },
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/base/0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-base/",
+    "sizeBytes": 391796119,
+    "size": "373.6 MB",
+    "rootSizeBytes": 155514182,
+    "rootSize": "148.3 MB"
+  },
+  {
+    "name": "TS",
+    "repo": "WorldHealthOrganization/smart-ts",
+    "published": "http://smart.who.int/ts",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-ts",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ts/0.1.0",
+        "sizeBytes": 14212188,
+        "size": "13.6 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "0.1.0",
+        "publishedUrl": "http://smart.who.int/ts/0.1.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-ts/",
+    "sizeBytes": 29703195,
+    "size": "28.3 MB",
+    "rootSizeBytes": 15491007,
+    "rootSize": "14.8 MB"
+  },
+  {
+    "name": "DAK-TB",
+    "repo": "WorldHealthOrganization/smart-dak-tb",
+    "published": "http://smart.who.int/dak-tb",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-tb",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.1",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.1",
+        "sizeBytes": 35101292,
+        "size": "33.5 MB"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.0",
+        "sizeBytes": 35047674,
+        "size": "33.4 MB"
+      },
+      {
+        "version": "0.9.9",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-tb/v0.9.9",
+        "sizeBytes": 13833246,
+        "size": "13.2 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.1",
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.1"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/dak-tb/v1.0.0"
+      },
+      {
+        "version": "0.9.9",
+        "publishedUrl": "http://smart.who.int/dak-tb/v0.9.9"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-tb/",
+    "sizeBytes": 132583060,
+    "size": "126.4 MB",
+    "rootSizeBytes": 48600848,
+    "rootSize": "46.3 MB"
+  },
+  {
+    "name": "DAK-CCC",
+    "repo": "WorldHealthOrganization/smart-dak-ccc",
+    "published": "http://smart.who.int/dak-ccc",
+    "html_url": "https://github.com/WorldHealthOrganization/smart-dak-ccc",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-ccc/v1.0.0",
+        "sizeBytes": 36776133,
+        "size": "35.1 MB"
+      },
+      {
+        "version": "0.9.9",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/dak-ccc/v0.9.9",
+        "sizeBytes": 14874196,
+        "size": "14.2 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/dak-ccc/v1.0.0"
+      },
+      {
+        "version": "0.9.9",
+        "publishedUrl": "http://smart.who.int/dak-ccc/v0.9.9"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/smart-dak-ccc/",
+    "sizeBytes": 89545784,
+    "size": "85.4 MB",
+    "rootSizeBytes": 37895455,
+    "rootSize": "36.1 MB"
+  },
+  {
+    "name": "DDCC",
+    "repo": "WorldHealthOrganization/ddcc",
+    "published": "http://smart.who.int/ddcc",
+    "html_url": "https://github.com/WorldHealthOrganization/ddcc",
+    "default_branch": "main",
+    "last_commit": "",
+    "branches": [
+      {
+        "name": "main",
+        "daysSince": 0,
+        "isDefault": true,
+        "isStale": false
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.0.1",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.1",
+        "sizeBytes": 345210351,
+        "size": "329.2 MB"
+      },
+      {
+        "version": "1.0.0",
+        "hasTag": true,
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.0",
+        "sizeBytes": 284350869,
+        "size": "271.2 MB"
+      }
+    ],
+    "publishedVersions": [
+      {
+        "version": "1.0.1",
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.1"
+      },
+      {
+        "version": "1.0.0",
+        "publishedUrl": "http://smart.who.int/ddcc/1.0.0"
+      }
+    ],
+    "ciBuildUrl": "https://WorldHealthOrganization.github.io/ddcc/",
+    "sizeBytes": 975880386,
+    "size": "930.7 MB",
+    "rootSizeBytes": 346319166,
+    "rootSize": "330.3 MB"
+  }
+]
